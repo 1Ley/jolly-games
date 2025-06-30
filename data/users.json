@@ -1,0 +1,158 @@
+[
+  {
+    "id": "user-1ley",
+    "username": "1Ley",
+    "premium": true,
+    "stats": {
+      "puntos": 9800,
+      "partidas": 350,
+      "victorias": 250,
+      "mvp": 45,
+      "elo": 1800,
+      "muertes": 1500,
+      "asesinatos": 2250,
+      "rondasGanadas": 550
+    },
+    "rank": 4
+  },
+  {
+    "id": "user-jirowoo",
+    "username": "Jirowoo",
+    "premium": true,
+    "stats": { "puntos": 350190, "partidas": 98, "victorias": 16, "mvp": 0, "elo": 0, "muertes": 1314, "asesinatos": 1960, "rondasGanadas": 123 },
+    "rank": 1
+  },
+  {
+    "id": "user-triprod",
+    "username": "TripRod",
+    "premium": true,
+    "stats": { "puntos": 347691, "partidas": 108, "victorias": 26, "mvp": 0, "elo": 0, "muertes": 1231, "asesinatos": 1786, "rondasGanadas": 119 },
+    "rank": 2
+  },
+  {
+    "id": "user-rxpliedsl",
+    "username": "RxpliedSL",
+    "premium": true,
+    "stats": { "puntos": 311540, "partidas": 93, "victorias": 27, "mvp": 0, "elo": 0, "muertes": 1127, "asesinatos": 1560, "rondasGanadas": 105 },
+    "rank": 3
+  },
+  {
+    "id": "user-crydamoure",
+    "username": "Crydamoure",
+    "premium": true,
+    "stats": { "puntos": 297861, "partidas": 91, "victorias": 20, "mvp": 0, "elo": 0, "muertes": 1061, "asesinatos": 1301, "rondasGanadas": 106 },
+    "rank": 4
+  },
+  {
+    "id": "user-tralaleroasesino",
+    "username": "TralaleroAsesino",
+    "premium": true,
+    "stats": { "puntos": 270044, "partidas": 0, "victorias": 20, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 1630, "rondasGanadas": 94 },
+    "rank": 5
+  },
+  {
+    "id": "user-zjjeree",
+    "username": "zjjeree",
+    "premium": true,
+    "stats": { "puntos": 240558, "partidas": 96, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 1291, "asesinatos": 1264, "rondasGanadas": 0 },
+    "rank": 6
+  },
+  {
+    "id": "user-sxf5",
+    "username": "Sxf5",
+    "premium": true,
+    "stats": { "puntos": 236366, "partidas": 0, "victorias": 19, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 1313, "rondasGanadas": 89 },
+    "rank": 7
+  },
+  {
+    "id": "user-69sag",
+    "username": "69sag",
+    "premium": true,
+    "stats": { "puntos": 234980, "partidas": 98, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 1041, "asesinatos": 1266, "rondasGanadas": 101 },
+    "rank": 8
+  },
+  {
+    "id": "user-0c0r",
+    "username": "0c0r",
+    "premium": true,
+    "stats": { "puntos": 224821, "partidas": 0, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 0, "rondasGanadas": 0 },
+    "rank": 9
+  },
+  {
+    "id": "user-spikly",
+    "username": "Spikly_",
+    "premium": true,
+    "stats": { "puntos": 224521, "partidas": 0, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 1796, "rondasGanadas": 80 },
+    "rank": 10
+  },
+  {
+    "id": "user-wjeff123",
+    "username": "wJeff123_",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 94, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 1285, "asesinatos": 0, "rondasGanadas": 0 },
+    "rank": 11
+  },
+  {
+    "id": "user-rocketraccooonnn",
+    "username": "RocketRaccooonnn",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 90, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 1073, "asesinatos": 0, "rondasGanadas": 0 },
+    "rank": 12
+  },
+  {
+    "id": "user-jirikly",
+    "username": "Jirikly_",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 86, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 0, "rondasGanadas": 0 },
+    "rank": 13
+  },
+  {
+    "id": "user-vm4rv",
+    "username": "vM4rv",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 84, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 983, "asesinatos": 0, "rondasGanadas": 0 },
+    "rank": 14
+  },
+  {
+    "id": "user-bphijodesonic",
+    "username": "BP_HijoDeSonic",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 0, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 972, "asesinatos": 0, "rondasGanadas": 0 },
+    "rank": 15
+  },
+  {
+    "id": "user-zneiii",
+    "username": "zNeiii",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 0, "victorias": 13, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 1197, "rondasGanadas": 0 },
+    "rank": 16
+  },
+  {
+    "id": "user-itstappz",
+    "username": "ItsTappz",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 0, "victorias": 15, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 0, "rondasGanadas": 0 },
+    "rank": 17
+  },
+  {
+    "id": "user-tripfave",
+    "username": "TripFave",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 0, "victorias": 15, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 0, "rondasGanadas": 0 },
+    "rank": 18
+  },
+  {
+    "id": "user-alxji",
+    "username": "Alxji",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 0, "victorias": 13, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 0, "rondasGanadas": 85 },
+    "rank": 19
+  },
+  {
+    "id": "user-fanderojema",
+    "username": "FanDeRojema",
+    "premium": true,
+    "stats": { "puntos": 0, "partidas": 0, "victorias": 0, "mvp": 0, "elo": 0, "muertes": 0, "asesinatos": 0, "rondasGanadas": 88 },
+    "rank": 20
+  }
+] 

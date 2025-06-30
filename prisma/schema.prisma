@@ -1,0 +1,226 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  username  String   @unique
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Gaming stats
+  level     Int @default(1)
+  xp        Int @default(0)
+  coins     Int @default(0)
+  kills     Int @default(0)
+  deaths    Int @default(0)
+  wins      Int @default(0)
+  losses    Int @default(0)
+  gamesPlayed Int @default(0)
+
+  // Relations
+  activities Activity[]
+  forumPosts ForumPost[]
+  forumTopics ForumTopic[]  // ← Relación agregada
+  comments   Comment[]
+  tickets    SupportTicket[]
+  sessions   GameSession[]
+
+  @@map("users")
+}
+
+model Activity {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String
+  type        ActivityType
+  likes       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  userId   String
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comments Comment[]
+
+  @@map("activities")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activityId String
+  activity   Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model ForumCategory {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  color       String
+  icon        String
+
+  // Relations
+  topics ForumTopic[]
+
+  @@map("forum_categories")
+}
+
+model ForumTopic {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  isPinned  Boolean  @default(false)
+  isLocked  Boolean  @default(false)
+  views     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  categoryId String
+  category   ForumCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  authorId   String
+  author     User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  posts      ForumPost[]
+
+  @@map("forum_topics")
+}
+
+model ForumPost {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  topicId  String
+  topic    ForumTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  authorId String
+  author   User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("forum_posts")
+}
+
+model GameMode {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  icon        String
+  difficulty  String
+  maxPlayers  Int
+  avgDuration Int // in minutes
+
+  // Relations
+  sessions GameSession[]
+
+  @@map("game_modes")
+}
+
+model GameSession {
+  id        String   @id @default(cuid())
+  score     Int      @default(0)
+  kills     Int      @default(0)
+  deaths    Int      @default(0)
+  duration  Int      // in seconds
+  result    GameResult
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  gameModeId String
+  gameMode   GameMode @relation(fields: [gameModeId], references: [id], onDelete: Cascade)
+
+  @@map("game_sessions")
+}
+
+model SupportTicket {
+  id          String        @id @default(cuid())
+  subject     String
+  description String
+  priority    TicketPriority
+  status      TicketStatus  @default(OPEN)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  // Relations
+  userId    String
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  responses TicketResponse[]
+
+  @@map("support_tickets")
+}
+
+model TicketResponse {
+  id        String   @id @default(cuid())
+  content   String
+  isStaff   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // Relations
+  ticketId String
+  ticket   SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+
+  @@map("ticket_responses")
+}
+
+model NewsPost {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  excerpt   String
+  imageUrl  String?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("news_posts")
+}
+
+// Enums
+enum ActivityType {
+  SCREENSHOT
+  ARTWORK
+  BUILD
+  VIDEO
+  MEME
+}
+
+enum GameResult {
+  WIN
+  LOSS
+  DRAW
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}

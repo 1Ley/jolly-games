@@ -1,0 +1,128 @@
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
+import './globals.css';
+import { ThemeProvider } from '@/components/providers/theme-provider';
+import { Navbar } from '@/components/layout/navbar';
+import { Footer } from '@/components/layout/footer';
+import { Toaster } from '@/components/ui/toaster';
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const minecraftFont = localFont({
+  src: './fonts/MinecraftSeven_v2.woff2',
+  variable: '--font-minecraft',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Jolly Games - Minecraft Minigames Server',
+    template: '%s | Jolly Games'
+  },
+  description: 'Únete a la mejor experiencia de minijuegos de Minecraft. Jolly Games ofrece una amplia variedad de juegos únicos y emocionantes para toda la comunidad.',
+  keywords: ['minecraft', 'minigames', 'server', 'jolly games', 'gaming', 'multiplayer'],
+  authors: [{ name: 'Jolly Studio' }],
+  creator: 'Jolly Studio',
+  publisher: 'Jolly Studio',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
+  metadataBase: new URL('https://jolly-games.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_ES',
+    url: 'https://jolly-games.com',
+    title: 'Jolly Games - Minecraft Minigames Server',
+    description: 'Únete a la mejor experiencia de minijuegos de Minecraft.',
+    siteName: 'Jolly Games',
+    images: [
+      {
+        url: '/images/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Jolly Games Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Jolly Games - Minecraft Minigames Server',
+    description: 'Únete a la mejor experiencia de minijuegos de Minecraft.',
+    images: ['/images/logo.png'],
+    creator: '@jollygames',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="es" className="dark" suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#0ea5e9" />
+      </head>
+      <body className={`${inter.variable} ${minecraftFont.variable} font-sans antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="relative min-h-screen flex flex-col">
+            {/* Background Pattern */}
+            <div className="fixed inset-0 -z-10">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-950" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.1),transparent_50%)]" />
+              <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
+            </div>
+            
+            {/* Navigation */}
+            <Navbar />
+            
+            {/* Main Content */}
+            <main className="flex-1">
+              {children}
+            </main>
+            
+            {/* Footer */}
+            <Footer />
+            
+            {/* Toast Notifications */}
+            <Toaster />
+          </div>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
