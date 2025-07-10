@@ -2,17 +2,17 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  ChevronDown, 
-  ChevronUp, 
-  Shield, 
-  Users, 
-  MessageSquare, 
-  Gavel, 
+import {
+  ChevronDown,
+  ChevronUp,
+  Shield,
+  Users,
+  MessageSquare,
+  Gavel,
   AlertTriangle,
   Info,
   Lock,
-  Eye
+  Eye,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
@@ -26,21 +26,25 @@ const rulesData = [
     sections: [
       {
         title: '1. Respeto y Cortesía',
-        content: 'Trata a todos los jugadores con respeto. No se toleran insultos, acoso, discriminación o comportamiento tóxico de ningún tipo. Mantén un ambiente amigable y acogedor para todos.'
+        content:
+          'Trata a todos los jugadores con respeto. No se toleran insultos, acoso, discriminación o comportamiento tóxico de ningún tipo. Mantén un ambiente amigable y acogedor para todos.',
       },
       {
         title: '2. Idioma Apropiado',
-        content: 'Evita el uso de lenguaje ofensivo, vulgar o inapropiado. El spam, las mayúsculas excesivas y los mensajes repetitivos están prohibidos.'
+        content:
+          'Evita el uso de lenguaje ofensivo, vulgar o inapropiado. El spam, las mayúsculas excesivas y los mensajes repetitivos están prohibidos.',
       },
       {
         title: '3. Nombres de Usuario',
-        content: 'Los nombres de usuario deben ser apropiados y no contener contenido ofensivo, referencias inapropiadas o intentos de suplantar a otros jugadores o staff.'
+        content:
+          'Los nombres de usuario deben ser apropiados y no contener contenido ofensivo, referencias inapropiadas o intentos de suplantar a otros jugadores o staff.',
       },
       {
         title: '4. Publicidad',
-        content: 'No está permitida la publicidad de otros servidores, Discord, redes sociales o cualquier contenido externo sin autorización previa del staff.'
-      }
-    ]
+        content:
+          'No está permitida la publicidad de otros servidores, Discord, redes sociales o cualquier contenido externo sin autorización previa del staff.',
+      },
+    ],
   },
   {
     id: 'gameplay',
@@ -51,21 +55,25 @@ const rulesData = [
     sections: [
       {
         title: '1. Juego Limpio',
-        content: 'Está prohibido el uso de hacks, cheats, mods no autorizados, macros o cualquier software que proporcione ventajas injustas. Esto incluye autoclickers, killaura, fly, speed hacks, etc.'
+        content:
+          'Está prohibido el uso de hacks, cheats, mods no autorizados, macros o cualquier software que proporcione ventajas injustas. Esto incluye autoclickers, killaura, fly, speed hacks, etc.',
       },
       {
         title: '2. Explotación de Bugs',
-        content: 'No aproveches bugs o glitches del servidor para obtener ventajas. Si encuentras un bug, repórtalo inmediatamente al staff a través del sistema de tickets.'
+        content:
+          'No aproveches bugs o glitches del servidor para obtener ventajas. Si encuentras un bug, repórtalo inmediatamente al staff a través del sistema de tickets.',
       },
       {
         title: '3. Griefing y Trolling',
-        content: 'No destruyas, modifiques o sabotees las construcciones de otros jugadores. El trolling que arruine la experiencia de otros jugadores está prohibido.'
+        content:
+          'No destruyas, modifiques o sabotees las construcciones de otros jugadores. El trolling que arruine la experiencia de otros jugadores está prohibido.',
       },
       {
         title: '4. Teamwork',
-        content: 'En juegos de equipo, colabora con tus compañeros. No hagas team-killing, sabotajes internos o abandones partidas intencionalmente.'
-      }
-    ]
+        content:
+          'En juegos de equipo, colabora con tus compañeros. No hagas team-killing, sabotajes internos o abandones partidas intencionalmente.',
+      },
+    ],
   },
   {
     id: 'chat',
@@ -76,21 +84,25 @@ const rulesData = [
     sections: [
       {
         title: '1. Contenido Apropiado',
-        content: 'No compartas contenido NSFW, violento, político controvertido o que pueda resultar ofensivo para otros jugadores.'
+        content:
+          'No compartas contenido NSFW, violento, político controvertido o que pueda resultar ofensivo para otros jugadores.',
       },
       {
         title: '2. Spam y Flood',
-        content: 'Evita enviar mensajes repetitivos, caracteres sin sentido o flood. Respeta el flujo natural de la conversación.'
+        content:
+          'Evita enviar mensajes repetitivos, caracteres sin sentido o flood. Respeta el flujo natural de la conversación.',
       },
       {
         title: '3. Información Personal',
-        content: 'No compartas información personal tuya o de otros jugadores (direcciones, números de teléfono, datos personales, etc.).'
+        content:
+          'No compartas información personal tuya o de otros jugadores (direcciones, números de teléfono, datos personales, etc.).',
       },
       {
         title: '4. Idiomas',
-        content: 'El idioma principal del servidor es el español. Puedes usar otros idiomas en mensajes privados, pero en el chat público mantén el español.'
-      }
-    ]
+        content:
+          'El idioma principal del servidor es el español. Puedes usar otros idiomas en mensajes privados, pero en el chat público mantén el español.',
+      },
+    ],
   },
   {
     id: 'punishments',
@@ -101,25 +113,30 @@ const rulesData = [
     sections: [
       {
         title: 'Advertencias',
-        content: 'Primera infracción menor: Se emitirá una advertencia verbal o escrita. Las advertencias quedan registradas en tu historial.'
+        content:
+          'Primera infracción menor: Se emitirá una advertencia verbal o escrita. Las advertencias quedan registradas en tu historial.',
       },
       {
         title: 'Silenciamiento (Mute)',
-        content: 'Infracciones de chat: Silenciamiento temporal de 1 hora a 7 días, dependiendo de la gravedad y reincidencia.'
+        content:
+          'Infracciones de chat: Silenciamiento temporal de 1 hora a 7 días, dependiendo de la gravedad y reincidencia.',
       },
       {
         title: 'Expulsión Temporal (Kick)',
-        content: 'Comportamiento disruptivo: Expulsión inmediata del servidor con posibilidad de reconexión.'
+        content:
+          'Comportamiento disruptivo: Expulsión inmediata del servidor con posibilidad de reconexión.',
       },
       {
         title: 'Suspensión (Ban Temporal)',
-        content: 'Infracciones graves: Suspensión de 1 día a 30 días, dependiendo de la gravedad de la infracción.'
+        content:
+          'Infracciones graves: Suspensión de 1 día a 30 días, dependiendo de la gravedad de la infracción.',
       },
       {
         title: 'Prohibición Permanente',
-        content: 'Infracciones muy graves o reincidencia: Prohibición permanente del servidor. Puede apelarse después de 6 meses.'
-      }
-    ]
+        content:
+          'Infracciones muy graves o reincidencia: Prohibición permanente del servidor. Puede apelarse después de 6 meses.',
+      },
+    ],
   },
   {
     id: 'appeals',
@@ -130,17 +147,20 @@ const rulesData = [
     sections: [
       {
         title: 'Proceso de Apelación',
-        content: 'Si crees que tu sanción fue injusta, puedes apelar a través del sistema de tickets en Discord o en nuestra web. Proporciona evidencia y explica tu situación claramente.'
+        content:
+          'Si crees que tu sanción fue injusta, puedes apelar a través del sistema de tickets en Discord o en nuestra web. Proporciona evidencia y explica tu situación claramente.',
       },
       {
         title: 'Tiempo de Respuesta',
-        content: 'Las apelaciones son revisadas en un plazo de 24-72 horas. Ten paciencia y no envíes múltiples tickets sobre el mismo tema.'
+        content:
+          'Las apelaciones son revisadas en un plazo de 24-72 horas. Ten paciencia y no envíes múltiples tickets sobre el mismo tema.',
       },
       {
         title: 'Decisiones Finales',
-        content: 'Las decisiones del staff administrativo son finales. Acepta el resultado de tu apelación con deportividad.'
-      }
-    ]
+        content:
+          'Las decisiones del staff administrativo son finales. Acepta el resultado de tu apelación con deportividad.',
+      },
+    ],
   },
   {
     id: 'privacy',
@@ -151,31 +171,37 @@ const rulesData = [
     sections: [
       {
         title: 'Recopilación de Datos',
-        content: 'Recopilamos datos mínimos necesarios para el funcionamiento del servidor: UUID, nombre de usuario, estadísticas de juego y logs de chat para moderación.'
+        content:
+          'Recopilamos datos mínimos necesarios para el funcionamiento del servidor: UUID, nombre de usuario, estadísticas de juego y logs de chat para moderación.',
       },
       {
         title: 'Uso de la Información',
-        content: 'Tus datos se usan únicamente para mejorar tu experiencia de juego, moderar el servidor y generar estadísticas anónimas.'
+        content:
+          'Tus datos se usan únicamente para mejorar tu experiencia de juego, moderar el servidor y generar estadísticas anónimas.',
       },
       {
         title: 'Protección de Datos',
-        content: 'Implementamos medidas de seguridad para proteger tu información. No vendemos ni compartimos tus datos con terceros sin tu consentimiento.'
+        content:
+          'Implementamos medidas de seguridad para proteger tu información. No vendemos ni compartimos tus datos con terceros sin tu consentimiento.',
       },
       {
         title: 'Derechos del Usuario',
-        content: 'Puedes solicitar la eliminación de tus datos contactando al staff. Ten en cuenta que esto puede afectar tu progreso en el servidor.'
-      }
-    ]
-  }
+        content:
+          'Puedes solicitar la eliminación de tus datos contactando al staff. Ten en cuenta que esto puede afectar tu progreso en el servidor.',
+      },
+    ],
+  },
 ];
 
 export default function RulesPage() {
-  const [openSections, setOpenSections] = useState<{ [key: string]: number | null }>({});
+  const [openSections, setOpenSections] = useState<{
+    [key: string]: number | null;
+  }>({});
 
   const toggleSection = (ruleId: string, sectionIndex: number) => {
     setOpenSections(prev => ({
       ...prev,
-      [ruleId]: prev[ruleId] === sectionIndex ? null : sectionIndex
+      [ruleId]: prev[ruleId] === sectionIndex ? null : sectionIndex,
     }));
   };
 
@@ -187,13 +213,14 @@ export default function RulesPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-12 text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-minecraft text-glow">
+          <h1 className="text-glow mb-4 font-minecraft text-4xl font-bold md:text-5xl">
             Reglas y Políticas
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Lee y comprende nuestras reglas para mantener una comunidad sana y divertida para todos
+          <p className="mx-auto max-w-2xl text-gray-400">
+            Lee y comprende nuestras reglas para mantener una comunidad sana y
+            divertida para todos
           </p>
         </motion.div>
 
@@ -205,15 +232,18 @@ export default function RulesPage() {
           className="bento-item mb-8 border-l-4 border-yellow-500"
         >
           <div className="flex items-start space-x-3">
-            <div className="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-              <Info className="w-4 h-4 text-yellow-400" />
+            <div className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-yellow-500/20">
+              <Info className="h-4 w-4 text-yellow-400" />
             </div>
             <div>
-              <h3 className="font-semibold text-white mb-2">Aviso Importante</h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                Al jugar en nuestro servidor, aceptas cumplir con todas estas reglas. 
-                El desconocimiento de las reglas no exime de su cumplimiento. 
-                Las reglas pueden actualizarse sin previo aviso, por lo que recomendamos revisarlas periódicamente.
+              <h3 className="mb-2 font-semibold text-white">
+                Aviso Importante
+              </h3>
+              <p className="text-sm leading-relaxed text-gray-300">
+                Al jugar en nuestro servidor, aceptas cumplir con todas estas
+                reglas. El desconocimiento de las reglas no exime de su
+                cumplimiento. Las reglas pueden actualizarse sin previo aviso,
+                por lo que recomendamos revisarlas periódicamente.
               </p>
             </div>
           </div>
@@ -223,7 +253,7 @@ export default function RulesPage() {
         <div className="space-y-6">
           {rulesData.map((rule, ruleIndex) => {
             const Icon = rule.icon;
-            
+
             return (
               <motion.div
                 key={rule.id}
@@ -233,12 +263,16 @@ export default function RulesPage() {
                 className="bento-item"
               >
                 {/* Rule Header */}
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className={`w-12 h-12 ${rule.bgColor} rounded-xl flex items-center justify-center`}>
-                    <Icon className={`w-6 h-6 ${rule.color}`} />
+                <div className="mb-6 flex items-center space-x-3">
+                  <div
+                    className={`h-12 w-12 ${rule.bgColor} flex items-center justify-center rounded-xl`}
+                  >
+                    <Icon className={`h-6 w-6 ${rule.color}`} />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-white">{rule.title}</h2>
+                    <h2 className="text-xl font-bold text-white">
+                      {rule.title}
+                    </h2>
                     <Badge variant="outline" className="mt-1 text-xs">
                       {rule.sections.length} secciones
                     </Badge>
@@ -250,29 +284,33 @@ export default function RulesPage() {
                   {rule.sections.map((section, sectionIndex) => (
                     <div
                       key={sectionIndex}
-                      className="border border-white/10 rounded-lg overflow-hidden"
+                      className="overflow-hidden rounded-lg border border-white/10"
                     >
                       <button
                         onClick={() => toggleSection(rule.id, sectionIndex)}
-                        className="w-full px-4 py-3 text-left bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-between"
+                        className="flex w-full items-center justify-between bg-white/5 px-4 py-3 text-left transition-colors hover:bg-white/10"
                       >
-                        <span className="font-medium text-white">{section.title}</span>
+                        <span className="font-medium text-white">
+                          {section.title}
+                        </span>
                         {openSections[rule.id] === sectionIndex ? (
-                          <ChevronUp className="w-4 h-4 text-gray-400" />
+                          <ChevronUp className="h-4 w-4 text-gray-400" />
                         ) : (
-                          <ChevronDown className="w-4 h-4 text-gray-400" />
+                          <ChevronDown className="h-4 w-4 text-gray-400" />
                         )}
                       </button>
-                      
+
                       {openSections[rule.id] === sectionIndex && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="px-4 py-4 bg-white/2 border-t border-white/10"
+                          className="bg-white/2 border-t border-white/10 px-4 py-4"
                         >
-                          <p className="text-gray-300 leading-relaxed">{section.content}</p>
+                          <p className="leading-relaxed text-gray-300">
+                            {section.content}
+                          </p>
                         </motion.div>
                       )}
                     </div>
@@ -290,28 +328,29 @@ export default function RulesPage() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="bento-item mt-8 text-center"
         >
-          <div className="flex items-center justify-center mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center">
-              <Eye className="w-6 h-6 text-white" />
+          <div className="mb-4 flex items-center justify-center">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-accent-500">
+              <Eye className="h-6 w-6 text-white" />
             </div>
           </div>
-          
-          <h3 className="text-lg font-semibold text-white mb-2">
+
+          <h3 className="mb-2 text-lg font-semibold text-white">
             ¿Tienes dudas sobre las reglas?
           </h3>
-          
-          <p className="text-gray-400 mb-4">
-            Si tienes preguntas sobre alguna regla o necesitas aclaraciones, no dudes en contactarnos
+
+          <p className="mb-4 text-gray-400">
+            Si tienes preguntas sobre alguna regla o necesitas aclaraciones, no
+            dudes en contactarnos
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 text-sm text-gray-400">
+
+          <div className="flex flex-col items-center justify-center space-y-2 text-sm text-gray-400 sm:flex-row sm:space-x-4 sm:space-y-0">
             <div className="flex items-center space-x-2">
-              <MessageSquare className="w-4 h-4" />
+              <MessageSquare className="h-4 w-4" />
               <span>Discord: discord.gg/jollygames</span>
             </div>
-            <div className="hidden sm:block text-gray-600">•</div>
+            <div className="hidden text-gray-600 sm:block">•</div>
             <div className="flex items-center space-x-2">
-              <Shield className="w-4 h-4" />
+              <Shield className="h-4 w-4" />
               <span>Tickets de soporte en la web</span>
             </div>
           </div>
@@ -322,7 +361,7 @@ export default function RulesPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.0 }}
-          className="text-center mt-8 text-sm text-gray-500"
+          className="mt-8 text-center text-sm text-gray-500"
         >
           Última actualización: 15 de Enero, 2025
         </motion.div>

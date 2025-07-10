@@ -6,8 +6,8 @@ import { Heart, MessageCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
-import { formatRelativeTime, formatNumber } from '@/lib/utils';
-import { mockCommunityActivities as fetchMockCommunityActivities } from '@/data/mock-data';
+import { formatNumber } from '@/lib/utils';
+import { mockActivities as fetchMockCommunityActivities } from '@/data/mock-data';
 
 interface CommunityActivity {
   id: string;
@@ -53,11 +53,14 @@ export function CommunitySection() {
     const timer = setTimeout(() => {
       const data = fetchMockCommunityActivities;
       setActivities(data);
-      const calculatedStats = data.reduce((acc, activity) => {
-        acc.likes += activity.likes;
-        acc.comments += activity.comments;
-        return acc;
-      }, { creations: data.length, likes: 0, comments: 0 });
+      const calculatedStats = data.reduce(
+        (acc, activity) => {
+          acc.likes += activity.likes;
+          acc.comments += activity.comments;
+          return acc;
+        },
+        { creations: data.length, likes: 0, comments: 0 }
+      );
       setStats(calculatedStats);
       setIsLoading(false);
     }, 900);
@@ -67,9 +70,9 @@ export function CommunitySection() {
   const renderContent = () => {
     if (isLoading) {
       return (
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex flex-1 items-center justify-center">
           <div className="text-center">
-            <Heart className="w-10 h-10 text-pink-500 animate-pulse mx-auto mb-3" />
+            <Heart className="mx-auto mb-3 h-10 w-10 text-pink-500" />
             <p className="text-sm text-gray-400">Cargando actividad...</p>
           </div>
         </div>
@@ -78,56 +81,59 @@ export function CommunitySection() {
 
     if (activities.length === 0) {
       return (
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex flex-1 items-center justify-center">
           <div className="text-center">
-            <Heart className="w-10 h-10 text-gray-600 mx-auto mb-3" />
-            <p className="text-sm font-semibold text-white">No hay actividad reciente</p>
+            <Heart className="mx-auto mb-3 h-10 w-10 text-gray-600" />
+            <p className="text-sm font-semibold text-white">
+              No hay actividad reciente
+            </p>
           </div>
         </div>
       );
     }
-    
+
     return (
-      <div className="space-y-3 flex-1 overflow-y-auto pr-2">
+      <div className="flex-1 space-y-3 overflow-y-auto pr-2">
         {activities.slice(0, 3).map((activity, index) => (
           <motion.div
             key={activity.id}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="group p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-200 cursor-pointer"
+            initial={{ opacity: 1, x: 0 }} // Sin animación inicial
+            className="group cursor-pointer rounded-lg bg-white/5 p-3 hover:bg-white/10"
           >
             <div className="flex space-x-3">
-              <Image 
+              <Image
                 src={activity.user.avatarUrl}
                 alt={activity.user.username}
                 width={32}
                 height={32}
-                className="w-8 h-8 rounded-md mt-1"
+                className="mt-1 h-8 w-8 rounded-md"
               />
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between mb-1">
-                  <p className="text-sm font-semibold text-white truncate group-hover:text-primary-400">
+              <div className="min-w-0 flex-1">
+                <div className="mb-1 flex items-center justify-between">
+                  <p className="truncate text-sm font-semibold text-white group-hover:text-primary-400">
                     {activity.title}
                   </p>
-                  <Badge 
-                    variant="outline" 
-                    className={`ml-2 text-xs px-1.5 py-0.5 ${activityTypeColors[activity.type]}`}
+                  <Badge
+                    variant="outline"
+                    className={`ml-2 px-1.5 py-0.5 text-xs ${activityTypeColors[activity.type]}`}
                   >
                     {activityTypeLabels[activity.type]}
                   </Badge>
                 </div>
                 <div className="flex items-center justify-between text-xs text-gray-500">
                   <p>
-                    por <span className="font-medium text-gray-400">{activity.user.username}</span>
+                    por{' '}
+                    <span className="font-medium text-gray-400">
+                      {activity.user.username}
+                    </span>
                   </p>
                   <div className="flex items-center space-x-2">
                     <div className="flex items-center space-x-1">
-                      <Heart className="w-3 h-3" />
+                      <Heart className="h-3 w-3" />
                       <span>{formatNumber(activity.likes)}</span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <MessageCircle className="w-3 h-3" />
+                      <MessageCircle className="h-3 w-3" />
                       <span>{formatNumber(activity.comments)}</span>
                     </div>
                   </div>
@@ -142,16 +148,20 @@ export function CommunitySection() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="bento-item p-6 h-full flex flex-col"
+      initial={{ opacity: 1, y: 0 }} // Sin animación inicial
+      className="glass-card flex h-full flex-col p-6"
     >
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold text-white">Actividad de la Comunidad</h2>
-        <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white -mr-2">
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-xl font-bold text-white">
+          Actividad de la Comunidad
+        </h2>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="-mr-2 text-gray-400 hover:text-white"
+        >
           Ver todo
-          <ArrowRight className="w-4 h-4 ml-2" />
+          <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
 
@@ -159,22 +169,26 @@ export function CommunitySection() {
 
       {stats && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 pt-4 border-t border-white/10"
+          initial={{ opacity: 1 }} // Sin animación inicial
+          className="mt-4 border-t border-white/10 pt-4"
         >
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <div className="text-lg font-bold text-white">{formatNumber(stats.creations)}</div>
+              <div className="text-lg font-bold text-white">
+                {formatNumber(stats.creations)}
+              </div>
               <div className="text-xs text-gray-500">Creaciones</div>
             </div>
             <div>
-              <div className="text-lg font-bold text-white">{formatNumber(stats.likes)}</div>
+              <div className="text-lg font-bold text-white">
+                {formatNumber(stats.likes)}
+              </div>
               <div className="text-xs text-gray-500">Me Gusta</div>
             </div>
             <div>
-              <div className="text-lg font-bold text-white">{formatNumber(stats.comments)}</div>
+              <div className="text-lg font-bold text-white">
+                {formatNumber(stats.comments)}
+              </div>
               <div className="text-xs text-gray-500">Comentarios</div>
             </div>
           </div>

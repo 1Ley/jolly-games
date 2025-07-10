@@ -1,47 +1,82 @@
+'use client';
+
 import { HeroSection } from '@/components/sections/hero-section';
-import { UpdatesSection } from '@/components/sections/updates-section';
 import { StatsSection } from '@/components/sections/stats-section';
 import { FeaturedGamesSection } from '@/components/sections/featured-games-section';
 import { CommunitySection } from '@/components/sections/community-section';
 import { CTASection } from '@/components/sections/cta-section';
+import { motion } from 'framer-motion';
+import { ParallaxScrollSection } from '@/components/sections/parallax-scroll-section';
+import { mockFeatureSections } from '@/data/mock-data';
 
-export default function HomePage() {
+const containerVariants = {
+  hidden: { opacity: 1 }, // Cambiado a 1 para que no haya animación inicial
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0,
+      delayChildren: 0, // Sin retraso
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 0, opacity: 1 }, // Cambiado para que no haya animación inicial
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0 }, // Sin duración para transición instantánea
+  },
+};
+
+export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative">
+    <motion.main
+      className="min-h-screen"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.section className="relative" variants={itemVariants}>
         <HeroSection />
-      </section>
+      </motion.section>
 
-      {/* Content Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Updates - Large */}
-          <div className="lg:col-span-4">
-            <UpdatesSection />
-          </div>
+      {/* New Parallax Scroll Sections */}
+      <div>
+        {mockFeatureSections.map((section, index) => (
+          <ParallaxScrollSection
+            key={section.title}
+            title={section.title}
+            description={section.description}
+            imageUrl={section.imageUrl}
+            imageSide={index % 2 === 0 ? 'left' : 'right'}
+          />
+        ))}
+      </div>
 
-          {/* Featured Games - Medium */}
-          <div className="md:col-span-2 lg:col-span-2">
+      {/* Original Bento Grid Sections */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <motion.div
+            className="md:col-span-2 lg:col-span-2"
+            variants={itemVariants}
+          >
             <FeaturedGamesSection />
-          </div>
-
-          {/* Stats - Small */}
-          <div>
+          </motion.div>
+          <motion.div variants={itemVariants}>
             <StatsSection />
-          </div>
-
-          {/* Community - Medium */}
-          <div className="md:col-span-2 lg:col-span-2">
+          </motion.div>
+          <motion.div
+            className="md:col-span-2 lg:col-span-2"
+            variants={itemVariants}
+          >
             <CommunitySection />
-          </div>
-
-          {/* CTA - Small */}
-          <div>
+          </motion.div>
+          <motion.div variants={itemVariants}>
             <CTASection />
-          </div>
+          </motion.div>
         </div>
-      </section>
-    </main>
+      </div>
+    </motion.main>
   );
 }

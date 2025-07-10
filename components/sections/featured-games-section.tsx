@@ -47,48 +47,45 @@ export function FeaturedGamesSection() {
   const nextSlide = () => {
     if (gameModes.length === 0) return;
     setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % gameModes.length);
+    setCurrentIndex(prev => (prev + 1) % gameModes.length);
   };
 
   const prevSlide = () => {
     if (gameModes.length === 0) return;
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + gameModes.length) % gameModes.length);
+    setCurrentIndex(prev => (prev - 1 + gameModes.length) % gameModes.length);
   };
 
+  // Variantes de animación sin suavizado para movimiento instantáneo
   const slideVariants = {
     hidden: (direction: number) => ({
       x: direction > 0 ? '100%' : '-100%',
-      opacity: 0,
-      scale: 0.8,
+      opacity: 1,
+      scale: 1,
     }),
     visible: {
       x: '0%',
       opacity: 1,
       scale: 1,
       transition: {
-        type: 'spring',
-        stiffness: 260,
-        damping: 30,
+        duration: 0,
       },
     },
     exit: (direction: number) => ({
       x: direction < 0 ? '100%' : '-100%',
-      opacity: 0,
-      scale: 0.8,
+      opacity: 1,
+      scale: 1,
       transition: {
-        type: 'spring',
-        stiffness: 260,
-        damping: 30,
+        duration: 0,
       },
     }),
   };
 
   if (isLoading) {
     return (
-      <div className="bento-item h-[400px] flex items-center justify-center">
+      <div className="glass-card flex h-[400px] items-center justify-center">
         <div className="text-center">
-          <Gamepad2 className="w-12 h-12 text-primary-500 animate-pulse mx-auto mb-4" />
+          <Gamepad2 className="mx-auto mb-4 h-12 w-12 text-primary-500" />
           <p className="text-lg text-gray-400">Cargando juegos...</p>
         </div>
       </div>
@@ -97,10 +94,12 @@ export function FeaturedGamesSection() {
 
   if (gameModes.length === 0) {
     return (
-      <div className="bento-item h-[400px] flex items-center justify-center">
+      <div className="glass-card flex h-[400px] items-center justify-center">
         <div className="text-center">
-          <Gamepad2 className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-white mb-2">No hay juegos destacados</h3>
+          <Gamepad2 className="mx-auto mb-4 h-12 w-12 text-gray-600" />
+          <h3 className="mb-2 text-xl font-bold text-white">
+            No hay juegos destacados
+          </h3>
           <p className="text-gray-400">Vuelve a intentarlo más tarde.</p>
         </div>
       </div>
@@ -108,16 +107,18 @@ export function FeaturedGamesSection() {
   }
 
   return (
-    <div className="bento-item h-full flex flex-col">
+    <div className="glass-card flex h-full flex-col">
       <div className="p-6 md:p-8">
-        <h2 className="text-2xl font-bold text-white mb-2 flex items-center">
-          <Gamepad2 className="w-6 h-6 mr-3 text-primary-400" />
+        <h2 className="mb-2 flex items-center text-2xl font-bold text-white">
+          <Gamepad2 className="mr-3 h-6 w-6 text-primary-400" />
           Juegos Destacados
         </h2>
-        <p className="text-gray-400">Sumérgete en nuestras experiencias de juego más populares.</p>
+        <p className="text-gray-400">
+          Sumérgete en nuestras experiencias de juego más populares.
+        </p>
       </div>
-      
-      <div className="relative flex-1 flex flex-col justify-between">
+
+      <div className="relative flex flex-1 flex-col justify-between">
         <div className="relative flex-1">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -129,79 +130,93 @@ export function FeaturedGamesSection() {
               exit="exit"
               className="absolute inset-0"
             >
-              <div className="h-full flex flex-col md:flex-row gap-6 p-6 md:p-8">
+              <div className="flex h-full flex-col gap-6 p-6 md:flex-row md:p-8">
                 {/* Game Info */}
                 <div className="flex-1 text-center md:text-left">
                   <div className="mb-4">
-                    <Badge 
-                      className={difficultyColors[gameModes[currentIndex].difficulty]}
+                    <Badge
+                      className={
+                        difficultyColors[gameModes[currentIndex].difficulty]
+                      }
                       variant="outline"
                     >
                       {gameModes[currentIndex].difficulty}
                     </Badge>
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-white mb-3">
+
+                  <h3 className="mb-3 text-2xl font-bold text-white">
                     {gameModes[currentIndex].displayName}
                   </h3>
-                  
-                  <p className="text-gray-400 mb-5 text-sm leading-relaxed">
+
+                  <p className="mb-5 text-sm leading-relaxed text-gray-400">
                     {gameModes[currentIndex].description}
                   </p>
-                  
-                  <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-6">
+
+                  <div className="mb-6 flex flex-wrap justify-center gap-4 md:justify-start">
                     <div className="flex items-center space-x-2 text-xs text-gray-400">
-                      <Users className="w-4 h-4" />
+                      <Users className="h-4 w-4" />
                       <span>
-                        {formatNumber(gameModes[currentIndex].playerCount.current)} jugadores
+                        {formatNumber(
+                          gameModes[currentIndex].playerCount.current
+                        )}{' '}
+                        jugadores
                       </span>
                     </div>
                     <div className="flex items-center space-x-2 text-xs text-gray-400">
-                      <Clock className="w-4 h-4" />
-                      <span>{gameModes[currentIndex].averageGameTime} min promedio</span>
+                      <Clock className="h-4 w-4" />
+                      <span>
+                        {gameModes[currentIndex].averageGameTime} min promedio
+                      </span>
                     </div>
                   </div>
-                  
+
                   <Button size="lg" className="group w-full md:w-auto">
-                    Jugar ahora <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    Jugar ahora <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
 
                 {/* Game Thumbnail */}
-                <div className="relative w-full h-48 md:h-auto md:w-1/2 rounded-lg overflow-hidden">
+                <div className="image-card relative h-48 w-full md:h-auto md:w-1/2">
                   <Image
                     src={gameModes[currentIndex].thumbnail}
                     alt={gameModes[currentIndex].displayName}
                     layout="fill"
                     objectFit="cover"
-                    className="transition-transform duration-500 hover:scale-110"
                   />
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
-        
+
         {/* Navigation */}
         <div className="flex items-center justify-between p-4 md:p-6">
-          <button onClick={prevSlide} className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors z-10">
-            <ArrowLeft className="w-5 h-5 text-white" />
+          <button
+            onClick={prevSlide}
+            className="z-10 rounded-full bg-white/10 p-2 hover:bg-white/20"
+          >
+            <ArrowLeft className="h-5 w-5 text-white" />
           </button>
-          
-          <div className="flex justify-center space-x-2 z-10">
+
+          <div className="z-10 flex justify-center space-x-2">
             {gameModes.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  currentIndex === index ? 'bg-white scale-110' : 'bg-white/30 hover:bg-white/50'
+                className={`h-2.5 w-2.5 rounded-full ${
+                  currentIndex === index
+                    ? 'bg-white'
+                    : 'bg-white/30 hover:bg-white/50'
                 }`}
               />
             ))}
           </div>
-          
-          <button onClick={nextSlide} className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors z-10">
-            <ArrowRight className="w-5 h-5 text-white" />
+
+          <button
+            onClick={nextSlide}
+            className="z-10 rounded-full bg-white/10 p-2 hover:bg-white/20"
+          >
+            <ArrowRight className="h-5 w-5 text-white" />
           </button>
         </div>
       </div>

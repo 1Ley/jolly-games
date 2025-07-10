@@ -7,53 +7,58 @@ import { Button } from '@/components/ui/button';
 
 const supportChannels = [
   {
-    icon: <HelpCircle className="w-10 h-10 text-primary-400 mb-4" />,
+    icon: <HelpCircle className="mb-4 h-10 w-10 text-primary-400" />,
     title: 'Canal de #soporte-general',
-    description: 'Para preguntas generales, dudas sobre el juego o problemas que no sean críticos. La comunidad y el staff pueden ayudarte aquí.',
+    description:
+      'Para preguntas generales, dudas sobre el juego o problemas que no sean críticos. La comunidad y el staff pueden ayudarte aquí.',
     link: 'https://discord.com/channels/YOUR_SERVER_ID/YOUR_SUPPORT_CHANNEL_ID',
-    linkText: 'Ir a #soporte-general'
+    linkText: 'Ir a #soporte-general',
   },
   {
-    icon: <MessageSquare className="w-10 h-10 text-green-400 mb-4" />,
+    icon: <MessageSquare className="mb-4 h-10 w-10 text-green-400" />,
     title: 'Crear un Ticket de Soporte',
-    description: 'Para problemas específicos con tu cuenta, compras, o reportar a un jugador, crea un ticket privado para hablar directamente con un miembro del staff.',
+    description:
+      'Para problemas específicos con tu cuenta, compras, o reportar a un jugador, crea un ticket privado para hablar directamente con un miembro del staff.',
     link: 'https://discord.com/channels/YOUR_SERVER_ID/YOUR_TICKET_CHANNEL_ID',
-    linkText: 'Crear un ticket'
+    linkText: 'Crear un ticket',
   },
 ];
 
 const faq = [
   {
     question: '¿Cómo reporto a un jugador que está haciendo trampas?',
-    answer: 'La mejor forma es crear un ticket de soporte adjuntando pruebas (vídeos o capturas de pantalla). Esto nos permite investigar y actuar de forma confidencial.',
+    answer:
+      'La mejor forma es crear un ticket de soporte adjuntando pruebas (vídeos o capturas de pantalla). Esto nos permite investigar y actuar de forma confidencial.',
   },
   {
     question: 'He comprado un rango pero no lo he recibido.',
-    answer: 'Por favor, crea un ticket de soporte en la sección de #compras y adjunta el recibo de tu compra. Un administrador revisará tu caso lo antes posible.',
+    answer:
+      'Por favor, crea un ticket de soporte en la sección de #compras y adjunta el recibo de tu compra. Un administrador revisará tu caso lo antes posible.',
   },
   {
     question: '¿Puedo apelar una sanción?',
-    answer: 'Sí, las apelaciones se gestionan exclusivamente a través de los tickets de soporte. Explica tu caso con detalle para que podamos revisarlo.',
+    answer:
+      'Sí, las apelaciones se gestionan exclusivamente a través de los tickets de soporte. Explica tu caso con detalle para que podamos revisarlo.',
   },
 ];
 
-
 export default function SupportPage() {
   return (
-    <main className="min-h-screen pt-24 pb-12 text-white">
-      <div className="container mx-auto px-4 max-w-screen-lg">
+    <main className="min-h-screen pb-12 pt-24 text-white">
+      <div className="container mx-auto max-w-screen-lg px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <HelpCircle className="w-16 h-16 mx-auto mb-4 text-primary-500" />
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-minecraft text-glow">
+          <HelpCircle className="mx-auto mb-4 h-16 w-16 text-primary-500" />
+          <h1 className="text-glow mb-4 font-minecraft text-4xl font-bold md:text-5xl">
             Centro de Soporte
           </h1>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            ¿Necesitas ayuda? Has venido al lugar indicado. Encuentra aquí las respuestas y el contacto que necesitas.
+          <p className="mx-auto max-w-2xl text-lg text-gray-400">
+            ¿Necesitas ayuda? Has venido al lugar indicado. Encuentra aquí las
+            respuestas y el contacto que necesitas.
           </p>
         </motion.div>
 
@@ -62,27 +67,33 @@ export default function SupportPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bento-item p-8 mb-12 flex flex-col md:flex-row items-center justify-between gap-8"
+          className="bento-item mb-12 flex flex-col items-center justify-between gap-8 p-8 md:flex-row"
         >
           <div className="text-center md:text-left">
-            <h2 className="text-3xl font-bold mb-2">Únete a nuestro Discord</h2>
-            <p className="text-gray-300 mb-6 max-w-lg">
-              La forma más rápida y efectiva de obtener soporte es a través de nuestro servidor de Discord. Únete a la comunidad, participa y obtén ayuda al instante.
+            <h2 className="mb-2 text-3xl font-bold">Únete a nuestro Discord</h2>
+            <p className="mb-6 max-w-lg text-gray-300">
+              La forma más rápida y efectiva de obtener soporte es a través de
+              nuestro servidor de Discord. Únete a la comunidad, participa y
+              obtén ayuda al instante.
             </p>
             <Button size="lg" asChild className="group">
               <Link href="https://discord.gg/jolly" target="_blank">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.283,3.021H3.717C3.321,3.021,3,3.342,3,3.738v16.524c0,0.396,0.321,0.717,0.717,0.717h16.566 c0.396,0,0.717-0.321,0.717-0.717V3.738C21,3.342,20.679,3.021,20.283,3.021z M8.815,13.444c-0.69,0-1.25-0.56-1.25-1.25 s0.56-1.25,1.25-1.25s1.25,0.56,1.25,1.25S9.505,13.444,8.815,13.444z M12.003,9.477c-0.69,0-1.25-0.56-1.25-1.25 s0.56-1.25,1.25-1.25s1.25,0.56,1.25,1.25S12.693,9.477,12.003,9.477z M15.185,13.444c-0.69,0-1.25-0.56-1.25-1.25 s0.56-1.25,1.25-1.25s1.25,0.56,1.25,1.25S15.875,13.444,15.185,13.444z"/>
+                <svg
+                  className="mr-2 h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M20.283,3.021H3.717C3.321,3.021,3,3.342,3,3.738v16.524c0,0.396,0.321,0.717,0.717,0.717h16.566 c0.396,0,0.717-0.321,0.717-0.717V3.738C21,3.342,20.679,3.021,20.283,3.021z M8.815,13.444c-0.69,0-1.25-0.56-1.25-1.25 s0.56-1.25,1.25-1.25s1.25,0.56,1.25,1.25S9.505,13.444,8.815,13.444z M12.003,9.477c-0.69,0-1.25-0.56-1.25-1.25 s0.56-1.25,1.25-1.25s1.25,0.56,1.25,1.25S12.693,9.477,12.003,9.477z M15.185,13.444c-0.69,0-1.25-0.56-1.25-1.25 s0.56-1.25,1.25-1.25s1.25,0.56,1.25,1.25S15.875,13.444,15.185,13.444z" />
                 </svg>
                 Unirse ahora
               </Link>
             </Button>
           </div>
           <div className="flex-shrink-0">
-             <Users className="w-32 h-32 text-gray-700" />
+            <Users className="h-32 w-32 text-gray-700" />
           </div>
         </motion.div>
-
 
         {/* --- Canales de Soporte --- */}
         <motion.div
@@ -90,13 +101,15 @@ export default function SupportPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <h2 className="text-3xl font-bold text-center mb-8">¿Cómo te podemos ayudar?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h2 className="mb-8 text-center text-3xl font-bold">
+            ¿Cómo te podemos ayudar?
+          </h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {supportChannels.map((channel, index) => (
               <div key={index} className="bento-item p-6 text-center">
                 {channel.icon}
-                <h3 className="text-xl font-semibold mb-3">{channel.title}</h3>
-                <p className="text-gray-400 mb-6">{channel.description}</p>
+                <h3 className="mb-3 text-xl font-semibold">{channel.title}</h3>
+                <p className="mb-6 text-gray-400">{channel.description}</p>
                 <Button variant="outline" asChild>
                   <Link href={channel.link} target="_blank">
                     {channel.linkText}
@@ -114,13 +127,17 @@ export default function SupportPage() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-16"
         >
-          <h2 className="text-3xl font-bold text-center mb-8">Preguntas Frecuentes</h2>
+          <h2 className="mb-8 text-center text-3xl font-bold">
+            Preguntas Frecuentes
+          </h2>
           <div className="space-y-4">
             {faq.map((item, index) => (
-               <div key={index} className="bento-item p-5">
-                 <h3 className="text-lg font-semibold text-white">{item.question}</h3>
-                 <p className="text-gray-400 mt-2">{item.answer}</p>
-               </div>
+              <div key={index} className="bento-item p-5">
+                <h3 className="text-lg font-semibold text-white">
+                  {item.question}
+                </h3>
+                <p className="mt-2 text-gray-400">{item.answer}</p>
+              </div>
             ))}
           </div>
         </motion.div>
@@ -132,58 +149,66 @@ export default function SupportPage() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-16"
         >
-          <h2 className="text-3xl font-bold text-center mb-8">Contacto Directo con Administradores</h2>
-          <p className="text-center text-gray-400 mb-8 max-w-2xl mx-auto">
-            Si tienes un problema grave que no puede ser resuelto a través de los canales de soporte habituales, puedes contactar a un administrador directamente. Por favor, usa esta opción solo para casos urgentes.
+          <h2 className="mb-8 text-center text-3xl font-bold">
+            Contacto Directo con Administradores
+          </h2>
+          <p className="mx-auto mb-8 max-w-2xl text-center text-gray-400">
+            Si tienes un problema grave que no puede ser resuelto a través de
+            los canales de soporte habituales, puedes contactar a un
+            administrador directamente. Por favor, usa esta opción solo para
+            casos urgentes.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            
-            <div className="bento-item p-6 rounded-lg transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10">
-              <h3 className="text-xl font-bold text-white mb-4">zjjereee</h3>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="bento-item rounded-lg p-6 transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10">
+              <h3 className="mb-4 text-xl font-bold text-white">zjjereee</h3>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                    <span className="text-gray-300 break-all">zjjeree@gmail.com</span>
+                  <Mail className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                  <span className="break-all text-gray-300">
+                    zjjeree@gmail.com
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
-                    <MessageSquare className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                    <span className="text-gray-300">zjjereee</span>
+                  <MessageSquare className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                  <span className="text-gray-300">zjjereee</span>
                 </div>
               </div>
             </div>
 
-            <div className="bento-item p-6 rounded-lg transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10">
-              <h3 className="text-xl font-bold text-white mb-4">1ley</h3>
+            <div className="bento-item rounded-lg p-6 transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10">
+              <h3 className="mb-4 text-xl font-bold text-white">1ley</h3>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                    <span className="text-gray-300 break-all">imleidan@gmail.com</span>
+                  <Mail className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                  <span className="break-all text-gray-300">
+                    imleidan@gmail.com
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
-                    <MessageSquare className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                    <span className="text-gray-300">1ley.</span>
+                  <MessageSquare className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                  <span className="text-gray-300">1ley.</span>
                 </div>
               </div>
             </div>
 
-            <div className="bento-item p-6 rounded-lg transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10">
-              <h3 className="text-xl font-bold text-white mb-4">vac</h3>
+            <div className="bento-item rounded-lg p-6 transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10">
+              <h3 className="mb-4 text-xl font-bold text-white">vac</h3>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                    <span className="text-gray-300 break-all">vac_insider@gmail.com</span>
+                  <Mail className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                  <span className="break-all text-gray-300">
+                    vac_insider@gmail.com
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
-                    <MessageSquare className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                    <span className="text-gray-300">vacprogrammer</span>
+                  <MessageSquare className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                  <span className="text-gray-300">vacprogrammer</span>
                 </div>
               </div>
             </div>
-
           </div>
         </motion.div>
-
       </div>
     </main>
   );
-} 
+}

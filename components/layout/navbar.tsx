@@ -4,18 +4,18 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Menu, 
-  X, 
-  Home, 
-  MessageSquare, 
-  HelpCircle, 
-  Users, 
-  Trophy, 
+import {
+  Menu,
+  X,
+  Home,
+  MessageSquare,
+  HelpCircle,
+  Users,
+  Trophy,
   FileText,
   Sun,
   Moon,
-  User
+  User,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
@@ -50,25 +50,26 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-minecraft',
-        scrolled
-          ? 'glass-nav backdrop-blur-xl'
-          : 'bg-transparent'
+        'fixed left-0 right-0 top-0 z-50 font-minecraft transition-all duration-300',
+        scrolled ? 'glass-nav backdrop-blur-xl' : 'bg-transparent'
       )}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center space-x-2 group">
+          <Link
+            href="/"
+            className="group flex flex-shrink-0 items-center space-x-2"
+          >
             <motion.div
               whileHover={{ scale: 1.1, rotate: -5 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
-              <Image 
-                src="/images/logo.png" 
-                alt="Jolly Games Logo" 
-                width={40} 
-                height={40} 
+              <Image
+                src="/images/logo.png"
+                alt="Jolly Games Logo"
+                width={40}
+                height={40}
                 className="h-10 w-auto"
               />
             </motion.div>
@@ -77,34 +78,38 @@ export function Navbar() {
               alt="Jolly Games"
               width={120}
               height={40}
-              className="h-8 w-auto hidden sm:block"
+              className="hidden h-8 w-auto sm:block"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navigation.map((item) => {
+          <div className="hidden items-center space-x-1 md:flex">
+            {navigation.map(item => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
-              
+
               return (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    'flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 group relative',
+                    'group relative flex items-center space-x-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200',
                     isActive
-                      ? 'text-primary-400 bg-primary-500/10'
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      ? 'bg-primary-500/10 text-primary-400'
+                      : 'text-gray-300 hover:bg-white/5 hover:text-white'
                   )}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="h-4 w-4" />
                   <span>{item.name}</span>
                   {isActive && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute inset-0 bg-primary-500/20 rounded-lg border border-primary-500/30"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      className="absolute inset-0 rounded-lg border border-primary-500/30 bg-primary-500/20"
+                      transition={{
+                        type: 'spring',
+                        bounce: 0.2,
+                        duration: 0.6,
+                      }}
                     />
                   )}
                 </Link>
@@ -116,16 +121,18 @@ export function Navbar() {
           <div className="flex items-center space-x-3">
             {/* Theme Toggle */}
             <ThemeToggle />
-            
+
             {/* User Menu */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="hidden sm:flex items-center space-x-2 text-gray-300 hover:text-white"
-            >
-              <User className="w-4 h-4" />
-              <span>Iniciar Sesión</span>
-            </Button>
+            <Link href="/auth" passHref>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="hidden items-center space-x-2 text-gray-300 hover:text-white sm:flex"
+              >
+                <User className="h-4 w-4" />
+                <span>Iniciar Sesión</span>
+              </Button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <Button
@@ -135,9 +142,9 @@ export function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? (
-                <X className="w-5 h-5" />
+                <X className="h-5 w-5" />
               ) : (
-                <Menu className="w-5 h-5" />
+                <Menu className="h-5 w-5" />
               )}
             </Button>
           </div>
@@ -151,41 +158,43 @@ export function Navbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-white/10 mt-2 pt-2"
+              className="mt-2 border-t border-white/10 pt-2 md:hidden"
             >
               <div className="space-y-1 pb-3">
-                {navigation.map((item) => {
+                {navigation.map(item => {
                   const Icon = item.icon;
                   const isActive = pathname === item.href;
-                  
+
                   return (
                     <Link
                       key={item.name}
                       href={item.href}
                       className={cn(
-                        'flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200',
+                        'flex items-center space-x-3 rounded-lg px-3 py-2 text-base font-medium transition-colors duration-200',
                         isActive
-                          ? 'text-primary-400 bg-primary-500/10'
-                          : 'text-gray-300 hover:text-white hover:bg-white/5'
+                          ? 'bg-primary-500/10 text-primary-400'
+                          : 'text-gray-300 hover:bg-white/5 hover:text-white'
                       )}
                       onClick={() => setIsOpen(false)}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="h-5 w-5" />
                       <span>{item.name}</span>
                     </Link>
                   );
                 })}
-                
+
                 {/* Mobile User Actions */}
-                <div className="pt-2 border-t border-white/10">
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-gray-300 hover:text-white"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <User className="w-5 h-5 mr-3" />
-                    Iniciar Sesión
-                  </Button>
+                <div className="border-t border-white/10 pt-2">
+                  <Link href="/auth" passHref>
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start text-gray-300 hover:text-white"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <User className="mr-3 h-5 w-5" />
+                      Iniciar Sesión
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

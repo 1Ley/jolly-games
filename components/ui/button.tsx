@@ -20,8 +20,7 @@ const buttonVariants = cva(
         link: 'text-primary-400 underline-offset-4 hover:underline hover:text-primary-300',
         gradient:
           'bg-gradient-to-r from-primary-600 to-accent-600 text-white hover:from-primary-700 hover:to-accent-700 shadow-lg hover:shadow-xl',
-        glass:
-          'glass text-white hover:bg-white/20 border border-white/20',
+        glass: 'glass text-white hover:bg-white/20 border border-white/20',
       },
       size: {
         default: 'h-10 px-4 py-2',

@@ -27,39 +27,41 @@ export function StatsSection() {
     return () => clearTimeout(timer);
   }, []);
 
-  const statItems = stats ? [
-    {
-      icon: Users,
-      label: 'Jugadores Online',
-      value: formatNumber(stats.onlinePlayers),
-      color: 'text-green-400',
-    },
-    {
-      icon: Swords,
-      label: 'Asesinatos esta semana',
-      value: formatNumber(stats.gamesThisWeek),
-      color: 'text-red-400',
-    },
-    {
-      icon: Shield,
-      label: 'Uptime del Servidor',
-      value: stats.uptime,
-      color: 'text-blue-400',
-    },
-    {
-      icon: Star,
-      label: 'Latencia Promedio',
-      value: stats.averageLatency,
-      color: 'text-yellow-400',
-    },
-  ] : [];
+  const statItems = stats
+    ? [
+        {
+          icon: Users,
+          label: 'Jugadores Online',
+          value: formatNumber(stats.onlinePlayers),
+          color: 'text-green-400',
+        },
+        {
+          icon: Swords,
+          label: 'Asesinatos esta semana',
+          value: formatNumber(stats.gamesThisWeek),
+          color: 'text-red-400',
+        },
+        {
+          icon: Shield,
+          label: 'Uptime del Servidor',
+          value: stats.uptime,
+          color: 'text-blue-400',
+        },
+        {
+          icon: Star,
+          label: 'Latencia Promedio',
+          value: stats.averageLatency,
+          color: 'text-yellow-400',
+        },
+      ]
+    : [];
 
   const renderContent = () => {
     if (isLoading) {
       return (
-        <div className="flex items-center justify-center h-full">
+        <div className="flex h-full items-center justify-center">
           <div className="text-center">
-            <Activity className="w-10 h-10 text-primary-500 animate-pulse mx-auto mb-3" />
+            <Activity className="mx-auto mb-3 h-10 w-10 text-primary-500" />
             <p className="text-sm text-gray-400">Cargando stats...</p>
           </div>
         </div>
@@ -68,37 +70,41 @@ export function StatsSection() {
 
     if (!stats) {
       return (
-        <div className="flex items-center justify-center h-full">
+        <div className="flex h-full items-center justify-center">
           <div className="text-center">
-            <Activity className="w-10 h-10 text-gray-600 mx-auto mb-3" />
-            <p className="text-sm font-semibold text-white">Estadísticas no disponibles</p>
+            <Activity className="mx-auto mb-3 h-10 w-10 text-gray-600" />
+            <p className="text-sm font-semibold text-white">
+              Estadísticas no disponibles
+            </p>
           </div>
         </div>
       );
     }
 
     return (
-      <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full">
+      <div className="grid h-full grid-cols-2 grid-rows-2 gap-4">
         {statItems.map((stat, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="flex flex-col items-center justify-center text-center p-2"
+            initial={{ opacity: 1, scale: 1 }} // Sin animación inicial
+            className="flex flex-col items-center justify-center p-2 text-center"
           >
-            <stat.icon className={`w-7 h-7 mb-2 ${stat.color}`} />
-            <p className="text-xl md:text-2xl font-bold text-white">{stat.value}</p>
+            <stat.icon className={`mb-2 h-7 w-7 ${stat.color}`} />
+            <p className="text-xl font-bold text-white md:text-2xl">
+              {stat.value}
+            </p>
             <p className="text-xs text-gray-400">{stat.label}</p>
           </motion.div>
         ))}
       </div>
     );
   };
-  
+
   return (
-    <div className="bento-item p-6 h-full">
-      <h2 className="text-xl font-bold text-white mb-4">Estadísticas del Servidor</h2>
+    <div className="glass-card h-full p-6">
+      <h2 className="mb-4 text-xl font-bold text-white">
+        Estadísticas del Servidor
+      </h2>
       {renderContent()}
     </div>
   );

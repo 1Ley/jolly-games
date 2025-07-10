@@ -27,17 +27,11 @@ const stats = [
   },
 ];
 
-const floatingElements = [
-  { x: '10%', y: '20%', delay: 0 },
-  { x: '80%', y: '10%', delay: 0.5 },
-  { x: '15%', y: '70%', delay: 1 },
-  { x: '85%', y: '60%', delay: 1.5 },
-  { x: '50%', y: '15%', delay: 2 },
-];
+// Eliminamos los elementos flotantes que no se utilizan
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background GIF */}
       <Image
         src="/images/fondohome.gif"
@@ -49,21 +43,19 @@ export function HeroSection() {
         className="absolute inset-0 z-0 opacity-50"
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50 z-0" />
+      <div className="absolute inset-0 z-0 bg-black/50" />
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-32 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
+      <div className="container relative z-10 mx-auto px-4 py-32">
+        <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 1, y: 0 }} // Sin animación inicial
             className="mb-6"
           >
-            <Badge 
-              variant="secondary" 
-              className="glass px-4 py-2 text-sm font-medium border-primary-500/30 bg-primary-500/10 text-primary-300"
+            <Badge
+              variant="secondary"
+              className="glass border-primary-500/30 bg-primary-500/10 px-4 py-2 text-sm font-medium text-primary-300"
             >
               🎮 Temporada 4 - ¡Ya Disponible!
             </Badge>
@@ -71,49 +63,43 @@ export function HeroSection() {
 
           {/* Main Heading */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+            initial={{ opacity: 1, y: 0 }} // Sin animación inicial
+            className="mb-6 text-5xl font-bold leading-tight md:text-7xl lg:text-8xl"
           >
             <span className="gradient-text font-minecraft">Jolly Games</span>
-            <span className="mt-4 block text-3xl md:text-4xl lg:text-5xl text-white">
+            <span className="mt-4 block text-3xl text-white md:text-4xl lg:text-5xl">
               Minecraft
             </span>
-            <span className="block text-3xl md:text-4xl lg:text-5xl text-gray-300">
+            <span className="block text-3xl text-gray-300 md:text-4xl lg:text-5xl">
               Minijuegos
             </span>
           </motion.h1>
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed font-minecraft"
+            initial={{ opacity: 1, y: 0 }} // Sin animación inicial
+            className="mx-auto mb-8 max-w-2xl font-minecraft text-xl leading-relaxed text-gray-300 md:text-2xl"
           >
-            Únete a la mejor experiencia de minijuegos de Minecraft. 
-            Compite, diviértete y forma parte de nuestra increíble comunidad.
+            Únete a la mejor experiencia de minijuegos de Minecraft. Compite,
+            diviértete y forma parte de nuestra increíble comunidad.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            initial={{ opacity: 1, y: 0 }} // Sin animación inicial
+            className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
             <Button
               size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold shadow-lg shadow-red-500/30 group transition-all duration-300 hover:scale-105"
+              className="group bg-red-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-red-500/30 hover:bg-red-700"
             >
-              <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+              <Play className="mr-2 h-5 w-5" />
               Jugar Ahora
             </Button>
-            
+
             <Button
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold shadow-lg shadow-blue-500/30 transition-all duration-300 hover:scale-105"
+              className="bg-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-500/30 hover:bg-blue-700"
             >
               Ver Trailer
             </Button>
@@ -121,23 +107,21 @@ export function HeroSection() {
 
           {/* Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto"
+            initial={{ opacity: 1, y: 0 }} // Sin animación inicial
+            className="mx-auto grid max-w-2xl grid-cols-1 gap-6 md:grid-cols-3"
           >
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                  className="glass-card text-center group hover:scale-105 transition-transform duration-300"
+                  initial={{ opacity: 1, scale: 1 }} // Sin animación inicial
+                  className="glass-card text-center"
                 >
-                  <Icon className={`w-8 h-8 mx-auto mb-2 ${stat.color} group-hover:scale-110 transition-transform`} />
-                  <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+                  <Icon className={`mx-auto mb-2 h-8 w-8 ${stat.color}`} />
+                  <div className="mb-1 text-2xl font-bold text-white">
+                    {stat.value}
+                  </div>
                   <div className="text-sm text-gray-400">{stat.label}</div>
                 </motion.div>
               );
@@ -148,21 +132,11 @@ export function HeroSection() {
 
       {/* Scroll Indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        initial={{ opacity: 1 }} // Sin animación inicial
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
-        >
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-1 h-3 bg-white/50 rounded-full mt-2"
-          />
+        <motion.div className="flex h-10 w-6 justify-center rounded-full border-2 border-white/30">
+          <motion.div className="mt-2 h-3 w-1 rounded-full bg-white/50" />
         </motion.div>
       </motion.div>
     </section>
