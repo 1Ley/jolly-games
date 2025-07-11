@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS users (
     -- Contraseña hasheada (máximo 255 caracteres para bcrypt)
     password VARCHAR(255) NOT NULL,
     
-    -- Nombre completo del usuario (opcional)
-    full_name VARCHAR(100) DEFAULT NULL,
+    -- Nombre de usuario de Minecraft (para mostrar skin como avatar)
+    minecraft_username VARCHAR(16) DEFAULT NULL,
     
     -- Avatar/foto de perfil (URL o path)
     avatar VARCHAR(255) DEFAULT NULL,
@@ -105,23 +105,23 @@ CREATE TABLE IF NOT EXISTS auth_logs (
 
 -- 5. INSERTAR DATOS DE PRUEBA
 -- Usuario administrador de prueba
-INSERT INTO users (username, email, password, full_name, role, email_verified) VALUES 
+INSERT INTO users (username, email, password, minecraft_username, role, email_verified) VALUES 
 (
     'admin',
     'admin@jollygames.com',
     '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/RK.s5uDfm', -- password: admin123
-    'Administrador del Sistema',
+    'Notch',
     'admin',
     TRUE
 );
 
 -- Usuario de prueba normal
-INSERT INTO users (username, email, password, full_name, email_verified) VALUES 
+INSERT INTO users (username, email, password, minecraft_username, email_verified) VALUES 
 (
     'testuser',
     'test@example.com',
     '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/RK.s5uDfm', -- password: test123
-    'Usuario de Prueba',
+    'Steve',
     TRUE
 );
 
@@ -131,7 +131,7 @@ INSERT INTO users (username, email, password, full_name, email_verified) VALUES
 -- DESCRIBE users;
 
 -- Ver todos los usuarios
--- SELECT id, username, email, full_name, role, status, email_verified, created_at FROM users;
+-- SELECT id, username, email, minecraft_username, role, status, email_verified, created_at FROM users;
 
 -- Contar usuarios registrados
 -- SELECT COUNT(*) as total_users FROM users;

@@ -1,285 +1,428 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import {
-  Search,
-  Filter,
-  MessageSquare,
-  Users,
-  Clock,
-  Pin,
-  Lock,
-  Star,
-} from 'lucide-react';
+import { Search, Plus, MessageSquare, Eye, Clock, User, Filter, ChevronDown, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { formatRelativeTime, formatNumber } from '@/lib/utils';
-import { mockForumCategories, mockForumTopics } from '@/data/mock-data';
-import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { forumService } from '@/lib/forum';
+import { useAuth } from '@/contexts/AuthContext';
+import { toast } from 'react-hot-toast';
+import CreateTopicModal from '@/components/forum/CreateTopicModal';
+import TopicView from '@/components/forum/TopicView';
+import MinecraftAvatar from '@/components/ui/minecraft-avatar';
+
+interface ForumCategory {
+  id: string;
+  name: string;
+  description: string;
+  topic_count: number;
+  post_count: number;
+}
+
+interface ForumTopic {
+  id: string;
+  title: string;
+  content: string;
+  created_at: string;
+  updated_at: string;
+  replies_count: number;
+  views_count: number;
+  is_pinned: boolean;
+  is_locked: boolean;
+  user: {
+    id: string;
+    minecraft_username: string;
+  };
+  category: {
+    id: string;
+    name: string;
+  };
+  last_post?: {
+    created_at: string;
+    user: {
+      minecraft_username: string;
+    };
+  };
+}
 
 const categoryColors = {
-  Anuncios: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-  'Discusión General': 'bg-green-500/20 text-green-400 border-green-500/30',
-  Soporte: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-  Comunidad: 'bg-pink-500/20 text-pink-400 border-pink-500/30',
+  'General': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  'Anuncios': 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+  'Soporte': 'bg-green-500/20 text-green-400 border-green-500/30',
+  'Sugerencias': 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+  'Off-Topic': 'bg-gray-500/20 text-gray-400 border-gray-500/30',
 };
 
 export default function ForumPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const { user } = useAuth();
+  const [categories, setCategories] = useState<ForumCategory[]>([]);
+  const [topics, setTopics] = useState<ForumTopic[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filter, setFilter] = useState('latest');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sortBy, setSortBy] = useState('latest');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
+  const [view, setView] = useState<'list' | 'topic'>('list');
 
-  const filteredTopics = mockForumTopics.filter(topic => {
-    const matchesCategory =
-      selectedCategory === 'all' || topic.category.id === selectedCategory;
-    const matchesSearch =
-      topic.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      topic.content.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const loadCategories = async () => {
+    try {
+      const response = await forumService.getCategories();
+      setCategories(response.categories);
+    } catch (error: any) {
+      toast.error(error.message || 'Error al cargar categorías');
+    }
+  };
+
+  const loadTopics = async (page = 1) => {
+    try {
+      setLoading(true);
+      const params: any = {
+        page,
+        limit: 10
+      };
+      
+      if (selectedCategory !== 'all') {
+        params.categoryId = selectedCategory;
+      }
+      
+      if (searchQuery.trim()) {
+        params.search = searchQuery.trim();
+      }
+      
+      const response = await forumService.getTopics(params);
+      setTopics(response.topics);
+      setCurrentPage(response.pagination.page);
+      setTotalPages(response.pagination.totalPages);
+    } catch (error: any) {
+      toast.error(error.message || 'Error al cargar temas');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  useEffect(() => {
+    loadTopics(1);
+  }, [selectedCategory, searchQuery]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    loadTopics(1);
+  };
+
+  const handleTopicCreated = () => {
+    loadTopics(currentPage);
+    loadCategories(); // Actualizar contadores
+  };
+
+  const handleTopicClick = (topicId: string) => {
+    setSelectedTopicId(topicId);
+    setView('topic');
+  };
+
+  const handleBackToList = () => {
+    setView('list');
+    setSelectedTopicId(null);
+    loadTopics(currentPage); // Recargar para actualizar contadores
+  };
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInHours = (now.getTime() - date.getTime()) / (1000 * 60 * 60);
+    
+    if (diffInHours < 24) {
+      return date.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+    } else if (diffInHours < 24 * 7) {
+      return date.toLocaleDateString('es-ES', { weekday: 'short', hour: '2-digit', minute: '2-digit' });
+    } else {
+      return date.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' });
+    }
+  };
+
+  if (view === 'topic' && selectedTopicId) {
+    return (
+      <div className="min-h-screen bg-gray-950 text-white">
+        <div className="container mx-auto px-4 py-8">
+          <TopicView topicId={selectedTopicId} onBack={handleBackToList} />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <main className="min-h-screen pt-20">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen pb-12 pt-24">
+      <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          className="mb-8 text-center"
         >
+          <MessageSquare className="mx-auto mb-4 h-16 w-16 text-primary-500" />
           <h1 className="text-glow mb-4 font-minecraft text-4xl font-bold md:text-5xl">
             Foro de la Comunidad
           </h1>
-          <p className="mx-auto max-w-2xl text-gray-400">
-            Conecta con otros jugadores, comparte estrategias y obtén ayuda de
-            la comunidad
+          <p className="mx-auto max-w-2xl text-lg text-gray-400">
+            Únete a las discusiones y comparte con otros jugadores de JollyGames
           </p>
+          {user && (
+            <Button
+              onClick={() => setShowCreateModal(true)}
+              className="mt-6 bg-primary-600 hover:bg-primary-700"
+              size="lg"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Nuevo Tema
+            </Button>
+          )}
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-          {/* Sidebar */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-1"
-          >
-            {/* Search */}
-            <div className="bento-item mb-6">
+        {/* Categories Overview */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="bento-grid mb-8"
+        >
+          {categories.map((category, index) => (
+            <motion.div
+              key={category.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 + index * 0.05 }}
+              className="glass-card bento-item cursor-pointer transition-all duration-300 hover:scale-105"
+              onClick={() => setSelectedCategory(category.id)}
+            >
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-semibold text-white">{category.name}</h3>
+                <Badge
+                  variant="secondary"
+                  className={categoryColors[category.name] || 'bg-primary-500/20 text-primary-400'}
+                >
+                  {category.topic_count}
+                </Badge>
+              </div>
+              <p className="text-gray-400 text-sm mb-3">{category.description}</p>
+              <div className="flex items-center justify-between text-xs text-gray-500">
+                <span>{category.post_count} posts</span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Search and Filters */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="glass-card mb-6"
+        >
+          <form onSubmit={handleSearch} className="flex flex-col lg:flex-row gap-4">
+            <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Buscar temas..."
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Input
+                  placeholder="Buscar en el foro..."
                   value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-10 pr-4 text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                 />
               </div>
             </div>
-
-            {/* Categories */}
-            <div className="bento-item">
-              <h3 className="mb-4 text-lg font-semibold text-white">
-                Categorías
-              </h3>
-              <div className="space-y-2">
-                <button
-                  onClick={() => setSelectedCategory('all')}
-                  className={`w-full rounded-lg px-3 py-2 text-left transition-colors ${
-                    selectedCategory === 'all'
-                      ? 'bg-primary-500/20 text-primary-300'
-                      : 'text-gray-400 hover:bg-white/5 hover:text-white'
-                  }`}
-                >
-                  Todas las categorías
-                </button>
-                {mockForumCategories.map(category => (
-                  <button
-                    key={category.id}
-                    onClick={() => setSelectedCategory(category.id)}
-                    className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left transition-colors ${
-                      selectedCategory === category.id
-                        ? 'bg-primary-500/20 text-primary-300'
-                        : 'text-gray-400 hover:bg-white/5 hover:text-white'
-                    }`}
-                  >
-                    <span>{category.name}</span>
-                    <span className="text-xs">{category.topicsCount}</span>
-                  </button>
-                ))}
-              </div>
+            <div className="flex gap-3">
+              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <SelectTrigger className="w-48 bg-gray-800 border-gray-700 text-white">
+                  <Filter className="w-4 h-4 mr-2" />
+                  <SelectValue placeholder="Categoría" />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectItem value="all" className="text-white">
+                    Todas las categorías
+                  </SelectItem>
+                  {categories.map((category) => (
+                    <SelectItem
+                      key={category.id}
+                      value={category.id}
+                      className="text-white"
+                    >
+                      {category.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-40 bg-gray-800 border-gray-700 text-white">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectItem value="latest" className="text-white">
+                    Más recientes
+                  </SelectItem>
+                  <SelectItem value="popular" className="text-white">
+                    Más populares
+                  </SelectItem>
+                  <SelectItem value="replies" className="text-white">
+                    Más respuestas
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-          </motion.div>
+          </form>
+        </motion.div>
 
-          {/* Main Content */}
+        {/* Loading State */}
+        {loading && (
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+          </div>
+        )}
+
+        {/* Topics List */}
+        {!loading && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="lg:col-span-3"
+            transition={{ delay: 0.3 }}
+            className="space-y-4"
           >
-            {/* Toolbar */}
-            <div className="mb-6 flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <h2 className="text-xl font-semibold text-white">
-                  {selectedCategory === 'all'
-                    ? 'Todos los temas'
-                    : mockForumCategories.find(c => c.id === selectedCategory)
-                        ?.name}
-                </h2>
-                <Badge variant="secondary">
-                  {formatNumber(filteredTopics.length)} temas
-                </Badge>
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm">
-                  <Filter className="mr-2 h-4 w-4" />
-                  Filtrar
-                </Button>
-                <Button size="sm">Nuevo tema</Button>
-              </div>
-            </div>
-
-            {/* Topics List */}
-            <div className="space-y-4">
-              {filteredTopics.map((topic, index) => (
-                <motion.div
-                  key={topic.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                  className="bento-item cursor-pointer transition-colors hover:bg-white/10"
-                >
-                  <div className="flex space-x-4">
-                    {/* Topic Icon */}
-                    <div className="flex-shrink-0">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-gray-700 to-gray-800">
-                        {topic.isPinned && (
-                          <Pin className="h-5 w-5 text-yellow-400" />
-                        )}
-                        {topic.isLocked && (
-                          <Lock className="h-5 w-5 text-red-400" />
-                        )}
-                        {!topic.isPinned && !topic.isLocked && (
-                          <MessageSquare className="h-5 w-5 text-gray-400" />
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Topic Content */}
-                    <div className="min-w-0 flex-1">
-                      <div className="mb-2 flex items-start justify-between">
-                        <div className="flex items-center space-x-2">
-                          <h3 className="font-semibold text-white transition-colors hover:text-blue-300">
-                            {topic.title}
-                          </h3>
-                          {topic.isPinned && (
-                            <Badge
-                              variant="outline"
-                              className="border-yellow-500/30 bg-yellow-500/20 text-xs text-yellow-400"
-                            >
-                              Fijado
-                            </Badge>
-                          )}
-                          {topic.isLocked && (
-                            <Badge
-                              variant="outline"
-                              className="border-red-500/30 bg-red-500/20 text-xs text-red-400"
-                            >
-                              Cerrado
-                            </Badge>
-                          )}
-                        </div>
-                        <Badge
-                          variant="outline"
-                          className={`text-xs ${categoryColors[topic.category.name as keyof typeof categoryColors]}`}
-                        >
-                          {
-                            mockForumCategories.find(
-                              c => c.id === topic.category.id
-                            )?.name
-                          }
+            {topics.map((topic, index) => (
+              <motion.div
+                key={topic.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 + index * 0.05 }}
+                className="glass-card cursor-pointer group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+                onClick={() => handleTopicClick(topic.id)}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      {topic.is_pinned && (
+                        <Badge className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30">
+                          Fijado
                         </Badge>
+                      )}
+                      {topic.is_locked && (
+                        <Badge className="bg-red-500/20 text-red-400 border-red-500/30">
+                          Cerrado
+                        </Badge>
+                      )}
+                      <Badge
+                        variant="secondary"
+                        className={categoryColors[topic.category.name] || 'bg-primary-500/20 text-primary-400'}
+                      >
+                        {topic.category.name}
+                      </Badge>
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-primary-400 transition-colors">
+                      {topic.title}
+                    </h3>
+                    <p className="text-gray-400 mb-4 line-clamp-2">
+                      {topic.content}
+                    </p>
+                    <div className="flex items-center gap-6 text-sm text-gray-500">
+                      <div className="flex items-center gap-2">
+                        <MinecraftAvatar username={topic.user.minecraft_username} size={24} />
+                        <span>{topic.user.minecraft_username}</span>
                       </div>
-
-                      <p className="mb-3 line-clamp-2 text-sm text-gray-400">
-                        {topic.content}
-                      </p>
-
-                      <div className="flex items-center justify-between text-xs text-gray-500">
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center space-x-1">
-                            <Users className="h-3 w-3" />
-                            <span>por {topic.user.username}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <Clock className="h-3 w-3" />
-                            <span>{formatRelativeTime(topic.createdAt)}</span>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center space-x-1">
-                            <MessageSquare className="h-3 w-3" />
-                            <span>{topic.replies} respuestas</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <Star className="h-3 w-3" />
-                            <span>{topic.views} vistas</span>
-                          </div>
-                        </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        <span>{formatDate(topic.created_at)}</span>
                       </div>
+                      {topic.last_post && (
+                        <div className="flex items-center gap-1">
+                          <MessageSquare className="w-4 h-4" />
+                          <span>Última respuesta por {topic.last_post.user.minecraft_username}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Pagination */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="mt-8 flex justify-center"
-            >
-              <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm" disabled>
-                  Anterior
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="bg-primary-500/20 text-primary-300"
-                >
-                  1
-                </Button>
-                <Button variant="outline" size="sm">
-                  2
-                </Button>
-                <Button variant="outline" size="sm">
-                  3
-                </Button>
-                <Button variant="outline" size="sm">
-                  Siguiente
-                </Button>
-              </div>
-            </motion.div>
+                  <div className="flex flex-col items-end gap-2 ml-6">
+                    <div className="flex items-center gap-4 text-sm text-gray-400">
+                      <div className="flex items-center gap-1">
+                        <MessageSquare className="w-4 h-4" />
+                        <span>{topic.replies_count}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Eye className="w-4 h-4" />
+                        <span>{topic.views_count}</span>
+                      </div>
+                    </div>
+                    {topic.last_post && (
+                      <div className="text-xs text-gray-500 text-right">
+                        {formatDate(topic.last_post.created_at)}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
-        </div>
+        )}
+
+        {/* Pagination */}
+        {!loading && totalPages > 1 && (
+          <div className="flex justify-center gap-2 mt-8">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <Button
+                key={page}
+                variant={currentPage === page ? "default" : "outline"}
+                size="sm"
+                onClick={() => loadTopics(page)}
+                className={currentPage === page ? "bg-primary-600 hover:bg-primary-700" : "border-gray-700 hover:border-primary-500"}
+              >
+                {page}
+              </Button>
+            ))}
+          </div>
+        )}
+
+        {/* Empty State */}
+        {!loading && topics.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-12"
+          >
+            <MessageSquare className="w-16 h-16 mx-auto mb-4 text-gray-600" />
+            <h3 className="text-xl font-semibold text-gray-400 mb-2">
+              No se encontraron temas
+            </h3>
+            <p className="text-gray-500 mb-4">
+              {searchQuery
+                ? 'Intenta con otros términos de búsqueda'
+                : 'Sé el primero en crear un tema en esta categoría'}
+            </p>
+            {user && (
+              <Button
+                onClick={() => setShowCreateModal(true)}
+                className="bg-blue-600 hover:bg-blue-700"
+              >
+                <Plus className="w-4 h-4 mr-2" />
+                Crear Primer Tema
+              </Button>
+            )}
+          </motion.div>
+        )}
+
+        {/* Create Topic Modal */}
+        <CreateTopicModal
+          isOpen={showCreateModal}
+          onClose={() => setShowCreateModal(false)}
+          categories={categories}
+          onTopicCreated={handleTopicCreated}
+        />
       </div>
-    </main>
+    </div>
   );
 }

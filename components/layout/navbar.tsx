@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Menu,
@@ -16,10 +16,15 @@ import {
   Sun,
   Moon,
   User,
+  LogOut,
+  Settings,
+  ChevronDown,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
+import MinecraftAvatar from '@/components/ui/minecraft-avatar';
 import Image from 'next/image';
 
 const navigation = [
@@ -34,16 +39,35 @@ const navigation = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, isAuthenticated, logout, loading } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuOpen && !(event.target as Element).closest('.user-menu')) {
+        setUserMenuOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [userMenuOpen]);
+
+  const handleLogout = async () => {
+    await logout();
+    setUserMenuOpen(false);
+    router.push('/');
+  };
 
   return (
     <motion.header
@@ -123,16 +147,78 @@ export function Navbar() {
             <ThemeToggle />
 
             {/* User Menu */}
-            <Link href="/auth" passHref>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="hidden items-center space-x-2 text-gray-300 hover:text-white sm:flex"
-              >
-                <User className="h-4 w-4" />
-                <span>Iniciar Sesión</span>
-              </Button>
-            </Link>
+            {isAuthenticated ? (
+              <div className="relative hidden sm:block user-menu">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="flex items-center space-x-2 text-gray-300 hover:text-white"
+                  onClick={() => setUserMenuOpen(!userMenuOpen)}
+                >
+                  <MinecraftAvatar 
+                    username={user?.minecraft_username} 
+                    size="sm" 
+                    className="flex-shrink-0"
+                  />
+                  <span className="max-w-24 truncate">{user?.username}</span>
+                  <ChevronDown className="h-3 w-3" />
+                </Button>
+                
+                <AnimatePresence>
+                  {userMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute right-0 mt-2 w-48 rounded-lg border border-white/10 bg-gray-900/95 backdrop-blur-xl shadow-xl"
+                    >
+                      <div className="p-2">
+                        <div className="px-3 py-2 flex items-center space-x-3">
+                          <MinecraftAvatar 
+                            username={user?.minecraft_username} 
+                            size="md" 
+                          />
+                          <div className="flex flex-col">
+                            <span className="text-white font-medium text-sm">{user?.username}</span>
+                            {user?.minecraft_username && (
+                              <span className="text-gray-400 text-xs">MC: {user.minecraft_username}</span>
+                            )}
+                          </div>
+                        </div>
+                        <hr className="border-white/10 my-1" />
+                        <Link
+                          href="/profile"
+                          className="flex items-center space-x-2 rounded-md px-3 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-colors"
+                          onClick={() => setUserMenuOpen(false)}
+                        >
+                          <Settings className="h-4 w-4" />
+                          <span>Perfil</span>
+                        </Link>
+                        <button
+                          onClick={handleLogout}
+                          className="flex w-full items-center space-x-2 rounded-md px-3 py-2 text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors"
+                        >
+                          <LogOut className="h-4 w-4" />
+                          <span>Cerrar Sesión</span>
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <Link href="/auth" passHref>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="hidden items-center space-x-2 text-gray-300 hover:text-white sm:flex"
+                  disabled={loading}
+                >
+                  <User className="h-4 w-4" />
+                  <span>Iniciar Sesión</span>
+                </Button>
+              </Link>
+            )}
 
             {/* Mobile Menu Button */}
             <Button
@@ -185,16 +271,55 @@ export function Navbar() {
 
                 {/* Mobile User Actions */}
                 <div className="border-t border-white/10 pt-2">
-                  <Link href="/auth" passHref>
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-start text-gray-300 hover:text-white"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <User className="mr-3 h-5 w-5" />
-                      Iniciar Sesión
-                    </Button>
-                  </Link>
+                  {isAuthenticated ? (
+                    <>
+                      <div className="px-3 py-2 flex items-center space-x-3">
+                        <MinecraftAvatar 
+                          username={user?.minecraft_username} 
+                          size="md" 
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-white font-medium text-sm">{user?.username}</span>
+                          {user?.minecraft_username && (
+                            <span className="text-gray-400 text-xs">MC: {user.minecraft_username}</span>
+                          )}
+                        </div>
+                      </div>
+                      <Link href="/profile" passHref>
+                        <Button
+                          variant="ghost"
+                          className="w-full justify-start text-gray-300 hover:text-white"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <Settings className="mr-3 h-5 w-5" />
+                          Perfil
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="ghost"
+                        className="w-full justify-start text-red-400 hover:text-red-300"
+                        onClick={() => {
+                          handleLogout();
+                          setIsOpen(false);
+                        }}
+                      >
+                        <LogOut className="mr-3 h-5 w-5" />
+                        Cerrar Sesión
+                      </Button>
+                    </>
+                  ) : (
+                    <Link href="/auth" passHref>
+                      <Button
+                        variant="ghost"
+                        className="w-full justify-start text-gray-300 hover:text-white"
+                        onClick={() => setIsOpen(false)}
+                        disabled={loading}
+                      >
+                        <User className="mr-3 h-5 w-5" />
+                        Iniciar Sesión
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>

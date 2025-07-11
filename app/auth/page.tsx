@@ -1,30 +1,72 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Eye, EyeOff, ShieldCheck, LogIn } from 'lucide-react';
+import { Eye, EyeOff, ShieldCheck, LogIn, UserPlus } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
-const LoginPage = () => {
+const AuthPage = () => {
+  const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [minecraftUsername, setMinecraftUsername] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const { login, register, isAuthenticated, loading } = useAuth();
+  const router = useRouter();
+
+  // Redirigir si ya está autenticado
+  useEffect(() => {
+    if (isAuthenticated && !loading) {
+      router.push('/');
+    }
+  }, [isAuthenticated, loading, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setIsSubmitting(true);
 
-    // Aquí iría la lógica de autenticación
-    // Por ahora, simulamos una respuesta
-    if (username && password) {
-      setSuccess('Inicio de sesión exitoso. Redirigiendo...');
-      // Lógica de redirección
-    } else {
-      setError('Por favor, completa todos los campos.');
+    try {
+      if (isLogin) {
+        // Iniciar sesión
+        const result = await login({ username, password });
+        if (result.success) {
+          router.push('/');
+        }
+      } else {
+        // Registrarse
+        const result = await register({ 
+          username, 
+          email, 
+          password, 
+          minecraftUsername: minecraftUsername || undefined 
+        });
+        if (result.success) {
+          router.push('/');
+        }
+      }
+    } catch (error) {
+      console.error('Error en autenticación:', error);
+    } finally {
+      setIsSubmitting(false);
     }
+  };
+
+  const resetForm = () => {
+    setUsername('');
+    setEmail('');
+    setPassword('');
+    setMinecraftUsername('');
+    setShowPassword(false);
+  };
+
+  const toggleMode = () => {
+    setIsLogin(!isLogin);
+    resetForm();
   };
 
   return (
@@ -41,14 +83,18 @@ const LoginPage = () => {
       >
         <div className="bento-item glass-card p-8 rounded-2xl border border-gray-700 bg-gray-800 bg-opacity-50 backdrop-blur-lg">
           <div className="text-center mb-6">
-            <h1 className="text-4xl font-bold text-white gradient-text">Iniciar Sesión</h1>
-            <p className="text-gray-300 mt-2">Bienvenido de nuevo a JollyGames</p>
+            <h1 className="text-4xl font-bold text-white gradient-text">
+              {isLogin ? 'Iniciar Sesión' : 'Crear Cuenta'}
+            </h1>
+            <p className="text-gray-300 mt-2">
+              {isLogin ? 'Bienvenido de nuevo a JollyGames' : 'Únete a la comunidad de JollyGames'}
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2" htmlFor="username">
-                Usuario o Email
+                {isLogin ? 'Usuario o Email' : 'Nombre de Usuario'}
               </label>
               <input
                 id="username"
@@ -56,9 +102,47 @@ const LoginPage = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full px-4 py-2 bg-gray-900 bg-opacity-50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                placeholder="TuUsuario / tu@email.com"
+                placeholder={isLogin ? "TuUsuario / tu@email.com" : "TuUsuario"}
+                required
               />
             </div>
+
+            {!isLogin && (
+              <>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2" htmlFor="email">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-4 py-2 bg-gray-900 bg-opacity-50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    placeholder="tu@email.com"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2" htmlFor="minecraftUsername">
+                    Nombre de Usuario de Minecraft (Opcional)
+                  </label>
+                  <input
+                    id="minecraftUsername"
+                    type="text"
+                    value={minecraftUsername}
+                    onChange={(e) => setMinecraftUsername(e.target.value)}
+                    className="w-full px-4 py-2 bg-gray-900 bg-opacity-50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    placeholder="TuUsuarioMinecraft"
+                    maxLength={16}
+                  />
+                  <p className="text-xs text-gray-400 mt-1">
+                    Se usará para mostrar tu skin de Minecraft como avatar
+                  </p>
+                </div>
+              </>
+            )}
 
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2" htmlFor="password">
@@ -72,6 +156,8 @@ const LoginPage = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-4 py-2 bg-gray-900 bg-opacity-50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                   placeholder="••••••••"
+                  required
+                  minLength={6}
                 />
                 <button
                   type="button"
@@ -81,6 +167,11 @@ const LoginPage = () => {
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
+              {!isLogin && (
+                <p className="text-xs text-gray-400 mt-1">
+                  Mínimo 6 caracteres, debe incluir mayúscula, minúscula y número
+                </p>
+              )}
             </div>
 
             <div className="flex items-center justify-center p-4 bg-gray-900 bg-opacity-50 border border-dashed border-gray-600 rounded-lg">
@@ -88,26 +179,34 @@ const LoginPage = () => {
               <p className="text-gray-400 text-sm">Placeholder para reCAPTCHA</p>
             </div>
 
-            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-            {success && <p className="text-green-500 text-sm text-center">{success}</p>}
-
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition-all flex items-center justify-center gap-2"
+              disabled={isSubmitting || loading}
+              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-lg text-white font-semibold transition-all flex items-center justify-center gap-2"
             >
-              <LogIn size={20} />
-              <span>Iniciar Sesión</span>
+              {isSubmitting || loading ? (
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+              ) : (
+                <>
+                  {isLogin ? <LogIn size={20} /> : <UserPlus size={20} />}
+                  <span>{isLogin ? 'Iniciar Sesión' : 'Crear Cuenta'}</span>
+                </>
+              )}
             </motion.button>
           </form>
 
           <div className="text-center mt-6">
             <p className="text-gray-400">
-              ¿No tienes una cuenta?{' '}
-              <Link href="/auth/register" className="font-semibold text-blue-400 hover:text-blue-300 transition-all">
-                Regístrate aquí
-              </Link>
+              {isLogin ? '¿No tienes una cuenta?' : '¿Ya tienes una cuenta?'}{' '}
+              <button
+                type="button"
+                onClick={toggleMode}
+                className="font-semibold text-blue-400 hover:text-blue-300 transition-all"
+              >
+                {isLogin ? 'Regístrate aquí' : 'Inicia sesión aquí'}
+              </button>
             </p>
           </div>
         </div>
@@ -116,4 +215,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default AuthPage;

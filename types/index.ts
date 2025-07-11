@@ -3,6 +3,7 @@ export interface User {
   id: string;
   username: string;
   email: string;
+  minecraft_username?: string;
   avatar?: string;
   role: 'admin' | 'moderator' | 'player';
   joinedAt: Date;
