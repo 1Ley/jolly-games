@@ -12,7 +12,7 @@ const {
   reactToPost,
   getPostReactions
 } = require('../controllers/forumController');
-const { verifyToken } = require('../middleware/auth');
+
 
 // Rutas públicas (no requieren autenticación)
 // Obtener todas las categorías
@@ -24,24 +24,24 @@ router.get('/topics', getTopics);
 // Obtener un tema específico con sus posts
 router.get('/topics/:topicId', getTopic);
 
-// Rutas protegidas (requieren autenticación)
+// Rutas públicas (sin autenticación requerida)
 // Crear un nuevo tema
-router.post('/topics', verifyToken, createTopic);
+router.post('/topics', createTopic);
 
 // Crear un nuevo post en un tema
-router.post('/topics/:topicId/posts', verifyToken, createPost);
+router.post('/topics/:topicId/posts', createPost);
 
 // Dar/quitar like a un post
-router.post('/posts/:postId/like', verifyToken, likePost);
+router.post('/posts/:postId/like', likePost);
 
 // Dar/quitar dislike a un post
-router.post('/posts/:postId/dislike', verifyToken, dislikePost);
+router.post('/posts/:postId/dislike', dislikePost);
 
 // Obtener tipos de reacciones disponibles
 router.get('/reaction-types', getReactionTypes);
 
 // Agregar/quitar reacción a un post
-router.post('/posts/:postId/react', verifyToken, reactToPost);
+router.post('/posts/:postId/react', reactToPost);
 
 // Obtener reacciones de un post
 router.get('/posts/:postId/reactions', getPostReactions);

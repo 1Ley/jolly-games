@@ -5,11 +5,79 @@ export interface User {
   email: string;
   minecraft_username?: string;
   avatar?: string;
-  role: 'admin' | 'moderator' | 'player';
+  role: UserRole;
+  tags: UserTag[];
   joinedAt: Date;
   lastSeen: Date;
   isOnline: boolean;
   stats: UserStats;
+}
+
+// Role and Tag Types
+export interface UserRole {
+  id: number;
+  name: string;
+  displayName: string;
+  description?: string;
+  color: string;
+  permissions: RolePermissions;
+  hierarchyLevel: number;
+}
+
+export interface UserTag {
+  id: number;
+  name: string;
+  displayName: string;
+  description?: string;
+  color: string;
+  icon?: string;
+  category: 'staff' | 'special' | 'achievement' | 'custom';
+  isActive: boolean;
+}
+
+export interface RolePermissions {
+  // Admin permissions
+  manage_users?: boolean;
+  manage_roles?: boolean;
+  manage_tags?: boolean;
+  manage_forum?: boolean;
+  manage_content?: boolean;
+  view_admin_panel?: boolean;
+  ban_users?: boolean;
+  
+  // Moderator permissions
+  moderate_forum?: boolean;
+  delete_posts?: boolean;
+  warn_users?: boolean;
+  mute_users?: boolean;
+  view_reports?: boolean;
+  manage_topics?: boolean;
+  
+  // Player permissions
+  create_posts?: boolean;
+  create_topics?: boolean;
+  react_posts?: boolean;
+  view_forum?: boolean;
+}
+
+export interface RoleAssignment {
+  id: number;
+  userId: number;
+  roleId: number;
+  assignedBy?: number;
+  assignedAt: Date;
+  expiresAt?: Date;
+  isActive: boolean;
+}
+
+export interface TagAssignment {
+  id: number;
+  userId: number;
+  tagId: number;
+  assignedBy?: number;
+  assignedAt: Date;
+  expiresAt?: Date;
+  isActive: boolean;
 }
 
 export interface UserStats {

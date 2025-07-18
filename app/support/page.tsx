@@ -160,7 +160,12 @@ export default function SupportPage() {
           </p>
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
             <div className="bento-item rounded-lg p-6 transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10">
-              <h3 className="mb-4 text-xl font-bold text-white">zjjereee</h3>
+              <div className="mb-4 flex items-center gap-3">
+                <h3 className="text-xl font-bold text-white">zjjereee</h3>
+                <span className="rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 px-3 py-1 text-xs font-semibold text-white">
+                  Founder
+                </span>
+              </div>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 flex-shrink-0 text-gray-400" />
@@ -176,7 +181,17 @@ export default function SupportPage() {
             </div>
 
             <div className="bento-item rounded-lg p-6 transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10">
-              <h3 className="mb-4 text-xl font-bold text-white">1ley</h3>
+              <div className="mb-4 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-white">1ley</h3>
+                <div className="flex gap-2">
+                  <span className="rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-3 py-1 text-xs font-semibold text-white">
+                    Web Dev
+                  </span>
+                  <span className="rounded-full bg-gradient-to-r from-red-500 to-pink-500 px-3 py-1 text-xs font-semibold text-white">
+                    Admin
+                  </span>
+                </div>
+              </div>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 flex-shrink-0 text-gray-400" />
@@ -192,7 +207,12 @@ export default function SupportPage() {
             </div>
 
             <div className="bento-item rounded-lg p-6 transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10">
-              <h3 className="mb-4 text-xl font-bold text-white">vac</h3>
+              <div className="mb-4 flex items-center gap-3">
+                <h3 className="text-xl font-bold text-white">vac</h3>
+                <span className="rounded-full bg-gradient-to-r from-red-500 to-pink-500 px-3 py-1 text-xs font-semibold text-white">
+                  Admin
+                </span>
+              </div>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 flex-shrink-0 text-gray-400" />

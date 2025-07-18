@@ -4,7 +4,50 @@ const nextConfig = {
     // appDir eliminado porque ya no es necesario
   },
   images: {
-    domains: ['localhost', 'jolly-games.com'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'jolly-games.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+          protocol: 'https',
+          hostname: 'mc-heads.net',
+          port: '',
+          pathname: '/**',
+        },
+        {
+          protocol: 'https',
+          hostname: 'api.mojang.com',
+          port: '',
+          pathname: '/**',
+        },
+        {
+          protocol: 'https',
+          hostname: 'crafthead.net',
+          port: '',
+          pathname: '/**',
+        },
+        {
+          protocol: 'https',
+          hostname: 'playerdb.co',
+          port: '',
+          pathname: '/**',
+        },
+        {
+          protocol: 'https',
+          hostname: 'media.discordapp.net',
+          port: '',
+          pathname: '/**',
+        },
+    ],
     formats: ['image/webp', 'image/avif'],
   },
   typescript: {

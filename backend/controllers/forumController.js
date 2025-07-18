@@ -19,9 +19,105 @@ const getCategories = async (req, res) => {
       ORDER BY name ASC
     `);
 
+    // Obtener último post para cada categoría
+    const categoryIds = categories.map(cat => cat.id);
+    let lastPostsMap = {};
+    
+    if (categoryIds.length > 0) {
+      const [lastPostResult] = await pool.execute(`
+        SELECT 
+          ft.category_id,
+          ft.id as topic_id,
+          ft.title as topic_title,
+          ft.created_at as topic_created_at,
+          u.id as user_id,
+          u.username,
+          u.minecraft_username,
+          u.role_id,
+          ur.name as role_name,
+          ur.color as role_color
+        FROM forum_topics ft
+        JOIN users u ON ft.user_id = u.id
+        LEFT JOIN user_roles ur ON u.role_id = ur.id
+        WHERE ft.category_id IN (${categoryIds.map(() => '?').join(',')})
+        AND ft.id IN (
+          SELECT MAX(id)
+          FROM forum_topics
+          WHERE category_id IN (${categoryIds.map(() => '?').join(',')})
+          GROUP BY category_id
+        )
+      `, [...categoryIds, ...categoryIds]);
+
+      // Obtener etiquetas para los usuarios de los últimos posts
+      const userIds = lastPostResult.map(post => post.user_id);
+      let userTagsMap = {};
+      
+      if (userIds.length > 0) {
+        const [userTagsResult] = await pool.execute(`
+          SELECT 
+            uta.user_id,
+            ut.id as tag_id,
+            ut.name as tag_name,
+            ut.color as tag_color,
+            ut.category as tag_type
+          FROM user_tag_assignments uta
+          JOIN user_tags ut ON uta.tag_id = ut.id
+          WHERE uta.user_id IN (${userIds.map(() => '?').join(',')}) AND uta.is_active = 1
+          ORDER BY uta.user_id, ut.category, ut.name
+        `, userIds);
+
+        // Agrupar etiquetas por usuario
+        userTagsResult.forEach(tag => {
+          if (!userTagsMap[tag.user_id]) {
+            userTagsMap[tag.user_id] = [];
+          }
+          userTagsMap[tag.user_id].push({
+            id: tag.tag_id,
+            name: tag.tag_name,
+            color: tag.tag_color,
+            type: tag.tag_type
+          });
+        });
+      }
+
+      // Crear mapa de últimos posts por categoría
+      lastPostResult.forEach(post => {
+        lastPostsMap[post.category_id] = {
+          topicId: post.topic_id,
+          topicTitle: post.topic_title,
+          createdAt: post.topic_created_at,
+          user: {
+            id: post.user_id,
+            username: post.username,
+            minecraft_username: post.minecraft_username,
+            role: {
+              id: post.role_id,
+              name: post.role_name,
+              color: post.role_color
+            },
+            tags: userTagsMap[post.user_id] || []
+          }
+        };
+      });
+    }
+
+    // Formatear categorías con información de último post
+    const formattedCategories = categories.map(category => ({
+      id: category.id,
+      name: category.name,
+      description: category.description,
+      color: category.color,
+      icon: category.icon,
+      topicsCount: category.topics_count,
+      postsCount: category.posts_count,
+      createdAt: category.created_at,
+      updatedAt: category.updated_at,
+      lastPost: lastPostsMap[category.id] || null
+    }));
+
     res.json({
       success: true,
-      categories
+      categories: formattedCategories
     });
   } catch (error) {
     console.error('Error al obtener categorías:', error);
@@ -67,12 +163,16 @@ const getTopics = async (req, res) => {
         u.id as user_id,
         u.username,
         u.minecraft_username,
+        u.role_id,
+        ur.name as role_name,
+        ur.color as role_color,
         fc.name as category_name,
         fc.color as category_color,
         fc.icon as category_icon,
         GROUP_CONCAT(ftt.tag) as tags
       FROM forum_topics ft
       JOIN users u ON ft.user_id = u.id
+      LEFT JOIN user_roles ur ON u.role_id = ur.id
       JOIN forum_categories fc ON ft.category_id = fc.id
       LEFT JOIN forum_topic_tags ftt ON ft.id = ftt.topic_id
       ${whereClause}
@@ -80,6 +180,26 @@ const getTopics = async (req, res) => {
       ORDER BY ft.is_pinned DESC, ft.updated_at DESC
       LIMIT ? OFFSET ?
     `, [...queryParams, parseInt(limit), parseInt(offset)]);
+
+    // Obtener etiquetas de usuarios para los temas
+    const topicUserIds = [...new Set(topics.map(topic => topic.user_id))];
+    let topicUserTags = [];
+    if (topicUserIds.length > 0) {
+      const placeholders = topicUserIds.map(() => '?').join(',');
+      const [tagsResult] = await pool.execute(`
+        SELECT 
+          uta.user_id,
+          ut.id as tag_id,
+          ut.name as tag_name,
+          ut.color as tag_color,
+          ut.category as tag_type
+        FROM user_tag_assignments uta
+        JOIN user_tags ut ON uta.tag_id = ut.id
+        WHERE uta.user_id IN (${placeholders}) AND uta.is_active = 1
+        ORDER BY ut.category, ut.name
+      `, topicUserIds);
+      topicUserTags = tagsResult;
+    }
 
     // Obtener el total de temas para paginación
     const [countResult] = await pool.execute(`
@@ -94,31 +214,45 @@ const getTopics = async (req, res) => {
     const totalPages = Math.ceil(total / limit);
 
     // Formatear los temas
-    const formattedTopics = topics.map(topic => ({
-      id: topic.id,
-      categoryId: topic.category_id,
-      category: {
-        id: topic.category_id,
-        name: topic.category_name,
-        color: topic.category_color,
-        icon: topic.category_icon
-      },
-      userId: topic.user_id,
-      user: {
-        id: topic.user_id,
-        username: topic.username,
-        minecraft_username: topic.minecraft_username
-      },
-      title: topic.title,
-      content: topic.content,
-      isPinned: Boolean(topic.is_pinned),
-      isLocked: Boolean(topic.is_locked),
-      views: topic.views,
-      replies: topic.replies,
-      createdAt: topic.created_at,
-      updatedAt: topic.updated_at,
-      tags: topic.tags ? topic.tags.split(',') : []
-    }));
+    const formattedTopics = topics.map(topic => {
+      const topicUserTagsList = topicUserTags.filter(tag => tag.user_id === topic.user_id);
+      return {
+        id: topic.id,
+        categoryId: topic.category_id,
+        category: {
+          id: topic.category_id,
+          name: topic.category_name,
+          color: topic.category_color,
+          icon: topic.category_icon
+        },
+        userId: topic.user_id,
+        user: {
+          id: topic.user_id,
+          username: topic.username,
+          minecraft_username: topic.minecraft_username,
+          role: {
+            id: topic.role_id,
+            name: topic.role_name,
+            color: topic.role_color
+          },
+          tags: topicUserTagsList.map(tag => ({
+            id: tag.tag_id,
+            name: tag.tag_name,
+            color: tag.tag_color,
+            type: tag.tag_type
+          }))
+        },
+        title: topic.title,
+        content: topic.content,
+        isPinned: Boolean(topic.is_pinned),
+        isLocked: Boolean(topic.is_locked),
+        views: topic.views,
+        replies: topic.replies,
+        createdAt: topic.created_at,
+        updatedAt: topic.updated_at,
+        tags: topic.tags ? topic.tags.split(',') : []
+      };
+    });
 
     res.json({
       success: true,
@@ -164,18 +298,25 @@ const getTopic = async (req, res) => {
         u.id as user_id,
         u.username,
         u.minecraft_username,
+        u.role_id,
+        ur.name as role_name,
+        ur.color as role_color,
         fc.name as category_name,
         fc.color as category_color,
         fc.icon as category_icon,
         GROUP_CONCAT(ftt.tag) as tags
       FROM forum_topics ft
       JOIN users u ON ft.user_id = u.id
+      LEFT JOIN user_roles ur ON u.role_id = ur.id
       JOIN forum_categories fc ON ft.category_id = fc.id
       LEFT JOIN forum_topic_tags ftt ON ft.id = ftt.topic_id
       WHERE ft.id = ?
       GROUP BY ft.id
     `, [topicId]);
 
+
+
+    // Obtener etiquetas del usuario del tema
     if (topicResult.length === 0) {
       return res.status(404).json({
         success: false,
@@ -185,10 +326,22 @@ const getTopic = async (req, res) => {
 
     const topic = topicResult[0];
 
+    const [topicUserTagsResult] = await pool.execute(`
+      SELECT 
+        ut.id as tag_id,
+        ut.name as tag_name,
+        ut.color as tag_color,
+        ut.category as tag_type
+      FROM user_tag_assignments uta
+      JOIN user_tags ut ON uta.tag_id = ut.id
+      WHERE uta.user_id = ? AND uta.is_active = 1
+      ORDER BY ut.category, ut.name
+    `, [topic.user_id]);
+
     // Incrementar vistas
     await pool.execute('UPDATE forum_topics SET views = views + 1 WHERE id = ?', [topicId]);
 
-    // Obtener posts del tema
+    // Obtener posts del tema con roles y etiquetas
     const [posts] = await pool.execute(`
       SELECT 
         fp.id,
@@ -203,13 +356,37 @@ const getTopic = async (req, res) => {
         u.id as user_id,
         u.username,
         u.minecraft_username,
-        u.role
+        u.role_id,
+        ur.name as role_name,
+        ur.color as role_color,
+        ur.permissions as role_permissions
       FROM forum_posts fp
       JOIN users u ON fp.user_id = u.id
+      LEFT JOIN user_roles ur ON u.role_id = ur.id
       WHERE fp.topic_id = ?
       ORDER BY fp.created_at ASC
       LIMIT ? OFFSET ?
     `, [topicId, parseInt(limit), parseInt(offset)]);
+
+    // Obtener etiquetas de usuarios para los posts
+    const userIds = posts.map(post => post.user_id);
+    let userTags = [];
+    if (userIds.length > 0) {
+      const placeholders = userIds.map(() => '?').join(',');
+      const [tagsResult] = await pool.execute(`
+        SELECT 
+          uta.user_id,
+          ut.id as tag_id,
+          ut.name as tag_name,
+          ut.color as tag_color,
+          ut.category as tag_type
+        FROM user_tag_assignments uta
+        JOIN user_tags ut ON uta.tag_id = ut.id
+        WHERE uta.user_id IN (${placeholders}) AND uta.is_active = 1
+        ORDER BY ut.category, ut.name
+      `, userIds);
+      userTags = tagsResult;
+    }
 
     // Obtener total de posts para paginación
     const [countResult] = await pool.execute(
@@ -234,7 +411,18 @@ const getTopic = async (req, res) => {
       user: {
         id: topic.user_id,
         username: topic.username,
-        minecraft_username: topic.minecraft_username
+        minecraft_username: topic.minecraft_username,
+        role: {
+          id: topic.role_id,
+          name: topic.role_name,
+          color: topic.role_color
+        },
+        tags: topicUserTagsResult.map(tag => ({
+          id: tag.tag_id,
+          name: tag.tag_name,
+          color: tag.tag_color,
+          type: tag.tag_type
+        }))
       },
       title: topic.title,
       content: topic.content,
@@ -247,25 +435,39 @@ const getTopic = async (req, res) => {
       tags: topic.tags ? topic.tags.split(',') : []
     };
 
-    const formattedPosts = posts.map(post => ({
-      id: post.id,
-      topicId: topicId,
-      userId: post.user_id,
-      user: {
-        id: post.user_id,
-        username: post.username,
-        minecraft_username: post.minecraft_username,
-        role: post.role
-      },
-      content: post.content,
-      isEdited: Boolean(post.is_edited),
-      editedAt: post.edited_at,
-      likes: post.likes || 0,
-      dislikes: post.dislikes || 0,
-      reports: post.reports,
-      createdAt: post.created_at,
-      updatedAt: post.updated_at
-    }));
+    const formattedPosts = posts.map(post => {
+      const postUserTags = userTags.filter(tag => tag.user_id === post.user_id);
+      return {
+        id: post.id,
+        topicId: topicId,
+        userId: post.user_id,
+        user: {
+          id: post.user_id,
+          username: post.username,
+          minecraft_username: post.minecraft_username,
+          role: {
+            id: post.role_id,
+            name: post.role_name,
+            color: post.role_color,
+            permissions: post.role_permissions ? JSON.parse(post.role_permissions) : {}
+          },
+          tags: postUserTags.map(tag => ({
+            id: tag.tag_id,
+            name: tag.tag_name,
+            color: tag.tag_color,
+            type: tag.tag_type
+          }))
+        },
+        content: post.content,
+        isEdited: Boolean(post.is_edited),
+        editedAt: post.edited_at,
+        likes: post.likes || 0,
+        dislikes: post.dislikes || 0,
+        reports: post.reports,
+        createdAt: post.created_at,
+        updatedAt: post.updated_at
+      };
+    });
 
     res.json({
       success: true,

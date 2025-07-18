@@ -5,8 +5,10 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const { testConnection } = require('./config/database');
-const authRoutes = require('./routes/auth');
+
 const forumRoutes = require('./routes/forum');
+const reactionRoutes = require('./routes/reactions');
+const rolesRoutes = require('./routes/roles');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -36,16 +38,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-// Rate limiting específico para autenticación
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 5, // máximo 5 intentos de login por IP
-  message: {
-    success: false,
-    message: 'Demasiados intentos de autenticación, intenta de nuevo en 15 minutos'
-  },
-  skipSuccessfulRequests: true
-});
+
 
 // Middleware para parsing JSON
 app.use(express.json({ limit: '10mb' }));
@@ -58,8 +51,9 @@ app.use((req, res, next) => {
 });
 
 // Rutas
-app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/forum', forumRoutes);
+app.use('/api/reactions', reactionRoutes);
+app.use('/api/roles', rolesRoutes);
 
 // Ruta de salud del servidor
 app.get('/api/health', (req, res) => {
@@ -78,8 +72,9 @@ app.get('/', (req, res) => {
     message: 'JollyGames Backend API',
     version: '1.0.0',
     endpoints: {
-      auth: '/api/auth',
       forum: '/api/forum',
+      reactions: '/api/reactions',
+      roles: '/api/roles',
       health: '/api/health'
     }
   });
@@ -126,6 +121,8 @@ const startServer = async () => {
       console.log(`🏥 Health Check: http://localhost:${PORT}/api/health`);
       console.log(`🔐 Auth API: http://localhost:${PORT}/api/auth`);
       console.log(`💬 Forum API: http://localhost:${PORT}/api/forum`);
+      console.log(`👍 Reactions API: http://localhost:${PORT}/api/reactions`);
+      console.log(`👑 Roles API: http://localhost:${PORT}/api/roles`);
       console.log('================================\n');
     });
 

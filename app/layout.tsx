@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { Toaster as HotToaster } from 'react-hot-toast';
 import { ClientSideProvider } from '@/components/providers/client-side-provider';
-import { AuthProvider } from '@/contexts/AuthContext';
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -113,42 +113,40 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <AuthProvider>
-              <div className="relative flex min-h-screen flex-col">
-                <div className="fixed inset-0 -z-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-950" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.1),transparent_50%)]" />
-                  <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
-                </div>
-                <Navbar />
-                <main className="flex-1">{children}</main>
-                <Footer />
-                <Toaster />
-                <HotToaster
-                  position="top-right"
-                  toastOptions={{
-                    duration: 4000,
-                    style: {
-                      background: '#1f2937',
-                      color: '#f9fafb',
-                      border: '1px solid #374151',
-                    },
-                    success: {
-                      iconTheme: {
-                        primary: '#10b981',
-                        secondary: '#f9fafb',
-                      },
-                    },
-                    error: {
-                      iconTheme: {
-                        primary: '#ef4444',
-                        secondary: '#f9fafb',
-                      },
-                    },
-                  }}
-                />
+            <div className="relative flex min-h-screen flex-col">
+              <div className="fixed inset-0 -z-10">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-950" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.1),transparent_50%)]" />
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
               </div>
-            </AuthProvider>
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              <Toaster />
+              <HotToaster
+                position="top-right"
+                toastOptions={{
+                  duration: 4000,
+                  style: {
+                    background: '#1f2937',
+                    color: '#f9fafb',
+                    border: '1px solid #374151',
+                  },
+                  success: {
+                    iconTheme: {
+                      primary: '#10b981',
+                      secondary: '#f9fafb',
+                    },
+                  },
+                  error: {
+                    iconTheme: {
+                      primary: '#ef4444',
+                      secondary: '#f9fafb',
+                    },
+                  },
+                }}
+              />
+            </div>
           </ThemeProvider>
         </ClientSideProvider>
       </body>

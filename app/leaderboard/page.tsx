@@ -74,7 +74,7 @@ export default function LeaderboardPage() {
       try {
         const enrichedUsers = await Promise.all(
           users.map(async user => {
-            const defaultCatAvatar = `https://crafatar.com/avatars/5c3b379d-335a-4b51-93e5-849548454d62?overlay`;
+            const defaultCatAvatar = `https://mc-heads.net/avatar/steve/64`;
             let avatarUrl = defaultCatAvatar;
 
             if (user.premium) {

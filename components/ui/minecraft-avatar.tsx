@@ -42,7 +42,7 @@ const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   const avatarUrl = `https://mc-heads.net/avatar/${displayUsername}/128`;
   
   // URL alternativa en caso de error
-  const fallbackUrl = `https://crafatar.com/avatars/${displayUsername}?size=128&default=MHF_Steve`;
+  const fallbackUrl = `https://mc-heads.net/avatar/steve/128`;
 
   const handleImageError = () => {
     if (!imageError) {
