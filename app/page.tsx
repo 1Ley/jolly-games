@@ -1,10 +1,7 @@
 'use client';
 
 import { HeroSection } from '@/components/sections/hero-section';
-import { StatsSection } from '@/components/sections/stats-section';
-import { FeaturedGamesSection } from '@/components/sections/featured-games-section';
-import { CommunitySection } from '@/components/sections/community-section';
-import { CTASection } from '@/components/sections/cta-section';
+import { MinigamesGridSection } from '@/components/sections/minigames-grid-section';
 import { motion } from 'framer-motion';
 import { ParallaxScrollSection } from '@/components/sections/parallax-scroll-section';
 import { mockFeatureSections } from '@/data/mock-data';
@@ -41,6 +38,11 @@ export default function Home() {
         <HeroSection />
       </motion.section>
 
+      {/* Minigames Grid Section */}
+      <motion.section variants={itemVariants}>
+        <MinigamesGridSection />
+      </motion.section>
+
       {/* New Parallax Scroll Sections */}
       <div>
         {mockFeatureSections.map((section, index) => (
@@ -54,29 +56,7 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Original Bento Grid Sections */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <motion.div
-            className="md:col-span-2 lg:col-span-2"
-            variants={itemVariants}
-          >
-            <FeaturedGamesSection />
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <StatsSection />
-          </motion.div>
-          <motion.div
-            className="md:col-span-2 lg:col-span-2"
-            variants={itemVariants}
-          >
-            <CommunitySection />
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <CTASection />
-          </motion.div>
-        </div>
-      </div>
+
     </motion.main>
   );
 }

@@ -8,10 +8,12 @@ import {
   Users,
   Clock,
   Star,
+  X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
+import MinecraftAvatar from '@/components/ui/minecraft-avatar';
 import { mockEvents } from '@/data/mock-data';
 
 interface Team {
@@ -228,12 +230,10 @@ export default function EventsPage() {
                         key={playerIndex}
                         className="flex items-center space-x-3 rounded-lg bg-white/5 p-2 transition-colors hover:bg-white/10"
                       >
-                        <div 
-                          className="flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold text-white"
-                          style={{ backgroundColor: team.color }}
-                        >
-                          {player.charAt(0)}
-                        </div>
+                        <MinecraftAvatar
+                          size="sm"
+                          className="flex-shrink-0"
+                        />
                         <span className="text-sm text-gray-300">{player}</span>
                       </div>
                     ))}
@@ -322,12 +322,10 @@ export default function EventsPage() {
                           key={index}
                           className="flex items-center space-x-3 rounded-lg bg-white/5 p-3 transition-colors hover:bg-white/10"
                         >
-                          <div 
-                            className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white"
-                            style={{ backgroundColor: selectedTeam.color }}
-                          >
-                            {player.charAt(0)}
-                          </div>
+                          <MinecraftAvatar
+                            size="md"
+                            className="flex-shrink-0"
+                          />
                           <span className="text-gray-300">{player}</span>
                         </div>
                       ))}

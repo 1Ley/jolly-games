@@ -39,72 +39,7 @@ export const mockUser: User = {
   },
 };
 
-// Mock Server Stats
-export const mockServerStats = {
-  onlinePlayers: 1337,
-  totalPlayers: 25000,
-  gamesThisWeek: 5234,
-  uptime: '99.9%',
-  averageLatency: '45ms',
-};
 
-// Mock Game Modes
-export const mockGameModes: GameMode[] = [
-  {
-    id: 'skywars',
-    name: 'SkyWars',
-    displayName: 'SkyWars',
-    description:
-      'Lucha por la supervivencia en islas flotantes. ¡El último en pie gana!',
-    icon: '☁️',
-    thumbnail: '/images/games/skywars.svg',
-    isActive: true,
-    playerCount: { current: 342, max: 500 },
-    averageGameTime: 8,
-    difficulty: 'medium',
-    tags: ['PvP', 'Survival', 'Strategy'],
-  },
-  {
-    id: 'bedwars',
-    name: 'BedWars',
-    displayName: 'BedWars',
-    description: 'Protege tu cama y destruye las de tus oponentes para ganar.',
-    icon: '🛏️',
-    thumbnail: '/images/games/bedwars.jpg',
-    isActive: true,
-    playerCount: { current: 412, max: 600 },
-    averageGameTime: 15,
-    difficulty: 'hard',
-    tags: ['PvP', 'Team-based', 'Strategy'],
-  },
-  {
-    id: 'creative',
-    name: 'Creative',
-    displayName: 'Creativo',
-    description: 'Construye lo que quieras en tu propia parcela privada.',
-    icon: '🎨',
-    thumbnail: '/images/games/creative.jpg',
-    isActive: true,
-    playerCount: { current: 150, max: 300 },
-    averageGameTime: 0,
-    difficulty: 'easy',
-    tags: ['Building', 'Relaxing'],
-  },
-  {
-    id: 'hungergames',
-    name: 'HungerGames',
-    displayName: 'Juegos del Hambre',
-    description:
-      'Busca cofres, equípate y sé el último superviviente en la arena.',
-    icon: '🏹',
-    thumbnail: '/images/games/hungergames.jpg',
-    isActive: true,
-    playerCount: { current: 280, max: 400 },
-    averageGameTime: 20,
-    difficulty: 'hard',
-    tags: ['PvP', 'Survival', 'Battle Royale'],
-  },
-];
 
 // Mock Events Data
 export const mockEvents = {
@@ -119,96 +54,96 @@ export const mockEvents = {
         id: 'team-red',
         name: 'Team Red',
         color: '#DC2626',
-        emoji: '/emojils/JollyGames.png',
-        players: ['Player1', 'Player2', 'Player3', 'Player4'],
+        emoji: '/images/color_teams/team_red.png',
+        players: ['Player1', 'Player2', 'Player3', 'Player4', 'Player5', 'Player6'],
         placement: 1
       },
       {
         id: 'team-blue',
         name: 'Team Blue',
         color: '#2563EB',
-        emoji: '/emojils/Skywars.png',
-        players: ['Player5', 'Player6', 'Player7', 'Player8'],
+        emoji: '/images/color_teams/team_blue.png',
+        players: ['Player7', 'Player8', 'Player9', 'Player10', 'Player11', 'Player12'],
         placement: null
       },
       {
         id: 'team-green',
         name: 'Team Green',
         color: '#16A34A',
-        emoji: '/emojils/Survival games.png',
-        players: ['Player9', 'Player10', 'Player11', 'Player12'],
+        emoji: '/images/color_teams/team_green.png',
+        players: ['Player13', 'Player14', 'Player15', 'Player16', 'Player17', 'Player18'],
         placement: null
       },
       {
         id: 'team-orange',
         name: 'Team Orange',
         color: '#EA580C',
-        emoji: '/emojils/Cohete.png',
-        players: ['Player13', 'Player14', 'Player15', 'Player16'],
+        emoji: '/images/color_teams/team_orange.png',
+        players: ['Player19', 'Player20', 'Player21', 'Player22', 'Player23', 'Player24'],
         placement: null
       },
       {
         id: 'team-purple',
         name: 'Team Purple',
         color: '#7C3AED',
-        emoji: '/emojils/BattleBox.png',
-        players: ['Player17', 'Player18', 'Player19', 'Player20'],
+        emoji: '/images/color_teams/team_purple.png',
+        players: ['Player25', 'Player26', 'Player27', 'Player28', 'Player29', 'Player30'],
         placement: null
       },
       {
         id: 'team-cyan',
         name: 'Team Cyan',
         color: '#0891B2',
-        emoji: '/emojils/BeepTest.png',
-        players: ['Player21', 'Player22', 'Player23', 'Player24'],
+        emoji: '/images/color_teams/team_cyan.png',
+        players: ['Player31', 'Player32', 'Player33', 'Player34', 'Player35', 'Player36'],
         placement: null
       },
       {
         id: 'team-gray',
         name: 'Team Gray',
         color: '#6B7280',
-        emoji: '/emojils/Spleef.png',
-        players: ['Player25', 'Player26', 'Player27', 'Player28'],
+        emoji: '/images/color_teams/team_gray.png',
+        players: ['Player37', 'Player38', 'Player39', 'Player40', 'Player41', 'Player42'],
         placement: null
       },
       {
         id: 'team-yellow',
         name: 'Team Yellow',
         color: '#F59E0B',
-        emoji: '/emojils/Star.png',
-        players: ['Player29', 'Player30', 'Player31', 'Player32'],
+        emoji: '/images/color_teams/team_yellow.png',
+        players: ['Player43', 'Player44', 'Player45', 'Player46', 'Player47', 'Player48'],
         placement: null
       },
       {
         id: 'team-pink',
         name: 'Team Pink',
         color: '#EC4899',
-        emoji: '/emojils/Copa.png',
-        players: ['Player33', 'Player34', 'Player35', 'Player36'],
+        emoji: '/images/color_teams/team_pink.png',
+        players: ['Player49', 'Player50', 'Player51', 'Player52', 'Player53', 'Player54'],
         placement: null
       },
       {
         id: 'team-black',
         name: 'Team Black',
         color: '#1F2937',
-        emoji: '/emojils/Bow_Spleef.png',
-        players: ['Player37', 'Player38', 'Player39', 'Player40'],
+        emoji: '/images/color_teams/team_black.png',
+        players: ['Player55', 'Player56', 'Player57', 'Player58', 'Player59', 'Player60'],
         placement: null
       },
       {
         id: 'team-white',
         name: 'Team White',
         color: '#F3F4F6',
-        emoji: '/emojils/check.png',
-        players: ['Player41', 'Player42', 'Player43', 'Player44'],
+        emoji: '/images/color_teams/team_white.png',
+        players: ['Player61', 'Player62', 'Player63', 'Player64', 'Player65', 'Player66'],
         placement: null
       },
       {
         id: 'team-aqua',
         name: 'Team Aqua',
         color: '#14B8A6',
-        emoji: '/emojils/Random Kits.png',
-        players: ['Player45', 'Player46', 'Player47', 'Player48'],
+        emoji: '/images/color_teams/team_aqua.png',
+        players: ['Player67', 'Player68', 'Player69', 'Player70', 'Player71', 'Player72'],
         placement: null
       }
     ]
@@ -223,56 +158,44 @@ export const mockFeatureSections = [
     title: 'SkyWars',
     description:
       'La experiencia PvP definitiva en islas flotantes. Saquea cofres, equípate y lucha por ser el último jugador en pie en una arena que se desmorona bajo tus pies.',
-    imageUrl: '/images/games/skywars.svg',
+    imageUrl: '/images/games/skywars.png',
   },
   {
     title: 'Party',
     description:
       'Sumérgete en una caótica rotación de minijuegos. Sobrevive a la patata caliente en TNT Tag o mantén la bandera para evitar la eliminación en una variante única de Captura la Bandera.',
-    imageUrl: '/images/jollygames.png',
-  },
-  {
-    title: 'Race',
-    description:
-      'Pon a prueba tu agilidad y velocidad en circuitos de parkour competitivos. Domina cada salto y atajo para cruzar la meta el primero y acumular la mayor cantidad de puntos.',
-    imageUrl: '/images/fondohome.gif',
+    imageUrl: '/images/games/party.png',
   },
   {
     title: 'BattleBox',
     description:
       'Dos equipos se enfrentan en rondas de combate rápido. El objetivo: ser el primero en rellenar el área central con los bloques de tu color. Estrategia y trabajo en equipo son la clave.',
-    imageUrl: '/images/logo.png',
+    imageUrl: '/images/games/battle_box.png',
   },
   {
     title: 'Random Kits',
     description:
       'La igualdad de condiciones llevada al extremo. Todos los jugadores reciben el mismo kit de combate aleatorio al empezar. Adapta tu estrategia y que gane el mejor equipo.',
-    imageUrl: '/images/games/creative.jpg',
+    imageUrl: '/images/games/random-kits.png',
   },
   {
     title: 'Survival Games',
     description:
       'El clásico modo de supervivencia y saqueo. Explora el mapa en busca de cofres con equipamiento y recursos. Forja alianzas o lucha en solitario para ser el último equipo en pie.',
-    imageUrl: '/images/games/hungergames.jpg',
+    imageUrl: '/images/games/survival-games.png',
   },
   {
     title: 'Beep Test',
     description:
       'Un desafío de parkour progresivo que pondrá a prueba tus límites. Supera secciones cada vez más difíciles mientras la velocidad aumenta, demostrando tu precisión y resistencia.',
-    imageUrl: '/images/beeptest.png',
+    imageUrl: '/images/games/beeptest.png',
   },
   {
     title: 'Spleef',
     description:
       'Un juego de pura destrucción y supervivencia. Usa tu pala para romper el suelo bajo los pies de tus oponentes y hacerlos caer. ¡El último jugador en la plataforma más alta gana!',
-    imageUrl: '/images/games/skywars.svg',
-  },
-  {
-    title: 'Bow Spleef',
-    description:
-      'La variante explosiva de Spleef. Armado con un arco y flechas de fuego, haz llover destrucción sobre un suelo de TNT para eliminar a tus rivales. Precisión y caos garantizados.',
-    imageUrl: '/images/games/creative.jpg',
-  },
+    imageUrl: '/images/games/spleef.png',
+  }
 ];
 
 // Mock Forum Data

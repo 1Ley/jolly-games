@@ -234,7 +234,7 @@ export default function SupportPage() {
                     <img
                       src="https://mc-heads.net/avatar/zjjeree/64"
                       alt="zjjeree avatar"
-                      className="h-10 w-10 rounded-lg border-2 border-orange-400 flex-shrink-0"
+                      className="h-10 w-10 rounded-lg flex-shrink-0"
                     />
                     <div className="flex items-center gap-2">
                       <h3 className="text-lg font-bold text-white">zjjereee</h3>
@@ -267,7 +267,7 @@ export default function SupportPage() {
                     <img
                       src="https://mc-heads.net/avatar/1ley/64"
                       alt="1ley avatar"
-                      className="h-10 w-10 rounded-lg border-2 border-blue-400 flex-shrink-0"
+                      className="h-10 w-10 rounded-lg flex-shrink-0"
                     />
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-lg font-bold text-white">1ley</h3>
@@ -301,9 +301,9 @@ export default function SupportPage() {
                 <div className="mb-4">
                   <div className="flex items-center gap-3 mb-2">
                     <img
-                      src="https://mc-heads.net/avatar/montoyatr/64"
-                      alt="montoyatr avatar"
-                      className="h-10 w-10 rounded-lg border-2 border-green-400 flex-shrink-0"
+                      src="https://mc-heads.net/avatar/Ferreirx/64"
+                      alt="Ferreirx avatar"
+                      className="h-10 w-10 rounded-lg flex-shrink-0"
                     />
                     <div className="flex items-center gap-2">
                       <h3 className="text-lg font-bold text-white">Shiny</h3>
@@ -612,23 +612,7 @@ export default function SupportPage() {
                    </div>
                  </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/xic_julius/32"
-                     alt="julianoviix avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">julianoviix</span>
-                     <span className="rounded-full bg-green-500/20 border border-green-500/30 px-2 py-1 text-xs font-semibold text-green-300">
-                       Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
-                     <span>xic_julius</span>
-                   </div>
-                 </div>
+
 
                  <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
                    <img
@@ -645,6 +629,132 @@ export default function SupportPage() {
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
                      <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
                      <span>montoyatr</span>
+                   </div>
+                 </div>
+
+                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
+                   <img
+                     src="https://mc-heads.net/head/vdiegoz/32"
+                     alt="FalseXo_ avatar"
+                     className="h-8 w-8 rounded"
+                   />
+                   <div className="flex items-center gap-2">
+                     <span className="text-white font-medium">FalseXo_</span>
+                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
+                       T.Host
+                     </span>
+                   </div>
+                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
+                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <span>vdiegoz</span>
+                   </div>
+                 </div>
+
+                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
+                   <img
+                     src="https://mc-heads.net/head/khali_tv/32"
+                     alt="Khali avatar"
+                     className="h-8 w-8 rounded"
+                   />
+                   <div className="flex items-center gap-2">
+                     <span className="text-white font-medium">Khali</span>
+                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
+                       T.Host
+                     </span>
+                   </div>
+                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
+                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <span>khali_tv</span>
+                   </div>
+                 </div>
+
+                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
+                   <img
+                     src="https://mc-heads.net/head/oscarramos/32"
+                     alt="Oscar avatar"
+                     className="h-8 w-8 rounded"
+                   />
+                   <div className="flex items-center gap-2">
+                     <span className="text-white font-medium">Oscar</span>
+                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
+                       T.Host
+                     </span>
+                   </div>
+                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
+                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <span>oscarramos</span>
+                   </div>
+                 </div>
+
+                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
+                   <img
+                     src="https://mc-heads.net/head/wintersggez/32"
+                     alt="Previo avatar"
+                     className="h-8 w-8 rounded"
+                   />
+                   <div className="flex items-center gap-2">
+                     <span className="text-white font-medium">Previo</span>
+                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
+                       T.Host
+                     </span>
+                   </div>
+                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
+                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <span>wintersggez</span>
+                   </div>
+                 </div>
+
+                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
+                   <img
+                     src="https://mc-heads.net/head/sbloosh/32"
+                     alt="Sbloosh avatar"
+                     className="h-8 w-8 rounded"
+                   />
+                   <div className="flex items-center gap-2">
+                     <span className="text-white font-medium">Sbloosh</span>
+                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
+                       T.Host
+                     </span>
+                   </div>
+                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
+                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <span>sbloosh</span>
+                   </div>
+                 </div>
+
+                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
+                   <img
+                     src="https://mc-heads.net/head/xic_julius/32"
+                     alt="julianoviix avatar"
+                     className="h-8 w-8 rounded"
+                   />
+                   <div className="flex items-center gap-2">
+                     <span className="text-white font-medium">julianoviix</span>
+                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
+                       T.Host
+                     </span>
+                   </div>
+                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
+                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <span>xic_julius</span>
+                   </div>
+                 </div>
+
+                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
+                   <img
+                     src="https://mc-heads.net/head/sthefanw/32"
+                     alt="sthefanw avatar"
+                     className="h-8 w-8 rounded"
+                   />
+                   <div className="flex items-center gap-2">
+                     <span className="text-white font-medium">sthefanw</span>
+                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
+                       T.Host
+                     </span>
+                   </div>
+                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
+                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <span>sthefanw</span>
                    </div>
                  </div>
                </div>

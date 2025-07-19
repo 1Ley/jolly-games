@@ -23,7 +23,7 @@ const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   username,
   size = 'md',
   className,
-  fallback = 'Steve',
+  fallback = 'Ocullar',
   showUsername = false
 }) => {
   const [imageError, setImageError] = useState(false);
@@ -42,7 +42,7 @@ const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   const avatarUrl = `https://mc-heads.net/head/${displayUsername}/128`;
   
   // URL alternativa en caso de error
-  const fallbackUrl = `https://mc-heads.net/head/steve/128`;
+  const fallbackUrl = `https://mc-heads.net/head/Ocullar/128`;
 
   const handleImageError = () => {
     if (!imageError) {

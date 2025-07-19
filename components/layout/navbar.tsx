@@ -26,7 +26,7 @@ const navigation = [
   { name: 'Updates', href: '/updates', icon: FileText },
   { name: 'Soporte', href: '/support', icon: HelpCircle },
   { name: 'Events', href: '/community', icon: Users },
-  { name: 'Leaderboard', href: '/leaderboard', icon: Trophy },
+  { name: 'Leaderboard', href: '/en-construccion', icon: Trophy },
   { name: 'Reglas', href: '/rules', icon: Shield },
 ];
 

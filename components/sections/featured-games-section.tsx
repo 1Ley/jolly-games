@@ -130,7 +130,7 @@ export function FeaturedGamesSection() {
               exit="exit"
               className="absolute inset-0"
             >
-              <div className="flex h-full flex-col gap-6 p-6 md:flex-row md:p-8">
+              <div className="flex h-full flex-col gap-2 p-6 md:flex-row md:p-8">
                 {/* Game Info */}
                 <div className="flex-1 text-center md:text-left">
                   <div className="mb-4">
@@ -198,7 +198,7 @@ export function FeaturedGamesSection() {
             <ArrowLeft className="h-5 w-5 text-white" />
           </button>
 
-          <div className="z-10 flex justify-center space-x-2">
+          <div className="z-10 flex justify-center space-x-1">
             {gameModes.map((_, index) => (
               <button
                 key={index}

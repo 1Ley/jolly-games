@@ -19,6 +19,22 @@ export function ParallaxScrollSection({
 }: ParallaxScrollSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Función para obtener el emoji correspondiente al juego
+  const getEmojiPath = (gameTitle: string): string => {
+    const emojiMap: { [key: string]: string } = {
+      'SkyWars': '/emojils/Skywars.png',
+      'Party': '/emojils/Party.png',
+      'Race': '/emojils/Cohete.png',
+      'BattleBox': '/emojils/BattleBox.png',
+      'Random Kits': '/emojils/Random Kits.png',
+      'Survival Games': '/emojils/Survival games.png',
+      'Beep Test': '/emojils/BeepTest.png',
+      'Spleef': '/emojils/Spleef.png',
+      'Bow Spleef': '/emojils/Bow_Spleef.png',
+    };
+    return emojiMap[gameTitle] || '/emojils/JollyGames.png';
+  };
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
@@ -34,8 +50,12 @@ export function ParallaxScrollSection({
     { ease: undefined } // Elimina cualquier función de suavizado
   );
 
+  // Crear un ID único basado en el título
+  const sectionId = `section-${title.toLowerCase().replace(/\s+/g, '-')}`;
+
   return (
     <section
+      id={sectionId}
       ref={containerRef}
       className="relative flex h-[80vh] items-center justify-center overflow-hidden"
     >
@@ -48,8 +68,15 @@ export function ParallaxScrollSection({
           initial={{ opacity: 1, y: 0 }} // Sin animación inicial, aparece directamente
           // Eliminamos whileInView y transition para evitar suavizados
         >
-          <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
+          <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl minecraft-font flex items-center justify-center md:justify-start gap-3">
             {title}
+            <Image
+              src={getEmojiPath(title)}
+              alt={`${title} emoji`}
+              width={48}
+              height={48}
+              className="inline-block"
+            />
           </h2>
           <p className="text-lg text-gray-300 md:text-xl">{description}</p>
         </motion.div>
