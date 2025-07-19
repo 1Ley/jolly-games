@@ -1,6 +1,17 @@
 # 🎮 Jolly Games - Minecraft Minigames Community Website
 
-Una web corporativa y de comunidad moderna para Jolly Games, empresa de videojuegos especializada en minijuegos de Minecraft. Construida con Next.js 14, React 19, TypeScript y Tailwind CSS con un diseño minimalista estilo Bento UI y efectos glassmorphism.
+Una web corporativa y de comunidad moderna para Jolly Games, empresa de videojuegos especializada en minijuegos de Minecraft. Construida con Next.js 14, React 18, TypeScript y Tailwind CSS con un diseño minimalista estilo Bento UI y efectos glassmorphism.
+
+## 🚀 Instalación Rápida
+
+**¿Primera vez? Lee el archivo [INSTALACION.md](./INSTALACION.md) para una guía paso a paso.**
+
+```bash
+git clone https://github.com/TU-USUARIO/jolly-games.git
+cd jolly-games
+npm install
+npm run dev
+```
 
 ## 🌟 Características
 
@@ -15,26 +26,34 @@ Una web corporativa y de comunidad moderna para Jolly Games, empresa de videojue
 ## 🛠️ Stack Tecnológico
 
 ### Frontend
-- **Framework**: Next.js 14+ con App Router
-- **UI Library**: React 19.1.0
-- **Lenguaje**: TypeScript 5+
+- **Framework**: Next.js 14.2.0 con App Router
+- **UI Library**: React 18.2.0
+- **Lenguaje**: TypeScript 5.4.0
 - **Estilos**: Tailwind CSS 3.4.17
 - **Componentes**: Radix UI + shadcn/ui
 - **Animaciones**: Framer Motion 12.12.2
-- **Iconos**: Lucide React
+- **Iconos**: Lucide React 0.445.0
+- **Temas**: Next Themes 0.2.1
+
+### Backend y Base de Datos
+- **ORM**: Prisma 5.14.0
+- **Base de Datos**: MySQL2 3.14.2
+- **Autenticación**: NextAuth.js 4.24.0
+- **API**: Express 5.1.0
+- **Validación**: Express Validator 7.2.1
+- **Seguridad**: Helmet 8.1.0, CORS 2.8.5
+
+### Estado y Data Fetching
+- **Estado Global**: Zustand 4.5.0
+- **Data Fetching**: SWR 2.2.0 + React Query 3.39.3
+- **HTTP Client**: Axios 1.10.0
 
 ### Desarrollo y Calidad
-- **Linting**: ESLint + Prettier
-- **Git Hooks**: Husky
-- **Testing**: Jest + Testing Library (configurado)
-- **E2E Testing**: Playwright (configurado)
-
-### Futuras Integraciones
-- **Estado Global**: Zustand o Redux Toolkit
-- **Data Fetching**: SWR o React Query
-- **Base de Datos**: Prisma + PostgreSQL
-- **Autenticación**: NextAuth.js o Clerk
-- **Despliegue**: Vercel o Netlify
+- **Linting**: ESLint 8.57.0 + Prettier 3.2.0
+- **Git Hooks**: Husky 9.0.0
+- **Testing**: Jest 29.7.0 + Testing Library 15.0.0
+- **E2E Testing**: Playwright 1.44.0
+- **Type Checking**: TypeScript strict mode
 
 ## 📁 Estructura del Proyecto
 
@@ -62,45 +81,68 @@ jolly-games/
 ## 🚀 Instalación y Desarrollo
 
 ### Prerrequisitos
-- Node.js 18+ 
-- npm, yarn o pnpm
-- Git
+- **Node.js 18+** (Recomendado: 20.x LTS)
+- **npm 9+** (incluido con Node.js)
+- **Git** para clonar el repositorio
 
-### Instalación
+### Instalación Rápida
 
 ```bash
-# Clonar el repositorio
+# 1. Clonar el repositorio
 git clone https://github.com/tu-usuario/jolly-games.git
 cd jolly-games
 
-# Instalar dependencias
+# 2. Instalar dependencias (esto puede tomar unos minutos)
 npm install
-# o
-yarn install
-# o
-pnpm install
+
+# 3. Iniciar el servidor de desarrollo
+npm run dev
+
+# 4. Abrir en el navegador
+# http://localhost:3000 (o el puerto que se muestre en la terminal)
 ```
 
-### Variables de Entorno
+### Instalación Detallada
 
-Crea un archivo `.env.local` en la raíz del proyecto:
+```bash
+# Verificar versiones de Node.js y npm
+node --version  # Debe ser 18.x o superior
+npm --version   # Debe ser 9.x o superior
 
+# Clonar el repositorio
+git clone https://github.com/1Ley/jolly-games.git
+cd jolly-games
+
+# Instalar todas las dependencias
+npm install
+
+# Verificar que la instalación fue exitosa
+npm run type-check
+npm run lint
+
+# Iniciar en modo desarrollo
+npm run dev
+```
+
+### Variables de Entorno (Opcional)
+
+El proyecto funciona sin configuración adicional, pero puedes personalizar variables:
+
+```bash
+# Copia el archivo de ejemplo
+cp .env.example .env.local
+
+# Edita .env.local con tus valores (opcional)
+# Ver .env.example para todas las opciones disponibles
+```
+
+**Configuración mínima recomendada:**
 ```env
-# Configuración de desarrollo
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
-
-# Base de datos (cuando se implemente)
-# DATABASE_URL="postgresql://..."
-
-# Autenticación (cuando se implemente)
-# NEXTAUTH_SECRET="tu-secret-aqui"
-# NEXTAUTH_URL=http://localhost:3000
-
-# APIs externas (cuando se necesiten)
-# DISCORD_CLIENT_ID=""
-# DISCORD_CLIENT_SECRET=""
 ```
+
+> 📝 **Nota**: Revisa el archivo [.env.example](./.env.example) para ver todas las variables disponibles y sus descripciones.
 
 ### Comandos de Desarrollo
 
@@ -112,15 +154,58 @@ npm run start        # Inicia la aplicación en modo producción
 npm run lint         # Ejecuta ESLint
 npm run lint:fix     # Corrige errores de linting automáticamente
 npm run type-check   # Verifica tipos de TypeScript
+npm run format       # Formatea el código con Prettier
 
-# Testing (cuando se implemente)
+# Testing
 npm run test         # Ejecuta tests unitarios
 npm run test:watch   # Tests en modo watch
 npm run test:e2e     # Tests end-to-end con Playwright
 
 # Utilidades
-npm run clean        # Limpia archivos de build
-npm run analyze      # Analiza el bundle
+npm run prune        # Encuentra código TypeScript no utilizado
+```
+
+## 🔧 Solución de Problemas Comunes
+
+### Error: "Module not found"
+```bash
+# Limpiar caché de npm e instalar de nuevo
+npm cache clean --force
+rm -rf node_modules package-lock.json
+npm install
+```
+
+### Error: "Port 3000 is already in use"
+```bash
+# El servidor se iniciará automáticamente en el siguiente puerto disponible
+# Busca en la terminal el mensaje: "ready - started server on 0.0.0.0:XXXX"
+# O especifica un puerto manualmente:
+npm run dev -- -p 3001
+```
+
+### Error de TypeScript
+```bash
+# Verificar errores de tipos
+npm run type-check
+
+# Si hay errores, revisar los archivos mencionados
+# La mayoría son errores menores que no afectan la funcionalidad
+```
+
+### Error de ESLint
+```bash
+# Corregir automáticamente errores de formato
+npm run lint:fix
+npm run format
+```
+
+### Problemas con Git
+```bash
+# Si hay problemas con los hooks de Git
+npm run prepare
+
+# Si no puedes hacer commit
+git config core.autocrlf false  # En Windows
 ```
 
 ## 📄 Páginas Implementadas
@@ -245,37 +330,68 @@ Configuración estricta en `tsconfig.json` con:
 - Strict mode habilitado
 - Tipos personalizados en `/types/`
 
-## 🚀 Despliegue
+## 📤 Subir a GitHub
 
-### Vercel (Recomendado)
+### Primera vez (Crear repositorio)
 ```bash
-# Instalar Vercel CLI
+# 1. Crear repositorio en GitHub (sin README, .gitignore, ni licencia)
+# 2. En tu terminal, dentro del proyecto:
+
+git remote add origin https://github.com/TU-USUARIO/jolly-games.git
+git branch -M main
+git push -u origin main
+```
+
+### Actualizar repositorio existente
+```bash
+# Agregar cambios
+git add .
+git commit -m "feat: Actualización del proyecto Jolly Games"
+git push origin main
+```
+
+### Para que tus amigos clonen el proyecto
+```bash
+# Ellos deben ejecutar:
+git clone https://github.com/TU-USUARIO/jolly-games.git
+cd jolly-games
+npm install
+npm run dev
+```
+
+## 🚀 Despliegue en Producción
+
+### Vercel (Recomendado - Gratis)
+```bash
+# 1. Crear cuenta en vercel.com
+# 2. Conectar repositorio de GitHub
+# 3. Vercel detectará automáticamente Next.js
+# 4. Deploy automático en cada push
+
+# O usando CLI:
 npm i -g vercel
-
-# Desplegar
 vercel
-
-# Configurar dominio personalizado
-vercel domains add tu-dominio.com
 ```
 
-### Netlify
+### Netlify (Alternativa gratuita)
 ```bash
-# Build command
-npm run build
-
-# Output directory
-out
-
-# Environment variables
-# Configurar en Netlify dashboard
+# Build command: npm run build
+# Output directory: .next
+# Node version: 18.x
 ```
 
-### Docker
-```dockerfile
-# Dockerfile incluido para desarrollo local
-docker build -t jolly-games .
-docker run -p 3000:3000 jolly-games
+### GitHub Pages (Solo para sitios estáticos)
+```bash
+# Agregar en package.json:
+"homepage": "https://TU-USUARIO.github.io/jolly-games",
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d .next"
+}
+
+# Instalar gh-pages
+npm install --save-dev gh-pages
+npm run deploy
 ```
 
 ## 🧪 Testing
