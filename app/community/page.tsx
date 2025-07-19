@@ -3,151 +3,125 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Heart,
-  MessageCircle,
-  Eye,
-  Filter,
-  Search,
-  Grid,
-  List,
-  X,
-  ChevronLeft,
-  ChevronRight,
-  Download,
-  Share2,
-  Image as ImageIcon,
+  Trophy,
+  Calendar,
   Users,
-  Swords,
+  Clock,
+  Star,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Image from 'next/image';
-import { formatRelativeTime, formatNumber } from '@/lib/utils';
-import { mockActivities } from '@/data/mock-data';
+import { mockEvents } from '@/data/mock-data';
 
-const activityTypeConfig = {
-  screenshot: {
-    icon: ImageIcon,
-    color: 'text-blue-400',
-    label: 'Captura',
-  },
-  artwork: {
-    icon: Users,
-    color: 'text-purple-400',
-    label: 'Arte',
-  },
-  build: {
-    icon: Swords,
-    color: 'text-green-400',
-    label: 'Construcción',
-  },
-  achievement: {
-    icon: Heart,
-    color: 'text-yellow-400',
-    label: 'Logro',
-  },
-};
+interface Team {
+  id: string;
+  name: string;
+  color: string;
+  emoji: string;
+  players: string[];
+  placement: number | null;
+}
 
-const filterOptions = [
-  { id: 'all', label: 'Todas' },
-  { id: 'screenshot', label: 'Capturas' },
-  { id: 'artwork', label: 'Arte' },
-  { id: 'build', label: 'Construcciones' },
-  { id: 'achievement', label: 'Logros' },
-];
+interface EventData {
+  id: string;
+  name: string;
+  description: string;
+  date: string;
+  status: string;
+  teams: Team[];
+}
 
-const sortOptions = [
-  { id: 'recent', label: 'Más recientes' },
-  { id: 'popular', label: 'Más populares' },
-  { id: 'commented', label: 'Más comentadas' },
-];
+export default function EventsPage() {
+  const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
+  const currentEvent = mockEvents.currentEvent;
 
-export default function CommunityPage() {
-  const [selectedFilter, setSelectedFilter] = useState('all');
-  const [selectedSort, setSelectedSort] = useState('recent');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedActivity, setSelectedActivity] = useState<any>(null);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
 
-  const filteredActivities = mockActivities.filter(activity => {
-    const matchesFilter =
-      selectedFilter === 'all' || activity.type === selectedFilter;
-    const matchesSearch =
-      activity.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (activity.description &&
-        activity.description.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesFilter && matchesSearch;
-  });
-
-  const sortedActivities = [...filteredActivities].sort((a, b) => {
-    switch (selectedSort) {
-      case 'popular':
-        return b.likes - a.likes;
-      case 'commented':
-        return b.comments.length - a.comments.length;
-      case 'recent':
-      default:
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'upcoming':
         return (
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
+            <Clock className="w-3 h-3 mr-1" />
+            Próximamente
+          </Badge>
         );
+      case 'live':
+        return (
+          <Badge className="bg-red-500/20 text-red-400 border-red-500/30">
+            <Star className="w-3 h-3 mr-1" />
+            En Vivo
+          </Badge>
+        );
+      case 'completed':
+        return (
+          <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+            <Trophy className="w-3 h-3 mr-1" />
+            Completado
+          </Badge>
+        );
+      default:
+        return null;
     }
-  });
-
-  const openLightbox = (activity: any, index: number) => {
-    setSelectedActivity(activity);
-    setLightboxIndex(index);
-    setLightboxOpen(true);
-  };
-
-  const closeLightbox = () => {
-    setSelectedActivity(null);
-    setLightboxOpen(false);
-  };
-
-  const nextImage = () => {
-    const nextIndex = (lightboxIndex + 1) % sortedActivities.length;
-    setLightboxIndex(nextIndex);
-    setSelectedActivity(sortedActivities[nextIndex]);
-  };
-
-  const prevImage = () => {
-    const prevIndex =
-      (lightboxIndex - 1 + sortedActivities.length) % sortedActivities.length;
-    setLightboxIndex(prevIndex);
-    setSelectedActivity(sortedActivities[prevIndex]);
   };
 
   return (
-    <main className="min-h-screen pt-20">
-      <div className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
-          <h1 className="text-glow mb-4 font-minecraft text-4xl font-bold md:text-5xl">
-            Galería de la Comunidad
-          </h1>
-          <p className="mx-auto max-w-2xl text-gray-400">
-            Descubre las increíbles creaciones, capturas y logros de nuestra
-            comunidad de jugadores
-          </p>
-        </motion.div>
+    <main className="min-h-screen">
+      {/* Hero Banner */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative h-[450px] overflow-hidden"
+        style={{
+          backgroundImage: 'url(/images/fondo_events.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          maskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)'
+        }}
+      >
+        {/* Dark Vignette Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-black/20 to-black/40" style={{
+          background: 'radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)'
+        }} />
+        
+        {/* Content */}
+        <div className="relative z-10 flex h-full items-center justify-center">
+          <div className="text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-glow mb-4 font-minecraft text-5xl font-bold text-white md:text-6xl"
+            >
+              Eventos
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mx-auto max-w-2xl text-lg text-gray-200"
+            >
+              Descubre los próximos eventos y equipos que competirán por la gloria
+            </motion.p>
+          </div>
+        </div>
+      </motion.div>
 
-        {/* Filters and Controls */}
+      <div className="container mx-auto px-4 -mt-8 relative z-20">
+
+        {/* Event Info */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -155,355 +129,219 @@ export default function CommunityPage() {
           className="bento-item mb-8"
         >
           <div className="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
-            {/* Search */}
-            <div className="max-w-md flex-1">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Buscar creaciones..."
-                  value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-10 pr-4 text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-500"
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold text-white mb-2 flex items-center space-x-3">
+                <Image
+                  src="/emojils/Copa.png"
+                  alt="Copa"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8"
                 />
+                <span>{currentEvent.name}</span>
+              </h2>
+              <p className="text-gray-400 mb-3">
+                {currentEvent.description}
+              </p>
+              <div className="flex items-center space-x-4 text-sm">
+                <div className="flex items-center space-x-2">
+                  <Calendar className="w-4 h-4 text-blue-400" />
+                  <span className="text-gray-300">
+                    {formatDate(currentEvent.date)}
+                  </span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Users className="w-4 h-4 text-green-400" />
+                  <span className="text-gray-300">
+                    {currentEvent.teams.length} equipos
+                  </span>
+                </div>
               </div>
             </div>
-
-            {/* Filters */}
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <Filter className="h-4 w-4 text-gray-400" />
-                <select
-                  value={selectedFilter}
-                  onChange={e => setSelectedFilter(e.target.value)}
-                  className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                >
-                  {filterOptions.map(option => (
-                    <option
-                      key={option.id}
-                      value={option.id}
-                      className="bg-gray-800"
-                    >
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <select
-                value={selectedSort}
-                onChange={e => setSelectedSort(e.target.value)}
-                className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-              >
-                {sortOptions.map(option => (
-                  <option
-                    key={option.id}
-                    value={option.id}
-                    className="bg-gray-800"
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-
-              {/* View Mode Toggle */}
-              <div className="flex items-center rounded-lg bg-white/5 p-1">
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={`rounded-md p-2 transition-colors ${
-                    viewMode === 'grid'
-                      ? 'bg-primary-500 text-white'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  <Grid className="h-4 w-4" />
-                </button>
-                <button
-                  onClick={() => setViewMode('list')}
-                  className={`rounded-md p-2 transition-colors ${
-                    viewMode === 'list'
-                      ? 'bg-primary-500 text-white'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  <List className="h-4 w-4" />
-                </button>
-              </div>
+              {getStatusBadge(currentEvent.status)}
             </div>
           </div>
         </motion.div>
 
-        {/* Gallery */}
+        {/* Teams Grid */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          {viewMode === 'grid' ? (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {sortedActivities.map((activity, index) => (
-                <motion.div
-                  key={activity.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.5 + index * 0.05 }}
-                  className="bento-item group cursor-pointer overflow-hidden"
-                  onClick={() => openLightbox(activity, index)}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {currentEvent.teams.map((team, index) => (
+              <motion.div
+                key={team.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                className="group cursor-pointer overflow-hidden rounded-xl border border-white/10 transition-all duration-300 hover:border-white/20 hover:scale-105"
+                style={{
+                  background: `linear-gradient(135deg, ${team.color}20 0%, ${team.color}10 100%)`,
+                  borderColor: `${team.color}40`
+                }}
+                onClick={() => setSelectedTeam(selectedTeam?.id === team.id ? null : team)}
+              >
+                {/* Team Header */}
+                <div 
+                  className="p-6 text-center"
+                  style={{
+                    background: `linear-gradient(135deg, ${team.color}30 0%, ${team.color}20 100%)`
+                  }}
                 >
-                  {/* Image */}
-                  <div className="mb-4 aspect-square overflow-hidden rounded-lg bg-gradient-to-br from-gray-700 to-gray-800 transition-transform group-hover:scale-105">
-                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary-500/20 to-accent-500/20">
-                      <span className="text-4xl opacity-50">🖼️</span>
+                  <div className="mb-4 flex justify-center">
+                    <div 
+                      className="flex h-16 w-16 items-center justify-center rounded-full border-2 transition-transform group-hover:scale-110"
+                      style={{
+                        borderColor: team.color,
+                        background: `${team.color}20`
+                      }}
+                    >
+                      <Image
+                        src={team.emoji}
+                        alt={team.name}
+                        width={32}
+                        height={32}
+                        className="h-8 w-8"
+                      />
                     </div>
                   </div>
+                  <h3 
+                    className="text-xl font-bold mb-2 transition-colors"
+                    style={{ color: team.color }}
+                  >
+                    {team.name}
+                  </h3>
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-400">
+                    <Users className="w-4 h-4" />
+                    <span>{team.players.length} jugadores</span>
+                  </div>
+                </div>
 
-                  {/* Content */}
-                  <div>
-                    <div className="mb-2 flex items-center justify-between">
-                      <h3 className="truncate font-semibold text-white transition-colors group-hover:text-blue-300">
-                        {activity.title}
-                      </h3>
-                      <Badge
-                        variant="outline"
-                        className={`text-xs ${activityTypeConfig[activity.type as keyof typeof activityTypeConfig].color}`}
+                {/* Team Players */}
+                <div className="p-4">
+                  <div className="space-y-2">
+                    {team.players.map((player, playerIndex) => (
+                      <div
+                        key={playerIndex}
+                        className="flex items-center space-x-3 rounded-lg bg-white/5 p-2 transition-colors hover:bg-white/10"
                       >
-                        {
-                          activityTypeConfig[
-                            activity.type as keyof typeof activityTypeConfig
-                          ].label
-                        }
-                      </Badge>
-                    </div>
-
-                    <p className="mb-3 line-clamp-2 text-sm text-gray-400">
-                      {activity.description}
-                    </p>
-
-                    <div className="flex items-center justify-between text-xs text-gray-500">
-                      <span>por {activity.user.username}</span>
-                      <div className="flex items-center space-x-3">
-                        <div className="flex items-center space-x-1">
-                          <Heart className="h-3 w-3" />
-                          <span>{formatNumber(activity.likes)}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <MessageCircle className="h-3 w-3" />
-                          <span>{activity.comments.length}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {sortedActivities.map((activity, index) => (
-                <motion.div
-                  key={activity.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.5 + index * 0.05 }}
-                  className="bento-item group cursor-pointer"
-                  onClick={() => openLightbox(activity, index)}
-                >
-                  <div className="flex space-x-4">
-                    {/* Image */}
-                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg bg-gradient-to-br from-gray-700 to-gray-800 transition-transform group-hover:scale-105">
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary-500/20 to-accent-500/20">
-                        <span className="text-2xl opacity-50">🖼️</span>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="min-w-0 flex-1">
-                      <div className="mb-2 flex items-center justify-between">
-                        <h3 className="font-semibold text-white transition-colors group-hover:text-blue-300">
-                          {activity.title}
-                        </h3>
-                        <Badge
-                          variant="outline"
-                          className={`text-xs ${activityTypeConfig[activity.type as keyof typeof activityTypeConfig].color}`}
+                        <div 
+                          className="flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold text-white"
+                          style={{ backgroundColor: team.color }}
                         >
-                          {
-                            activityTypeConfig[
-                              activity.type as keyof typeof activityTypeConfig
-                            ].label
-                          }
-                        </Badge>
-                      </div>
-
-                      <p className="mb-3 text-sm text-gray-400">
-                        {activity.description}
-                      </p>
-
-                      <div className="flex items-center justify-between text-xs text-gray-500">
-                        <div className="flex items-center space-x-4">
-                          <span>por {activity.user.username}</span>
-                          <span>{formatRelativeTime(activity.createdAt)}</span>
+                          {player.charAt(0)}
                         </div>
-
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center space-x-1">
-                            <Heart className="h-3 w-3" />
-                            <span>{formatNumber(activity.likes)}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <MessageCircle className="h-3 w-3" />
-                            <span>{activity.comments.length}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <Eye className="h-3 w-3" />
-                          </div>
-                        </div>
+                        <span className="text-sm text-gray-300">{player}</span>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                  
+                  {team.placement && (
+                    <div className="mt-4 flex items-center justify-center space-x-2">
+                      <Trophy className="w-4 h-4 text-yellow-400" />
+                      <span className="text-sm font-semibold text-yellow-400">
+                        Puesto #{team.placement}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Lightbox Modal */}
+        {/* Team Details Modal */}
         <AnimatePresence>
-          {lightboxOpen && (
+          {selectedTeam && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-              onClick={closeLightbox}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+              onClick={() => setSelectedTeam(null)}
             >
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
-                className="w-full max-w-4xl overflow-hidden rounded-xl bg-gray-900"
-                onClick={e => e.stopPropagation()}
+                className="relative max-h-[90vh] max-w-2xl overflow-hidden rounded-xl bg-gray-900 shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  background: `linear-gradient(135deg, ${selectedTeam.color}10 0%, rgba(17, 24, 39, 0.95) 100%)`
+                }}
               >
-                {/* Header */}
-                <div className="flex items-center justify-between border-b border-white/10 p-6">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-accent-500">
-                      <span className="font-bold text-white">
-                        {selectedActivity.user.username.charAt(0).toUpperCase()}
-                      </span>
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedTeam(null)}
+                  className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+
+                <div className="p-8">
+                  {/* Team Header */}
+                  <div className="mb-6 text-center">
+                    <div className="mb-4 flex justify-center">
+                      <div 
+                        className="flex h-20 w-20 items-center justify-center rounded-full border-4"
+                        style={{
+                          borderColor: selectedTeam.color,
+                          background: `${selectedTeam.color}20`
+                        }}
+                      >
+                        <Image
+                          src={selectedTeam.emoji}
+                          alt={selectedTeam.name}
+                          width={40}
+                          height={40}
+                          className="h-10 w-10"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-white">
-                        {selectedActivity.title}
-                      </h3>
-                      <p className="text-sm text-gray-400">
-                        por {selectedActivity.user.username}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <Button variant="ghost" size="sm">
-                      <Download className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="sm">
-                      <Share2 className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="sm" onClick={closeLightbox}>
-                      <X className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Image */}
-                <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900">
-                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary-500/20 to-accent-500/20">
-                    <span className="text-8xl opacity-30">🖼️</span>
-                  </div>
-
-                  {/* Navigation */}
-                  <button
-                    onClick={prevImage}
-                    className="absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70"
-                  >
-                    <ChevronLeft className="h-5 w-5" />
-                  </button>
-                  <button
-                    onClick={nextImage}
-                    className="absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70"
-                  >
-                    <ChevronRight className="h-5 w-5" />
-                  </button>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <div className="mb-4 flex items-center justify-between">
-                    <Badge
-                      variant="outline"
-                      className={
-                        activityTypeConfig[
-                          selectedActivity.type as keyof typeof activityTypeConfig
-                        ].color
-                      }
+                    <h2 
+                      className="text-3xl font-bold mb-2"
+                      style={{ color: selectedTeam.color }}
                     >
-                      {
-                        activityTypeConfig[
-                          selectedActivity.type as keyof typeof activityTypeConfig
-                        ].label
-                      }
-                    </Badge>
-
-                    <div className="flex items-center space-x-4 text-sm text-gray-400">
-                      <div className="flex items-center space-x-1">
-                        <Heart className="h-4 w-4" />
-                        <span>{formatNumber(selectedActivity.likes)}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <MessageCircle className="h-4 w-4" />
-                        <span>{selectedActivity.comments.length}</span>
-                      </div>
-                      <span>
-                        {formatRelativeTime(selectedActivity.createdAt)}
-                      </span>
+                      {selectedTeam.name}
+                    </h2>
+                    <div className="flex items-center justify-center space-x-2 text-gray-400">
+                      <Users className="w-5 h-5" />
+                      <span>{selectedTeam.players.length} jugadores</span>
                     </div>
                   </div>
 
-                  <p className="mb-4 text-gray-300">
-                    {selectedActivity.description}
-                  </p>
+                  {/* Players List */}
+                  <div className="mb-6">
+                    <h3 className="mb-4 text-xl font-semibold text-white">Jugadores</h3>
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                      {selectedTeam.players.map((player, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center space-x-3 rounded-lg bg-white/5 p-3 transition-colors hover:bg-white/10"
+                        >
+                          <div 
+                            className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white"
+                            style={{ backgroundColor: selectedTeam.color }}
+                          >
+                            {player.charAt(0)}
+                          </div>
+                          <span className="text-gray-300">{player}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-                  {/* Comments Preview */}
-                  {selectedActivity.comments.length > 0 && (
-                    <div className="border-t border-white/10 pt-4">
-                      <h4 className="mb-3 font-semibold text-white">
-                        Comentarios
-                      </h4>
-                      <div className="max-h-32 space-y-3 overflow-y-auto">
-                        {selectedActivity.comments
-                          .slice(0, 3)
-                          .map((comment: any) => (
-                            <div key={comment.id} className="flex space-x-3">
-                              <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-gray-600 to-gray-700">
-                                <span className="text-xs text-white">
-                                  {comment.user.username
-                                    .charAt(0)
-                                    .toUpperCase()}
-                                </span>
-                              </div>
-                              <div className="flex-1">
-                                <div className="mb-1 flex items-center space-x-2">
-                                  <span className="text-sm font-medium text-white">
-                                    {comment.user.username}
-                                  </span>
-                                  <span className="text-xs text-gray-500">
-                                    {formatRelativeTime(comment.createdAt)}
-                                  </span>
-                                </div>
-                                <p className="text-sm text-gray-300">
-                                  {comment.content}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
+                  {/* Team Stats */}
+                  {selectedTeam.placement && (
+                    <div className="text-center">
+                      <div className="inline-flex items-center space-x-2 rounded-lg bg-yellow-400/20 px-4 py-2">
+                        <Trophy className="w-5 h-5 text-yellow-400" />
+                        <span className="font-semibold text-yellow-400">
+                          Puesto #{selectedTeam.placement} en el evento anterior
+                        </span>
                       </div>
                     </div>
                   )}
@@ -512,6 +350,7 @@ export default function CommunityPage() {
             </motion.div>
           )}
         </AnimatePresence>
+
       </div>
     </main>
   );

@@ -38,11 +38,11 @@ const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   // Usar fallback si no hay username o si hay error
   const displayUsername = username && !imageError ? username : fallback;
   
-  // URL de la API de Minecraft para obtener el avatar
-  const avatarUrl = `https://mc-heads.net/avatar/${displayUsername}/128`;
+  // URL de la API de Minecraft para obtener el avatar con overlay (ambas capas)
+  const avatarUrl = `https://mc-heads.net/head/${displayUsername}/128`;
   
   // URL alternativa en caso de error
-  const fallbackUrl = `https://mc-heads.net/avatar/steve/128`;
+  const fallbackUrl = `https://mc-heads.net/head/steve/128`;
 
   const handleImageError = () => {
     if (!imageError) {
@@ -60,11 +60,11 @@ const MinecraftAvatar: React.FC<MinecraftAvatarProps> = ({
   return (
     <div className={cn('flex items-center gap-2', className)}>
       <div className={cn(
-        'relative rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800',
+        'relative overflow-hidden',
         sizeClasses[size]
       )}>
         {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700">
+          <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
         )}
@@ -129,14 +129,14 @@ export const useMinecraftUser = (username?: string) => {
           setSkinData({
             username: data.name,
             uuid: data.id,
-            skinUrl: `https://mc-heads.net/avatar/${data.name}/128`,
+            skinUrl: `https://mc-heads.net/head/${data.name}/128`,
             isValid: true
           });
         } else {
           // Usuario no encontrado, usar fallback
           setSkinData({
             username: username,
-            skinUrl: `https://mc-heads.net/avatar/Steve/128`,
+            skinUrl: `https://mc-heads.net/head/Steve/128`,
             isValid: false
           });
         }
@@ -144,7 +144,7 @@ export const useMinecraftUser = (username?: string) => {
         console.error('Error fetching Minecraft user data:', error);
         setSkinData({
           username: username,
-          skinUrl: `https://mc-heads.net/avatar/Steve/128`,
+          skinUrl: `https://mc-heads.net/head/Steve/128`,
           isValid: false
         });
       } finally {

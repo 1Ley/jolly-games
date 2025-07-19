@@ -24,9 +24,9 @@ import Image from 'next/image';
 const navigation = [
   { name: 'Inicio', href: '/', icon: Home },
   { name: 'Updates', href: '/updates', icon: FileText },
-  { name: 'Leaderboard', href: '/leaderboard', icon: Trophy },
-  { name: 'Comunidad', href: '/community', icon: Users },
   { name: 'Soporte', href: '/support', icon: HelpCircle },
+  { name: 'Events', href: '/community', icon: Users },
+  { name: 'Leaderboard', href: '/leaderboard', icon: Trophy },
   { name: 'Reglas', href: '/rules', icon: Shield },
 ];
 

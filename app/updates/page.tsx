@@ -8,65 +8,23 @@ import { Badge } from '@/components/ui/badge'
 import { Search, Plus, Filter, Calendar, User, Eye, MessageSquare, X, Gamepad2, Shield, Zap, Trophy, Settings, Server, PartyPopper, Bot, Wrench, Sword, Plane, Timer, Pickaxe, Target, Wand2, Crosshair, Users, Info } from 'lucide-react'
 import { mockUpdates, UpdatePost } from '@/data/mock-data'
 import Image from 'next/image'
-import axios from 'axios'
+import MinecraftAvatar from '@/components/ui/minecraft-avatar'
 
-// Function to process content - content already has HTML img tags
+// Function to process content - simplified to avoid hydration issues
 function processContentWithEmojis(content: string): string {
-  // Content already contains HTML img tags, just return as is
-  return content;
-}
-
-interface MinecraftAvatarProps {
-  username: string;
-  size?: number;
-  className?: string;
-}
-
-function MinecraftAvatar({ username, size = 32, className = '' }: MinecraftAvatarProps) {
-  const [avatarUrl, setAvatarUrl] = useState(`https://mc-heads.net/avatar/${username}/${size}`);
-  const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    const fetchAvatar = async () => {
-      try {
-        const response = await axios.get(
-          `https://playerdb.co/api/player/minecraft/${username}`
-        );
-        if (
-          response.data &&
-          response.data.code === 'player.found' &&
-          response.data.data.player.avatar
-        ) {
-          setAvatarUrl(response.data.data.player.avatar);
-        }
-      } catch (error) {
-        console.error(`Could not fetch avatar for ${username}. Using fallback.`);
-        setHasError(true);
-      }
-    };
-
-    if (username && username !== 'steve') {
-      fetchAvatar();
-    }
-  }, [username]);
-
-  return (
-    <Image
-      src={hasError ? `https://mc-heads.net/avatar/steve/${size}` : avatarUrl}
-      alt={`${username} avatar`}
-      width={size}
-      height={size}
-      className={`rounded-md ${className}`}
-      onError={(e) => {
-        const target = e.target as HTMLImageElement;
-        if (!hasError) {
-          setHasError(true);
-          target.src = `https://mc-heads.net/avatar/steve/${size}`;
-        }
-      }}
-    />
+  // Convert HTML img tags to have correct className attribute and ensure proper emoji sizing
+  let processedContent = content.replace(
+    /<img src="([^"]+)" alt="([^"]+)" class="([^"]+)" \/>/g,
+    '<img src="$1" alt="$2" className="$3" style="width: 20px; height: 20px; display: inline-block; vertical-align: middle;" />'
   );
+  
+  // Convert line breaks to <br> tags
+  processedContent = processedContent.replace(/\n/g, '<br>');
+  
+  return processedContent;
 }
+
+
 
 export default function UpdatesPage() {
   const [selectedUpdate, setSelectedUpdate] = useState<UpdatePost | null>(null)
@@ -123,22 +81,47 @@ export default function UpdatesPage() {
   }
 
   return (
-    <main className="min-h-screen pb-12 pt-24">
-      <div className="container mx-auto max-w-screen-2xl px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
-          <h1 className="text-glow minecraft-font text-4xl md:text-5xl font-bold mb-4">
-            Updates
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-gray-400">
-            Mantente al día con las últimas novedades, mejoras y eventos del servidor
-          </p>
-        </motion.div>
+    <main className="min-h-screen pb-12">
+      {/* Hero Banner */}
+      <div 
+        className="relative h-[450px] bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{
+          backgroundImage: 'url(/images/banner_updates.png)',
+          maskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)'
+        }}
+      >
+        {/* Dark overlay with vignette effect */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-black/20 to-black/60" />
+        
+        {/* Content */}
+        <div className="relative z-10 flex h-full items-center justify-center">
+          <div className="text-center px-4">
+
+            
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-glow minecraft-font text-5xl md:text-6xl font-bold mb-6 text-white"
+            >
+              Updates
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mx-auto max-w-2xl text-xl text-gray-200"
+            >
+              Mantente al día con las últimas novedades, mejoras y eventos del servidor
+            </motion.p>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto max-w-screen-2xl px-4 relative z-20 -mt-8">
 
         {/* Search and Filter Controls */}
         <motion.div
@@ -277,15 +260,15 @@ export default function UpdatesPage() {
                     
                     {/* Content */}
                     <div 
-                      className="text-gray-200 text-sm mb-4 flex-grow line-clamp-3 leading-relaxed whitespace-pre-line"
-                      dangerouslySetInnerHTML={{ __html: processContentWithEmojis(update.content).replace(/\n/g, '<br>') }}
+                      className="text-gray-200 text-sm mb-4 flex-grow line-clamp-3 leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: processContentWithEmojis(update.content) }}
                     />
                     
                     {/* Footer with metadata */}
                     <div className="mt-auto">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2 bg-black/30 px-2 py-1 rounded">
-                          <MinecraftAvatar username={update.author} size={16} />
+                          <MinecraftAvatar username={update.author} size="sm" />
                           <span className="text-xs text-gray-300">by {update.author}</span>
                         </div>
                         <span className="minecraft-font bg-black/30 px-2 py-1 rounded text-xs text-white">{update.version}</span>
@@ -360,7 +343,7 @@ export default function UpdatesPage() {
                   <span className="minecraft-font bg-black/30 px-3 py-1 rounded text-white">{selectedUpdate.version}</span>
                   <span className="bg-black/30 px-3 py-1 rounded text-white">{selectedUpdate.date}</span>
                   <div className="flex items-center space-x-2 bg-black/30 px-3 py-1 rounded text-white">
-                    <MinecraftAvatar username={selectedUpdate.author} size={20} />
+                    <MinecraftAvatar username={selectedUpdate.author} size="sm" />
                     <span>by {selectedUpdate.author}</span>
                   </div>
                   <span className="minecraft-font bg-black/30 px-3 py-1 rounded text-white">#{selectedUpdate.id}</span>
@@ -368,8 +351,8 @@ export default function UpdatesPage() {
                 
                 <div className="bg-black/20 rounded-lg p-6 backdrop-blur-sm mb-6">
                   <div 
-                    className="text-white leading-relaxed whitespace-pre-line text-lg"
-                    dangerouslySetInnerHTML={{ __html: processContentWithEmojis(selectedUpdate.content).replace(/\n/g, '<br>') }}
+                    className="text-white leading-relaxed text-lg"
+                    dangerouslySetInnerHTML={{ __html: processContentWithEmojis(selectedUpdate.content) }}
                   />
                 </div>
                 

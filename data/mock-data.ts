@@ -1,6 +1,5 @@
 import type {
   User,
-  NewsPost,
   SupportTicket,
   Activity,
   ForumCategory,
@@ -107,72 +106,117 @@ export const mockGameModes: GameMode[] = [
   },
 ];
 
-// Mock Community Activities
-export const mockActivities: Activity[] = [
-  {
-    id: 'activity-1',
-    userId: 'user-2',
-    user: {
-      ...mockUser,
-      id: 'user-2',
-      username: 'Jiro',
-      avatar:
-        'https://mc-heads.net/avatar/jeb_/64',
-    },
-    type: 'screenshot',
-    title: '¡Mi nueva base en survival!',
-    description: 'Después de 100 horas de trabajo, ¡por fin está terminada!',
-    imageUrl: '/images/community/activity-1.jpg',
-    likes: 152,
-    comments: [],
-    tags: ['survival', 'base'],
-    createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
-    updatedAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
-    isApproved: true,
-  },
-  {
-    id: 'activity-2',
-    userId: 'user-3',
-    user: {
-      ...mockUser,
-      id: 'user-3',
-      username: 'TripRod',
-      avatar:
-        'https://mc-heads.net/avatar/Dinnerbone/64',
-    },
-    type: 'artwork',
-    title: 'Un fanart del admin 1Ley',
-    description: 'Espero que le guste al admin :D',
-    imageUrl: '/images/community/activity-2.jpg',
-    likes: 230,
-    comments: [],
-    tags: ['fanart', 'digitalart'],
-    createdAt: new Date(Date.now() - 8 * 60 * 60 * 1000),
-    updatedAt: new Date(Date.now() - 8 * 60 * 60 * 1000),
-    isApproved: true,
-  },
-  {
-    id: 'activity-3',
-    userId: 'user-4',
-    user: {
-      ...mockUser,
-      id: 'user-4',
-      username: 'RxpliedSL',
-      avatar:
-        'https://mc-heads.net/avatar/Grumm/64',
-    },
-    type: 'build',
-    title: 'Réplica del Castillo de Hyrule',
-    description: 'Me ha llevado un mes, pero creo que ha merecido la pena.',
-    imageUrl: '/images/community/activity-3.jpg',
-    likes: 450,
-    comments: [],
-    tags: ['build', 'creative', 'zelda'],
-    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-    updatedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-    isApproved: true,
-  },
-];
+// Mock Events Data
+export const mockEvents = {
+  currentEvent: {
+    id: 'event-1',
+    name: 'JollyCup',
+    description: 'El evento más grande del año con los mejores equipos',
+    date: 'Próximamente',
+    status: 'upcoming',
+    teams: [
+      {
+        id: 'team-red',
+        name: 'Team Red',
+        color: '#DC2626',
+        emoji: '/emojils/JollyGames.png',
+        players: ['Player1', 'Player2', 'Player3', 'Player4'],
+        placement: 1
+      },
+      {
+        id: 'team-blue',
+        name: 'Team Blue',
+        color: '#2563EB',
+        emoji: '/emojils/Skywars.png',
+        players: ['Player5', 'Player6', 'Player7', 'Player8'],
+        placement: null
+      },
+      {
+        id: 'team-green',
+        name: 'Team Green',
+        color: '#16A34A',
+        emoji: '/emojils/Survival games.png',
+        players: ['Player9', 'Player10', 'Player11', 'Player12'],
+        placement: null
+      },
+      {
+        id: 'team-orange',
+        name: 'Team Orange',
+        color: '#EA580C',
+        emoji: '/emojils/Cohete.png',
+        players: ['Player13', 'Player14', 'Player15', 'Player16'],
+        placement: null
+      },
+      {
+        id: 'team-purple',
+        name: 'Team Purple',
+        color: '#7C3AED',
+        emoji: '/emojils/BattleBox.png',
+        players: ['Player17', 'Player18', 'Player19', 'Player20'],
+        placement: null
+      },
+      {
+        id: 'team-cyan',
+        name: 'Team Cyan',
+        color: '#0891B2',
+        emoji: '/emojils/BeepTest.png',
+        players: ['Player21', 'Player22', 'Player23', 'Player24'],
+        placement: null
+      },
+      {
+        id: 'team-gray',
+        name: 'Team Gray',
+        color: '#6B7280',
+        emoji: '/emojils/Spleef.png',
+        players: ['Player25', 'Player26', 'Player27', 'Player28'],
+        placement: null
+      },
+      {
+        id: 'team-yellow',
+        name: 'Team Yellow',
+        color: '#F59E0B',
+        emoji: '/emojils/Star.png',
+        players: ['Player29', 'Player30', 'Player31', 'Player32'],
+        placement: null
+      },
+      {
+        id: 'team-pink',
+        name: 'Team Pink',
+        color: '#EC4899',
+        emoji: '/emojils/Copa.png',
+        players: ['Player33', 'Player34', 'Player35', 'Player36'],
+        placement: null
+      },
+      {
+        id: 'team-black',
+        name: 'Team Black',
+        color: '#1F2937',
+        emoji: '/emojils/Bow_Spleef.png',
+        players: ['Player37', 'Player38', 'Player39', 'Player40'],
+        placement: null
+      },
+      {
+        id: 'team-white',
+        name: 'Team White',
+        color: '#F3F4F6',
+        emoji: '/emojils/check.png',
+        players: ['Player41', 'Player42', 'Player43', 'Player44'],
+        placement: null
+      },
+      {
+        id: 'team-aqua',
+        name: 'Team Aqua',
+        color: '#14B8A6',
+        emoji: '/emojils/Random Kits.png',
+        players: ['Player45', 'Player46', 'Player47', 'Player48'],
+        placement: null
+      }
+    ]
+  }
+};
+
+// Empty activities array to maintain compatibility
+export const mockActivities: Activity[] = [];
 
 export const mockFeatureSections = [
   {
@@ -366,14 +410,26 @@ export interface UpdatePost {
   imageUrl?: string;
 }
 
-export const mockUpdates: NewsPost[] = [
+export const mockUpdates: UpdatePost[] = [
+  {
+    id: 48,
+    title: 'Servidor',
+    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> <strong>Purga</strong>\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Cada jugador comienza con <span class="font-bold text-blue-400">10 tickets</span>.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Si no pasa la purga, se le sumarán <span class="font-bold text-green-400">+5 tickets</span>.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Cada vez que no pases la purga, seguirás acumulando <span class="font-bold text-yellow-400">5 tickets extra</span>, aumentando tus probabilidades de jugar.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Si logras pasar una purga, tus tickets se reiniciarán a <span class="font-bold text-blue-400">10</span>.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Ya no perderás <span class="font-bold text-red-400">5 corazones</span> en el deathmatch.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> <strong>Jolly</strong>\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mobs ya no seguirán a los espectadores.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se corrigió el título que muestra el <span class="font-bold text-purple-400">ELO sumado</span>.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ahora las partidas jugadas cuentan correctamente.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ya no es posible exceder el límite de jugadores en el <span class="font-bold text-orange-400">Chosen</span>.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El borde ahora inflige daño a los <span class="font-bold text-gray-400">zombies</span> (jugadores desconectados).\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <strong>SkyWars</strong>\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Fueron arreglados los puntos de aparición en el <span class="font-bold text-cyan-400">modo trío</span>.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se corrigió el error que impedía recibir el fly al entrar.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> El daño por caída al ingresar como suplente fue solucionado.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Ahora los asesinos con <span class="font-bold text-blue-400">caña de pescar</span> cuentan correctamente.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El bug de que si te desconectabas y te volvías a conectar aparecías vivo fue arreglado.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El scenario <span class="font-bold text-red-400">Super Hero</span> fue modificado.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Los scenarios <span class="font-bold text-green-400">Syphon</span> y <span class="font-bold text-pink-400">Double Health</span> fueron arreglados y ahora empezarán a salir.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El scenario <span class="font-bold text-gray-400">Double Ores</span> fue eliminado.',
+    version: '8.4',
+    date: '21/07/2025',
+    author: 'zjjeree',
+    categories: ['server', 'purga', 'survival-games', 'jolly', 'skywars', 'battlebox', 'random-kits'],
+    gradient: 'from-purple-500 via-pink-600 to-red-600',
+    size: 'large',
+    featured: true
+  },
   {
     id: 47,
     title: 'Jolly Games',
     content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mensajes de los 3 lenguajes actuales fueron traducidos, si encuentras alguno con algún color mal puesto o con algún mensaje mal puesto puedes reportar en 🐛 | bug-report. (Los menú todavía no aplican)\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El kit que no daba items fue arreglado.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <strong>SkyWars</strong>\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se agregaron patos en los cofres normales ya que no salían.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <span class="font-bold text-red-400">SkyWars Trío</span> ya se encuentra disponible. <span class="font-bold text-red-400">BETA</span>\n<img src="/emojils/Market.png" alt="tienda" class="inline-block w-5 h-5 mx-1" /> <strong>Tienda</strong>\n<img src="/emojils/Market.png" alt="tienda" class="inline-block w-5 h-5 mx-1" /> Las descripciones fueron mejoradas y mejor aclaradas de los paquetes.',
     version: '8.3',
     date: '20/07/2025',
-    author: 'zijeree',
+    author: 'zjjeree',
     categories: ['server', 'random-kits', 'skywars', 'maintenance'],
     gradient: 'from-blue-500 via-indigo-600 to-purple-600',
     size: 'large',
@@ -385,7 +441,7 @@ export const mockUpdates: NewsPost[] = [
     content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los sombreros ya se encuentran disponible.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mensajes de entrada ya fueron traducidos al inglés y portugués.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló un bug efectos y se quitó la fatiga minera.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Algunos errores de los cuales no te dejaba moverte fueron arreglados.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Todos los mapas fueron modificados.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El timer del bossbar ya funciona.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Vuelve el border move.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> El borde de deathmatch es mas chico.',
     version: '8.2',
     date: '16/07/2025',
-    author: 'zijeree',
+    author: 'zjjeree',
     categories: ['server', 'battlebox', 'random-kits', 'survival-games', 'maintenance'],
     gradient: 'from-green-500 via-emerald-600 to-teal-600',
     size: 'large',
@@ -397,7 +453,7 @@ export const mockUpdates: NewsPost[] = [
     content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los jugadores ya no serán invisibles mientras cargan su texture pack.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Lo de que aveces salía el "return to hub" en juego fue arreglado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los lang no traducidos fueron hechos.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El bug de votación que hacía que te murieras varias veces fue arreglado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ya no aparecerás vivo si reconectas.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló la música de dodgeball.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de que aveces no te dejaba aceptar el equipo en el chosen.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El reach fue arreglado de manera default.\n<img src="/emojils/Spleef.png" alt="spleef" class="inline-block w-5 h-5 mx-1" /> <strong>Spleef</strong>\n<img src="/emojils/Spleef.png" alt="spleef" class="inline-block w-5 h-5 mx-1" /> Bug de los bloques que no dejaban romperlos bien fue arreglado.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El mapa de la feria ronda de Random Kits fue arreglado.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Los creepers ahora tardan en explotar <span class="font-bold text-orange-400">3 segundos</span>.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper tendrá un nametag de cuanto tarda en explotarse.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper ya no se podrá colocar en la zona de spawn.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper no hará daño a tus compañeros.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper ahora baja menos vida.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Solamente una persona del equipo puede elegir el kit troll.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> En el menú saldrá quien eligió el kit.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Las pepitas ya son crafteables.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> La distancia de bloques que salía en el bossbar fue arreglada.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> El bossbar del drop ya aparece. (editado)',
     version: '8.1',
     date: '14/07/2025',
-    author: 'zijeree',
+    author: 'zjjeree',
     categories: ['server', 'spleef', 'random-kits', 'battlebox', 'survival-games', 'maintenance'],
     gradient: 'from-purple-500 via-pink-600 to-red-600',
     size: 'large',
@@ -409,7 +465,7 @@ export const mockUpdates: NewsPost[] = [
     content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las <span class="font-bold text-blue-400">cargas de viento</span> ya funcionan y no rompen bloques.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La interacción con <span class="font-bold text-orange-400">fogatas y vasijas</span> fue eliminada.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El bideo del <span class="font-bold text-green-400">market</span> fue arreglado ya que aveces no era de 5 en 5.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El <span class="font-bold text-purple-400">chosen</span> fue arreglado ya que no dejaba meter suplentes.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La <span class="font-bold text-red-400">distancia de bloques</span> de la que puedes pegar fue arreglado de manera "eficiente" hasta poder hacer un cambio "default".\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los espectadores del <span class="font-bold text-yellow-400">dodgeball</span> se arreglaron.',
     version: '8.0',
     date: '13/07/2025',
-    author: 'zijeree',
+    author: 'zjjeree',
     categories: ['server', 'maintenance', 'game'],
     gradient: 'from-blue-500 via-indigo-600 to-purple-600',
     size: 'medium',
