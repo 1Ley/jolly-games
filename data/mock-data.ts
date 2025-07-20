@@ -4,17 +4,8 @@ import type {
   Activity,
   ForumCategory,
   ForumTopic,
-  GameMode,
   LeaderboardEntry,
 } from '@/types';
-import {
-  Users,
-  Swords,
-  Shield,
-  Heart,
-  Image as ImageIcon,
-  Award,
-} from 'lucide-react';
 import { getImagePath } from '@/lib/assets';
 
 // Mock User Base
@@ -67,8 +58,6 @@ export const mockUser: User = {
   },
 };
 
-
-
 // Mock Events Data
 export const mockEvents = {
   currentEvent: {
@@ -83,99 +72,183 @@ export const mockEvents = {
         name: 'Team Red',
         color: '#DC2626',
         emoji: getImagePath('color_teams/team_red.png'),
-        players: ['Player1', 'Player2', 'Player3', 'Player4', 'Player5', 'Player6'],
-        placement: 1
+        players: [
+          'Player1',
+          'Player2',
+          'Player3',
+          'Player4',
+          'Player5',
+          'Player6',
+        ],
+        placement: 1,
       },
       {
         id: 'team-blue',
         name: 'Team Blue',
         color: '#2563EB',
         emoji: getImagePath('color_teams/team_blue.png'),
-        players: ['Player7', 'Player8', 'Player9', 'Player10', 'Player11', 'Player12'],
-        placement: null
+        players: [
+          'Player7',
+          'Player8',
+          'Player9',
+          'Player10',
+          'Player11',
+          'Player12',
+        ],
+        placement: null,
       },
       {
         id: 'team-green',
         name: 'Team Green',
         color: '#16A34A',
         emoji: getImagePath('color_teams/team_green.png'),
-        players: ['Player13', 'Player14', 'Player15', 'Player16', 'Player17', 'Player18'],
-        placement: null
+        players: [
+          'Player13',
+          'Player14',
+          'Player15',
+          'Player16',
+          'Player17',
+          'Player18',
+        ],
+        placement: null,
       },
       {
         id: 'team-orange',
         name: 'Team Orange',
         color: '#EA580C',
         emoji: getImagePath('color_teams/team_orange.png'),
-        players: ['Player19', 'Player20', 'Player21', 'Player22', 'Player23', 'Player24'],
-        placement: null
+        players: [
+          'Player19',
+          'Player20',
+          'Player21',
+          'Player22',
+          'Player23',
+          'Player24',
+        ],
+        placement: null,
       },
       {
         id: 'team-purple',
         name: 'Team Purple',
         color: '#7C3AED',
         emoji: getImagePath('color_teams/team_purple.png'),
-        players: ['Player25', 'Player26', 'Player27', 'Player28', 'Player29', 'Player30'],
-        placement: null
+        players: [
+          'Player25',
+          'Player26',
+          'Player27',
+          'Player28',
+          'Player29',
+          'Player30',
+        ],
+        placement: null,
       },
       {
         id: 'team-cyan',
         name: 'Team Cyan',
         color: '#0891B2',
         emoji: getImagePath('color_teams/team_cyan.png'),
-        players: ['Player31', 'Player32', 'Player33', 'Player34', 'Player35', 'Player36'],
-        placement: null
+        players: [
+          'Player31',
+          'Player32',
+          'Player33',
+          'Player34',
+          'Player35',
+          'Player36',
+        ],
+        placement: null,
       },
       {
         id: 'team-gray',
         name: 'Team Gray',
         color: '#6B7280',
         emoji: getImagePath('color_teams/team_gray.png'),
-        players: ['Player37', 'Player38', 'Player39', 'Player40', 'Player41', 'Player42'],
-        placement: null
+        players: [
+          'Player37',
+          'Player38',
+          'Player39',
+          'Player40',
+          'Player41',
+          'Player42',
+        ],
+        placement: null,
       },
       {
         id: 'team-yellow',
         name: 'Team Yellow',
         color: '#F59E0B',
         emoji: getImagePath('color_teams/team_yellow.png'),
-        players: ['Player43', 'Player44', 'Player45', 'Player46', 'Player47', 'Player48'],
-        placement: null
+        players: [
+          'Player43',
+          'Player44',
+          'Player45',
+          'Player46',
+          'Player47',
+          'Player48',
+        ],
+        placement: null,
       },
       {
         id: 'team-pink',
         name: 'Team Pink',
         color: '#EC4899',
         emoji: getImagePath('color_teams/team_pink.png'),
-        players: ['Player49', 'Player50', 'Player51', 'Player52', 'Player53', 'Player54'],
-        placement: null
+        players: [
+          'Player49',
+          'Player50',
+          'Player51',
+          'Player52',
+          'Player53',
+          'Player54',
+        ],
+        placement: null,
       },
       {
         id: 'team-black',
         name: 'Team Black',
         color: '#1F2937',
         emoji: getImagePath('color_teams/team_black.png'),
-        players: ['Player55', 'Player56', 'Player57', 'Player58', 'Player59', 'Player60'],
-        placement: null
+        players: [
+          'Player55',
+          'Player56',
+          'Player57',
+          'Player58',
+          'Player59',
+          'Player60',
+        ],
+        placement: null,
       },
       {
         id: 'team-white',
         name: 'Team White',
         color: '#F3F4F6',
         emoji: getImagePath('color_teams/team_white.png'),
-        players: ['Player61', 'Player62', 'Player63', 'Player64', 'Player65', 'Player66'],
-        placement: null
+        players: [
+          'Player61',
+          'Player62',
+          'Player63',
+          'Player64',
+          'Player65',
+          'Player66',
+        ],
+        placement: null,
       },
       {
         id: 'team-aqua',
         name: 'Team Aqua',
         color: '#14B8A6',
         emoji: getImagePath('color_teams/team_aqua.png'),
-        players: ['Player67', 'Player68', 'Player69', 'Player70', 'Player71', 'Player72'],
-        placement: null
-      }
-    ]
-  }
+        players: [
+          'Player67',
+          'Player68',
+          'Player69',
+          'Player70',
+          'Player71',
+          'Player72',
+        ],
+        placement: null,
+      },
+    ],
+  },
 };
 
 // Empty activities array to maintain compatibility
@@ -223,7 +296,7 @@ export const mockFeatureSections = [
     description:
       'Un juego de pura destrucción y supervivencia. Usa tu pala para romper el suelo bajo los pies de tus oponentes y hacerlos caer. ¡El último jugador en la plataforma más alta gana!',
     imageUrl: getImagePath('games/spleef.png'),
-  }
+  },
 ];
 
 // Mock Forum Data
@@ -271,8 +344,8 @@ export const mockServerStats = {
   onlinePlayers: 1247,
   totalPlayers: 45892,
   gamesThisWeek: 8934,
-  uptime: "99.8%",
-  averageLatency: "12ms"
+  uptime: '99.8%',
+  averageLatency: '12ms',
 };
 
 export const mockForumTopics: ForumTopic[] = [
@@ -365,7 +438,23 @@ export interface UpdatePost {
   version: string;
   date: string;
   author: string;
-  categories: ('game' | 'server' | 'event' | 'bot' | 'maintenance' | 'battlebox' | 'skywars' | 'beeptest' | 'spleef' | 'caol' | 'survival-games' | 'random-kits' | 'bow-spleef' | 'tag-games' | 'information')[];
+  categories: (
+    | 'game'
+    | 'server'
+    | 'event'
+    | 'bot'
+    | 'maintenance'
+    | 'battlebox'
+    | 'skywars'
+    | 'beeptest'
+    | 'spleef'
+    | 'caol'
+    | 'survival-games'
+    | 'random-kits'
+    | 'bow-spleef'
+    | 'tag-games'
+    | 'information'
+  )[];
   gradient: string;
   size: 'small' | 'medium' | 'large';
   featured?: boolean;
@@ -380,10 +469,17 @@ export const mockUpdates: UpdatePost[] = [
     version: '8.4',
     date: '21/07/2025',
     author: 'zjjeree',
-    categories: ['server', 'game', 'survival-games', 'skywars', 'battlebox', 'random-kits'],
+    categories: [
+      'server',
+      'game',
+      'survival-games',
+      'skywars',
+      'battlebox',
+      'random-kits',
+    ],
     gradient: 'from-purple-500 via-pink-600 to-red-600',
     size: 'large',
-    featured: true
+    featured: true,
   },
   {
     id: 47,
@@ -395,348 +491,361 @@ export const mockUpdates: UpdatePost[] = [
     categories: ['server', 'random-kits', 'skywars', 'maintenance'],
     gradient: 'from-blue-500 via-indigo-600 to-purple-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 46,
     title: 'Jolly Games',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los sombreros ya se encuentran disponible.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mensajes de entrada ya fueron traducidos al inglés y portugués.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló un bug efectos y se quitó la fatiga minera.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Algunos errores de los cuales no te dejaba moverte fueron arreglados.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Todos los mapas fueron modificados.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El timer del bossbar ya funciona.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Vuelve el border move.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> El borde de deathmatch es mas chico.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los sombreros ya se encuentran disponible.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mensajes de entrada ya fueron traducidos al inglés y portugués.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló un bug efectos y se quitó la fatiga minera.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Algunos errores de los cuales no te dejaba moverte fueron arreglados.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Todos los mapas fueron modificados.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El timer del bossbar ya funciona.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Vuelve el border move.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> El borde de deathmatch es mas chico.`,
     version: '8.2',
     date: '16/07/2025',
     author: 'zjjeree',
-    categories: ['server', 'battlebox', 'random-kits', 'survival-games', 'maintenance'],
+    categories: [
+      'server',
+      'battlebox',
+      'random-kits',
+      'survival-games',
+      'maintenance',
+    ],
     gradient: 'from-green-500 via-emerald-600 to-teal-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 45,
     title: 'Jolly Games',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los jugadores ya no serán invisibles mientras cargan su texture pack.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Lo de que aveces salía el "return to hub" en juego fue arreglado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los lang no traducidos fueron hechos.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El bug de votación que hacía que te murieras varias veces fue arreglado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ya no aparecerás vivo si reconectas.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló la música de dodgeball.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de que aveces no te dejaba aceptar el equipo en el chosen.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El reach fue arreglado de manera default.\n<img src="/emojils/Spleef.png" alt="spleef" class="inline-block w-5 h-5 mx-1" /> <strong>Spleef</strong>\n<img src="/emojils/Spleef.png" alt="spleef" class="inline-block w-5 h-5 mx-1" /> Bug de los bloques que no dejaban romperlos bien fue arreglado.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El mapa de la feria ronda de Random Kits fue arreglado.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Los creepers ahora tardan en explotar <span class="font-bold text-orange-400">3 segundos</span>.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper tendrá un nametag de cuanto tarda en explotarse.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper ya no se podrá colocar en la zona de spawn.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper no hará daño a tus compañeros.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper ahora baja menos vida.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Solamente una persona del equipo puede elegir el kit troll.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> En el menú saldrá quien eligió el kit.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Las pepitas ya son crafteables.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> La distancia de bloques que salía en el bossbar fue arreglada.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> El bossbar del drop ya aparece. (editado)',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los jugadores ya no serán invisibles mientras cargan su texture pack.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Lo de que aveces salía el "return to hub" en juego fue arreglado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los lang no traducidos fueron hechos.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El bug de votación que hacía que te murieras varias veces fue arreglado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ya no aparecerás vivo si reconectas.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló la música de dodgeball.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de que aveces no te dejaba aceptar el equipo en el chosen.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El reach fue arreglado de manera default.\n<img src="${getEmojiPath('Spleef.png')}" alt="spleef" class="inline-block w-5 h-5 mx-1" /> <strong>Spleef</strong>\n<img src="${getEmojiPath('Spleef.png')}" alt="spleef" class="inline-block w-5 h-5 mx-1" /> Bug de los bloques que no dejaban romperlos bien fue arreglado.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> El mapa de la feria ronda de Random Kits fue arreglado.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Los creepers ahora tardan en explotar <span class="font-bold text-orange-400">3 segundos</span>.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper tendrá un nametag de cuanto tarda en explotarse.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper ya no se podrá colocar en la zona de spawn.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper no hará daño a tus compañeros.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El creeper ahora baja menos vida.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Solamente una persona del equipo puede elegir el kit troll.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> En el menú saldrá quien eligió el kit.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Las pepitas ya son crafteables.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> La distancia de bloques que salía en el bossbar fue arreglada.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> El bossbar del drop ya aparece. (editado)`,
     version: '8.1',
     date: '14/07/2025',
     author: 'zjjeree',
-    categories: ['server', 'spleef', 'random-kits', 'battlebox', 'survival-games', 'maintenance'],
+    categories: [
+      'server',
+      'spleef',
+      'random-kits',
+      'battlebox',
+      'survival-games',
+      'maintenance',
+    ],
     gradient: 'from-purple-500 via-pink-600 to-red-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 44,
     title: 'Jolly Games',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las <span class="font-bold text-blue-400">cargas de viento</span> ya funcionan y no rompen bloques.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La interacción con <span class="font-bold text-orange-400">fogatas y vasijas</span> fue eliminada.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El bideo del <span class="font-bold text-green-400">market</span> fue arreglado ya que aveces no era de 5 en 5.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El <span class="font-bold text-purple-400">chosen</span> fue arreglado ya que no dejaba meter suplentes.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La <span class="font-bold text-red-400">distancia de bloques</span> de la que puedes pegar fue arreglado de manera "eficiente" hasta poder hacer un cambio "default".\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los espectadores del <span class="font-bold text-yellow-400">dodgeball</span> se arreglaron.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las <span class="font-bold text-blue-400">cargas de viento</span> ya funcionan y no rompen bloques.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La interacción con <span class="font-bold text-orange-400">fogatas y vasijas</span> fue eliminada.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El bideo del <span class="font-bold text-green-400">market</span> fue arreglado ya que aveces no era de 5 en 5.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El <span class="font-bold text-purple-400">chosen</span> fue arreglado ya que no dejaba meter suplentes.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La <span class="font-bold text-red-400">distancia de bloques</span> de la que puedes pegar fue arreglado de manera "eficiente" hasta poder hacer un cambio "default".\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los espectadores del <span class="font-bold text-yellow-400">dodgeball</span> se arreglaron.`,
     version: '8.0',
     date: '13/07/2025',
     author: 'zjjeree',
     categories: ['server', 'maintenance', 'game'],
     gradient: 'from-blue-500 via-indigo-600 to-purple-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 43,
     title: 'Survival Games',
-    content: '<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Ciertas partes del mapa fueron arregladas.\n<img src="/emojils/Spleef.png" alt="spleef" class="inline-block w-5 h-5 mx-1" /> <strong>Spleef</strong>\n<img src="/emojils/Spleef.png" alt="spleef" class="inline-block w-5 h-5 mx-1" /> La textura fue arreglada.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> La textura fue arreglada.',
+    content: `<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Ciertas partes del mapa fueron arregladas.\n<img src="${getEmojiPath('Spleef.png')}" alt="spleef" class="inline-block w-5 h-5 mx-1" /> <strong>Spleef</strong>\n<img src="${getEmojiPath('Spleef.png')}" alt="spleef" class="inline-block w-5 h-5 mx-1" /> La textura fue arreglada.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> La textura fue arreglada.`,
     version: '7.9',
     date: '12/07/2025',
     author: 'zjjeree',
     categories: ['survival-games', 'spleef', 'battlebox', 'maintenance'],
     gradient: 'from-orange-500 via-red-600 to-pink-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 42,
     title: 'Jolly Games',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El menú de <span class="font-bold text-blue-400">espectadores</span> fue arreglado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los colores de los <span class="font-bold text-purple-400">hologramas</span> fueron arreglados.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Algunos <span class="font-bold text-red-400">mensajes de muerte</span> fueron arreglados.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las <span class="font-bold text-cyan-400">cargas de viento</span> ya funcionan.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las tablas fueron arregladas.\n<img src="/emojils/Equipos.png" alt="team" class="inline-block w-5 h-5 mx-1" /> <strong>¡<span class="font-bold text-lime-400">New Team Election</span> (Exclusive Trio)</strong>\n<img src="/emojils/Equipos.png" alt="team" class="inline-block w-5 h-5 mx-1" /> Este team election solo estará disponible para <span class="font-bold text-yellow-400">tríos</span>.\n<img src="/emojils/Equipos.png" alt="team" class="inline-block w-5 h-5 mx-1" /> Una vez elegidos los capitanes, ellos podrán invitar a jugadores con el comando <span class="text-red-200 font-medium">/team invite (jugador)</span>, tendrán <span class="font-bold text-orange-400">5 minutos</span>, de no llenar el equipo se les meterán jugadores aleatorios.\n<img src="/emojils/Equipos.png" alt="team" class="inline-block w-5 h-5 mx-1" /> El jugador invitado deberá utilizar el comando <span class="text-red-200 font-medium">/team accept (team)</span>\n<img src="/emojils/Alerta.png" alt="anticheat" class="inline-block w-5 h-5 mx-1" /> <strong><span class="font-bold text-red-400">New AntiCheat</span></strong>\n<img src="/emojils/Alerta.png" alt="anticheat" class="inline-block w-5 h-5 mx-1" /> Colocamos un nuevo anticheat de <span class="font-bold text-green-400">PAGA</span>\n<img src="/emojils/Alerta.png" alt="anticheat" class="inline-block w-5 h-5 mx-1" /> Los jugadores que sean baneados por el anticheat no podrán apelar al menos que tengan <span class="font-bold text-blue-400">clip</span> de cuando los baneo.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El menú de <span class="font-bold text-blue-400">espectadores</span> fue arreglado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los colores de los <span class="font-bold text-purple-400">hologramas</span> fueron arreglados.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Algunos <span class="font-bold text-red-400">mensajes de muerte</span> fueron arreglados.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las <span class="font-bold text-cyan-400">cargas de viento</span> ya funcionan.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las tablas fueron arregladas.\n<img src="${getEmojiPath('Equipos.png')}" alt="team" class="inline-block w-5 h-5 mx-1" /> <strong>¡<span class="font-bold text-lime-400">New Team Election</span> (Exclusive Trio)</strong>\n<img src="${getEmojiPath('Equipos.png')}" alt="team" class="inline-block w-5 h-5 mx-1" /> Este team election solo estará disponible para <span class="font-bold text-yellow-400">tríos</span>.\n<img src="${getEmojiPath('Equipos.png')}" alt="team" class="inline-block w-5 h-5 mx-1" /> Una vez elegidos los capitanes, ellos podrán invitar a jugadores con el comando <span class="text-red-200 font-medium">/team invite (jugador)</span>, tendrán <span class="font-bold text-orange-400">5 minutos</span>, de no llenar el equipo se les meterán jugadores aleatorios.\n<img src="${getEmojiPath('Equipos.png')}" alt="team" class="inline-block w-5 h-5 mx-1" /> El jugador invitado deberá utilizar el comando <span class="text-red-200 font-medium">/team accept (team)</span>\n<img src="${getEmojiPath('Alerta.png')}" alt="anticheat" class="inline-block w-5 h-5 mx-1" /> <strong><span class="font-bold text-red-400">New AntiCheat</span></strong>\n<img src="${getEmojiPath('Alerta.png')}" alt="anticheat" class="inline-block w-5 h-5 mx-1" /> Colocamos un nuevo anticheat de <span class="font-bold text-green-400">PAGA</span>\n<img src="${getEmojiPath('Alerta.png')}" alt="anticheat" class="inline-block w-5 h-5 mx-1" /> Los jugadores que sean baneados por el anticheat no podrán apelar al menos que tengan <span class="font-bold text-blue-400">clip</span> de cuando los baneo.`,
     version: '7.8',
     date: '12/07/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'maintenance'],
     gradient: 'from-blue-500 via-indigo-600 to-purple-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 41,
     title: 'Random Kits',
-    content: '<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se arreglaron los spawnpoints.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se colocó una mesa de encantamiento en el centro.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se quitaron algunos ítems de los loots de los cofres.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se agregaron barreras en la parte de arriba.',
+    content: `<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se arreglaron los spawnpoints.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se colocó una mesa de encantamiento en el centro.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se quitaron algunos ítems de los loots de los cofres.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se agregaron barreras en la parte de arriba.`,
     version: '7.7',
     date: '12/07/2025',
     author: 'zjjeree',
     categories: ['random-kits', 'survival-games', 'maintenance'],
     gradient: 'from-green-500 via-emerald-600 to-teal-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 40,
     title: 'Jolly Games',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arreglaron las texturas bugueadas del texture pack.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el voice chat que no andaba.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregaron los canales de voz faltantes.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el team-election y tradeos que se bugueaban los prefix de los nuevos equipos.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló la arena.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arreglaron las asistencias.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los jugadores que reciban bypass les saldrá un icono verde al lado de su nombre.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se arregló la resurrección de Survival Games.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Cuando un compañero tuyo se muera, saldrá un bossbar de a cuantos bloques estas de la tarjeta.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Cuando tengas la tarjeta, saldrá un bossbar de a cuantos bloques estas del punto de resurrección.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <strong>SkyWars</strong>\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Ahora solo podrá salir un tipo de cofre por partida.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arreglaron las texturas bugueadas del texture pack.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el voice chat que no andaba.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregaron los canales de voz faltantes.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el team-election y tradeos que se bugueaban los prefix de los nuevos equipos.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló la arena.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arreglaron las asistencias.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los jugadores que reciban bypass les saldrá un icono verde al lado de su nombre.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se arregló la resurrección de Survival Games.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Cuando un compañero tuyo se muera, saldrá un bossbar de a cuantos bloques estas de la tarjeta.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Cuando tengas la tarjeta, saldrá un bossbar de a cuantos bloques estas del punto de resurrección.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <strong>SkyWars</strong>\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Ahora solo podrá salir un tipo de cofre por partida.`,
     version: '7.6',
     date: '11/07/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'maintenance', 'survival-games', 'skywars'],
     gradient: 'from-blue-500 via-indigo-600 to-purple-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 39,
     title: 'Jolly Games',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El texture pack ahora es compatible hasta la versión 1.21.5.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los nombres de los jugadores se mostrarán en color blanco.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Con la actualización del servidor a 1.21, el complemento de "Sombreros" fue reemplazado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Esto provocó la pérdida de todos los sombreros anteriores.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Si querés recuperar tus sombreros, por favor abrí un ticket.\n<img src="/emojils/Alerta.png" alt="importante" class="inline-block w-5 h-5 mx-1" /> <strong>Importante</strong>\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Es posible que durante la temporada el <span class="font-bold text-blue-400">@Jolly Rank</span> pierda uno de sus beneficios importantes.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El texture pack ahora es compatible hasta la versión 1.21.5.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los nombres de los jugadores se mostrarán en color blanco.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Con la actualización del servidor a 1.21, el complemento de "Sombreros" fue reemplazado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Esto provocó la pérdida de todos los sombreros anteriores.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Si querés recuperar tus sombreros, por favor abrí un ticket.\n<img src="${getEmojiPath('Alerta.png')}" alt="importante" class="inline-block w-5 h-5 mx-1" /> <strong>Importante</strong>\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Es posible que durante la temporada el <span class="font-bold text-blue-400">@Jolly Rank</span> pierda uno de sus beneficios importantes.`,
     version: '7.5',
     date: '11/07/2025',
     author: 'zjjeree',
     categories: ['server', 'maintenance', 'game'],
     gradient: 'from-cyan-500 via-blue-600 to-indigo-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 38,
     title: 'SkyWars',
-    content: '<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Al lootear un cofre por completo, este desaparecerá.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se quitó la textura del cofre.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> El loot de los cofres básicos, normales y OP fue mejorado.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se añadieron 3 mapas nuevos junto a sus variantes para Jolly Tríos.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se quitaron las flechas del kit inicial.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Al caer desde la jaula, no podrás colocar bloques por 1 segundo, para evitar ventajas desde la parte superior.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Al lootear un cofre por completo, este desaparecerá y reaparecerá en el refill.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se agregó un nuevo mapa al modo.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Ya no se jugarán 2 rondas, ahora será solo 1 ronda por partida.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> La duración de la ronda se extendió de 6 minutos → 10 minutos.\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> Ahora podrás revivir a tus compañeros, al estilo Fortnite:\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> – Recogé su tarjeta de resurrección\n<img src="/emojils/Survival games.png" alt="survival" class="inline-block w-5 h-5 mx-1" /> – El juego te indicará dónde está la zona de resurrección para traerlos de vuelta.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> <strong>Extra</strong>\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los hosts ahora tienen un mayor control sobre la selección de capitanes.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las partidas privadas fueron optimizadas para hacerse de forma más rápida.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El ítem de configuración de equipos fue reemplazado por un "pincel".\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregó el plugin de Voice Chat al servidor.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El servidor fue actualizado a la versión 1.21 de Minecraft.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La espada del lobby fue eliminada y se habilitó una arena exclusiva para los usuarios con el rango <span class="font-bold text-yellow-400">@Rank Jolly</span>.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las estadísticas han sido reiniciadas.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El modo "Bow Spleef" se encontrará inactivo y en posible eliminación.\n<img src="/emojils/Party.png" alt="party" class="inline-block w-5 h-5 mx-1" /> <strong>Jolly Tríos ¡NEW!</strong>\n<img src="/emojils/Party.png" alt="party" class="inline-block w-5 h-5 mx-1" /> ¡Ahora podés jugar en equipos de 3!\n<img src="/emojils/Party.png" alt="party" class="inline-block w-5 h-5 mx-1" /> Hasta 90 jugadores por partida, divididos en 30 equipos de distintos colores.\n<img src="/emojils/Party.png" alt="party" class="inline-block w-5 h-5 mx-1" /> Modos Activos en Tríos: Survival Games, SkyWars, Random Kits, Spleef, Party, Beep Test, Race.',
+    content: `<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Al lootear un cofre por completo, este desaparecerá.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se quitó la textura del cofre.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> El loot de los cofres básicos, normales y OP fue mejorado.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se añadieron 3 mapas nuevos junto a sus variantes para Jolly Tríos.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se quitaron las flechas del kit inicial.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Al caer desde la jaula, no podrás colocar bloques por 1 segundo, para evitar ventajas desde la parte superior.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> <strong>Survival Games</strong>\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Al lootear un cofre por completo, este desaparecerá y reaparecerá en el refill.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Se agregó un nuevo mapa al modo.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Ya no se jugarán 2 rondas, ahora será solo 1 ronda por partida.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> La duración de la ronda se extendió de 6 minutos → 10 minutos.\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> Ahora podrás revivir a tus compañeros, al estilo Fortnite:\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> – Recogé su tarjeta de resurrección\n<img src="${getEmojiPath('Survival games.png')}" alt="survival" class="inline-block w-5 h-5 mx-1" /> – El juego te indicará dónde está la zona de resurrección para traerlos de vuelta.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> <strong>Extra</strong>\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los hosts ahora tienen un mayor control sobre la selección de capitanes.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las partidas privadas fueron optimizadas para hacerse de forma más rápida.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El ítem de configuración de equipos fue reemplazado por un "pincel".\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregó el plugin de Voice Chat al servidor.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El servidor fue actualizado a la versión 1.21 de Minecraft.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La espada del lobby fue eliminada y se habilitó una arena exclusiva para los usuarios con el rango <span class="font-bold text-yellow-400">@Rank Jolly</span>.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las estadísticas han sido reiniciadas.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El modo "Bow Spleef" se encontrará inactivo y en posible eliminación.\n<img src="${getEmojiPath('Party.png')}" alt="party" class="inline-block w-5 h-5 mx-1" /> <strong>Jolly Tríos ¡NEW!</strong>\n<img src="${getEmojiPath('Party.png')}" alt="party" class="inline-block w-5 h-5 mx-1" /> ¡Ahora podés jugar en equipos de 3!\n<img src="${getEmojiPath('Party.png')}" alt="party" class="inline-block w-5 h-5 mx-1" /> Hasta 90 jugadores por partida, divididos en 30 equipos de distintos colores.\n<img src="${getEmojiPath('Party.png')}" alt="party" class="inline-block w-5 h-5 mx-1" /> Modos Activos en Tríos: Survival Games, SkyWars, Random Kits, Spleef, Party, Beep Test, Race.`,
     version: '7.4',
     date: '09/07/2025',
     author: 'zjjeree',
     categories: ['skywars', 'survival-games', 'server', 'game', 'event'],
     gradient: 'from-orange-500 via-red-600 to-pink-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 37,
     title: 'Random Kits',
-    content: '<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se añadieron 2 nuevos scenarios: Syphon y Double Health. (¡Podés sugerir más y los iremos agregando!)\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se agregó un centro visible en cada mapa para facilitar la localización.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Algunas estructuras fueron removidas para mejorar la jugabilidad.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se añadieron nuevos kits al juego. (También podés sugerir kits que te gustaría ver.)\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> En el kit "Acrobata" se añadieron 3 wind charges.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Se removieron los arcos y flechas de todos los kits, excepto:\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> – Kit Arquero: 3 flechas\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> – Kit Francotirador: 2 flechas\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El kit "Troll" ahora incluye 1 creeper <img src="/emojils/Alerta.png" alt="creeper" class="inline-block w-5 h-5 mx-1" />\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Las rondas ya no terminarán en empate. Si se acaba el tiempo, ganará el equipo que haya colocado más bloques en el centro.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Se agregaron 3 nuevos mapas.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> <strong>🛠️ Update en Proceso:</strong> Próximamente podrán aparecer más de 1 mapa por partida, rotando entre varias opciones.',
+    content: `<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se añadieron 2 nuevos scenarios: Syphon y Double Health. (¡Podés sugerir más y los iremos agregando!)\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se agregó un centro visible en cada mapa para facilitar la localización.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Algunas estructuras fueron removidas para mejorar la jugabilidad.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se añadieron nuevos kits al juego. (También podés sugerir kits que te gustaría ver.)\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> <strong>Battle Box</strong>\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> En el kit "Acrobata" se añadieron 3 wind charges.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Se removieron los arcos y flechas de todos los kits, excepto:\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> – Kit Arquero: 3 flechas\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> – Kit Francotirador: 2 flechas\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> El kit "Troll" ahora incluye 1 creeper <img src="${getEmojiPath('Alerta.png')}" alt="creeper" class="inline-block w-5 h-5 mx-1" />\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Las rondas ya no terminarán en empate. Si se acaba el tiempo, ganará el equipo que haya colocado más bloques en el centro.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Se agregaron 3 nuevos mapas.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> <strong>🛠️ Update en Proceso:</strong> Próximamente podrán aparecer más de 1 mapa por partida, rotando entre varias opciones.`,
     version: '7.3',
     date: '09/07/2025',
     author: 'zjjeree',
     categories: ['random-kits', 'battlebox', 'game', 'maintenance'],
     gradient: 'from-green-500 via-emerald-600 to-teal-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 36,
     title: 'Actualización del Sistema Competitivo',
-    content: '<img src="/emojils/Copa.png" alt="copa" class="inline-block w-5 h-5 mx-1" /> El bonus de capitán aumenta de <span class="font-bold text-lime-400">10% → 15%</span>.\n<img src="/emojils/Elo.png" alt="elo" class="inline-block w-5 h-5 mx-1" /> Si sos Capitán Principal, recibirás <span class="font-bold text-yellow-400">+5 de elo</span> en todas las partidas (no aplica si fuiste asignado automáticamente).\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Los <span class="font-bold text-orange-400">puntos por asesinato</span> suben de <span class="font-bold text-red-400">15 → 20</span>.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El comando <span class="text-red-200 font-medium">/randomcaps</span> <span class="font-bold text-red-400">ya no se aplicará a los ranks Jolly</span>, sino a jugadores con <span class="font-bold text-yellow-400">+10 partidas jugadas</span> (este requisito aumentará conforme avance la temporada).\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En el chat, aparecerá un <span class="font-bold text-blue-400">icono de tu clasificación de elo</span> junto a tu nombre.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se añadió un <span class="font-bold text-purple-400">nuevo menú en el perfil</span> con:\n– Historial de partidas\n– Cuánto elo ganas según tu clasificación\n– Leaderboard de los <span class="font-bold text-yellow-400">clasificados a la Jolly Cup</span> <img src="/emojils/Copa.png" alt="copa" class="inline-block w-5 h-5 mx-1" />',
+    content: `<img src="${getEmojiPath('Copa.png')}" alt="copa" class="inline-block w-5 h-5 mx-1" /> El bonus de capitán aumenta de <span class="font-bold text-lime-400">10% → 15%</span>.\n<img src="${getEmojiPath('Elo.png')}" alt="elo" class="inline-block w-5 h-5 mx-1" /> Si sos Capitán Principal, recibirás <span class="font-bold text-yellow-400">+5 de elo</span> en todas las partidas (no aplica si fuiste asignado automáticamente).\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Los <span class="font-bold text-orange-400">puntos por asesinato</span> suben de <span class="font-bold text-red-400">15 → 20</span>.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> El comando <span class="text-red-200 font-medium">/randomcaps</span> <span class="font-bold text-red-400">ya no se aplicará a los ranks Jolly</span>, sino a jugadores con <span class="font-bold text-yellow-400">+10 partidas jugadas</span> (este requisito aumentará conforme avance la temporada).\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En el chat, aparecerá un <span class="font-bold text-blue-400">icono de tu clasificación de elo</span> junto a tu nombre.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se añadió un <span class="font-bold text-purple-400">nuevo menú en el perfil</span> con:\n– Historial de partidas\n– Cuánto elo ganas según tu clasificación\n– Leaderboard de los <span class="font-bold text-yellow-400">clasificados a la Jolly Cup</span> <img src="${getEmojiPath('Copa.png')}" alt="copa" class="inline-block w-5 h-5 mx-1" />`,
     version: '7.2',
     date: '08/07/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'event'],
     gradient: 'from-yellow-500 via-orange-600 to-red-600',
     size: 'large',
-    featured: true
+    featured: true,
   },
   {
     id: 35,
     title: 'Beep Test',
-    content: '<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> En el mensaje de llegada ahora se mostrará en qué posición llegaste.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Se añadieron 80 nuevos niveles.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> El ítem de visibilidad ahora también estará disponible mientras estés de espectador.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Se eliminó el actionbar de niveles perdidos; ahora solo verás el del siguiente nivel.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> ¡Se agregó música al juego para una mejor experiencia!\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Los puntos por World Record se redujeron de <span class="font-bold text-red-400">50 → 30</span>.\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Los puntos por Fastest Time bajaron de <span class="font-bold text-red-400">25 → 15</span>.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Todos los World Records anteriores han sido eliminados.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Se ha actualizado el exterior del mapa.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Al finalizar el modo, aparecerá un Top con los jugadores que más Fastests y World Records hayan conseguido durante el modo.',
+    content: `<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> En el mensaje de llegada ahora se mostrará en qué posición llegaste.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Se añadieron 80 nuevos niveles.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> El ítem de visibilidad ahora también estará disponible mientras estés de espectador.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Se eliminó el actionbar de niveles perdidos; ahora solo verás el del siguiente nivel.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> ¡Se agregó música al juego para una mejor experiencia!\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Los puntos por World Record se redujeron de <span class="font-bold text-red-400">50 → 30</span>.\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Los puntos por Fastest Time bajaron de <span class="font-bold text-red-400">25 → 15</span>.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Todos los World Records anteriores han sido eliminados.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Se ha actualizado el exterior del mapa.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Al finalizar el modo, aparecerá un Top con los jugadores que más Fastests y World Records hayan conseguido durante el modo.`,
     version: '7.1',
     date: '08/07/2025',
     author: 'zjjeree',
     categories: ['beeptest', 'game', 'maintenance'],
     gradient: 'from-green-500 via-emerald-600 to-teal-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 34,
     title: '¡Nuevas mejoras estéticas en el servidor!',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los estandartes de países fueron eliminados y se añadieron 30 nuevos estandartes.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se crearon 19 nuevos mensajes de entrada.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregaron 3 sombreros exclusivos para quienes hayan sido Top Donador en algún mes.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se añadieron 3 nuevos mensajes de muerte.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ahora, para conseguir mensajes de entrada, sombreros o estandartes, necesitas comprar una key en la tienda. <a href="https://jollygames.store/" class="text-blue-400 hover:text-blue-300 underline" target="_blank" rel="noopener noreferrer">(editado)</a>',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los estandartes de países fueron eliminados y se añadieron 30 nuevos estandartes.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se crearon 19 nuevos mensajes de entrada.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregaron 3 sombreros exclusivos para quienes hayan sido Top Donador en algún mes.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se añadieron 3 nuevos mensajes de muerte.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ahora, para conseguir mensajes de entrada, sombreros o estandartes, necesitas comprar una key en la tienda. <a href="https://jollygames.store/" class="text-blue-400 hover:text-blue-300 underline" target="_blank" rel="noopener noreferrer">(editado)</a>`,
     version: '7.0',
     date: '07/07/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'information'],
     gradient: 'from-purple-500 via-pink-600 to-red-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 35,
     title: 'Actualización de Versión',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ya actualizamos el servidor a la última versión en Java y Bedrock.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ya actualizamos el servidor a la última versión en Java y Bedrock.`,
     version: '6.9',
     date: '07/07/2025',
     author: 'zjjeree',
     categories: ['server', 'maintenance'],
     gradient: 'from-blue-500 via-indigo-600 to-purple-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 34,
     title: 'Actualización 6.8',
-    content: '<img src="/emojils/Discord.svg" alt="discord" class="inline-block w-5 h-5 mx-1" /> Nuevo canal <span class="font-bold text-lime-400">#</span> desconocido\nLos <span class="font-bold text-orange-400">@Content Creator</span> ahora pueden compartir sus streams, videos y mencionar a <span class="font-bold text-green-400">@Media Ping</span> para darles visibilidad.\n<img src="/emojils/Discord.svg" alt="discord" class="inline-block w-5 h-5 mx-1" /> Nueva categoría: CANALES DE VOZ\nInteractúa con otros miembros a través de llamadas públicas y pasa un buen rato en comunidad.\n<img src="/emojils/Discord.svg" alt="discord" class="inline-block w-5 h-5 mx-1" /> Nuevo canal <img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> | bug-report\nReporta errores o problemas del servidor y recibí recompensas a cambio. ¡Tu ayuda nos mejora!\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> ¡Vuelven las encuestas diarias!\nEstaremos consultando a la comunidad sobre algunas actualizaciones que aún están en duda. ¡Tu opinión será clave para futuras decisiones!\n<img src="/emojils/Market.png" alt="market" class="inline-block w-5 h-5 mx-1" /> ¡Ofertas semanales!\nDesde ahora, las ofertas semanales se reiniciarán todos los viernes al mediodía.',
+    content: `<img src="${getEmojiPath('Discord.svg')}" alt="discord" class="inline-block w-5 h-5 mx-1" /> Nuevo canal <span class="font-bold text-lime-400">#</span> desconocido\nLos <span class="font-bold text-orange-400">@Content Creator</span> ahora pueden compartir sus streams, videos y mencionar a <span class="font-bold text-green-400">@Media Ping</span> para darles visibilidad.\n<img src="${getEmojiPath('Discord.svg')}" alt="discord" class="inline-block w-5 h-5 mx-1" /> Nueva categoría: CANALES DE VOZ\nInteractúa con otros miembros a través de llamadas públicas y pasa un buen rato en comunidad.\n<img src="${getEmojiPath('Discord.svg')}" alt="discord" class="inline-block w-5 h-5 mx-1" /> Nuevo canal <img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> | bug-report\nReporta errores o problemas del servidor y recibí recompensas a cambio. ¡Tu ayuda nos mejora!\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> ¡Vuelven las encuestas diarias!\nEstaremos consultando a la comunidad sobre algunas actualizaciones que aún están en duda. ¡Tu opinión será clave para futuras decisiones!\n<img src="${getEmojiPath('Market.png')}" alt="market" class="inline-block w-5 h-5 mx-1" /> ¡Ofertas semanales!\nDesde ahora, las ofertas semanales se reiniciarán todos los viernes al mediodía.`,
     version: '6.8',
     date: '29/06/2025',
     author: '1Ley',
     categories: ['server', 'information', 'event'],
     gradient: 'from-purple-500 via-indigo-600 to-blue-600',
     size: 'large',
-    featured: true
+    featured: true,
   },
   {
     id: 33,
     title: 'Actualización 6.7',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las estadísticas ya suman, ya no hace falta quedarse hasta terminar la partida.\n<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> El bug de visibilidad de espectador que te hacía ver a ciertas personas fue arreglado. (editado)',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las estadísticas ya suman, ya no hace falta quedarse hasta terminar la partida.\n<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> El bug de visibilidad de espectador que te hacía ver a ciertas personas fue arreglado. (editado)`,
     version: '6.7',
     date: '28/06/2025',
     author: '1Ley',
     categories: ['server', 'maintenance', 'game'],
     gradient: 'from-emerald-500 via-teal-600 to-cyan-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 32,
     title: 'Actualización 6.6',
-    content: '<img src="/emojils/Alerta.png" alt="alerta" class="inline-block w-5 h-5 mx-1" /> Sub-Queue\nLos <span class="font-bold text-lime-400">@Host</span> ya tienen acceso a eliminar la sub-queue.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Actualización STAFF\nLos soportes y reguladores ya pueden emitir sanciones dentro del servidor de Minecraft. Además, ahora contarán con la etiqueta "STAFF" tanto en el chat como en el tabulador para mayor visibilidad.\n<img src="/emojils/Prohibido.png" alt="prohibido" class="inline-block w-5 h-5 mx-1" /> Desbaneo Global\n¿Fuiste baneado o muteado? <img src="/emojils/check.png" alt="check" class="inline-block w-5 h-5 mx-1" /> Buenas noticias: tu sanción ha sido eliminada. Todos tienen una segunda oportunidad, ¡aprovéchala! (A partir del viernes)\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Actualización de Versión\nYa actualizamos el servidor a la última versión en Java y Bedrock.',
+    content: `<img src="${getEmojiPath('Alerta.png')}" alt="alerta" class="inline-block w-5 h-5 mx-1" /> Sub-Queue\nLos <span class="font-bold text-lime-400">@Host</span> ya tienen acceso a eliminar la sub-queue.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Actualización STAFF\nLos soportes y reguladores ya pueden emitir sanciones dentro del servidor de Minecraft. Además, ahora contarán con la etiqueta "STAFF" tanto en el chat como en el tabulador para mayor visibilidad.\n<img src="${getEmojiPath('Prohibido.png')}" alt="prohibido" class="inline-block w-5 h-5 mx-1" /> Desbaneo Global\n¿Fuiste baneado o muteado? <img src="${getEmojiPath('check.png')}" alt="check" class="inline-block w-5 h-5 mx-1" /> Buenas noticias: tu sanción ha sido eliminada. Todos tienen una segunda oportunidad, ¡aprovéchala! (A partir del viernes)\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Actualización de Versión\nYa actualizamos el servidor a la última versión en Java y Bedrock.`,
     version: '6.6',
     date: '27/06/2025',
     author: '1Ley',
     categories: ['server', 'maintenance', 'information'],
     gradient: 'from-red-500 via-orange-600 to-yellow-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 31,
     title: 'Servidor',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se realizó una limpieza de creadores de contenido que no cumplen con los requisitos mínimos y no están creando contenido del servidor.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se realizó una limpieza de creadores de contenido que no cumplen con los requisitos mínimos y no están creando contenido del servidor.`,
     version: '6.6',
     date: '26/06/2025',
     author: '1Ley',
     categories: ['server', 'information'],
     gradient: 'from-rose-500 via-pink-600 to-purple-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 30,
     title: 'Server',
-    content: 'Actualización 6.6 <span class="font-bold text-yellow-400">@Updates Ping</span>\n\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las estadísticas ya suman, ya no hace falta quedarse hasta terminar la partida.\n<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> El bug de visibilidad de espectador que te hacía ver a ciertas personas fue arreglado.',
+    content: `Actualización 6.6 <span class="font-bold text-yellow-400">@Updates Ping</span>\n\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las estadísticas ya suman, ya no hace falta quedarse hasta terminar la partida.\n<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> El bug de visibilidad de espectador que te hacía ver a ciertas personas fue arreglado.`,
     version: '6.6',
     date: '26/06/2025',
     author: '1Ley',
     categories: ['server', 'maintenance', 'game'],
     gradient: 'from-blue-500 via-purple-600 to-indigo-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 29,
     title: 'Actualización 6.9',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevas mejoras en el sistema de equipos.\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Sistema de puntuación optimizado.\n<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> Correcciones de bugs menores.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevas mejoras en el sistema de equipos.\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Sistema de puntuación optimizado.\n<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> Correcciones de bugs menores.`,
     version: '6.9',
     date: '25/06/2025',
     author: '1Ley',
     categories: ['server', 'game', 'maintenance'],
     gradient: 'from-emerald-500 via-teal-600 to-cyan-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 28,
     title: 'Actualización 6.5',
-    content: '<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug por el cual no contaban los asesinatos. (Party)\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug por el cual te contaban puntos estando muerto.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arreglaron las kills que a veces salías muerto por vos mismo.\n<img src="/emojils/Market.png" alt="market" class="inline-block w-5 h-5 mx-1" /> Se agregó una nueva ventaja "banners" con el cual podrás personalizar tu estandarte de la 3era ronda de party y tu escudo.',
+    content: `<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug por el cual no contaban los asesinatos. (Party)\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug por el cual te contaban puntos estando muerto.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arreglaron las kills que a veces salías muerto por vos mismo.\n<img src="${getEmojiPath('Market.png')}" alt="market" class="inline-block w-5 h-5 mx-1" /> Se agregó una nueva ventaja "banners" con el cual podrás personalizar tu estandarte de la 3era ronda de party y tu escudo.`,
     version: '6.5',
     date: '24/06/2025',
     author: 'zjjeree',
     categories: ['maintenance', 'game', 'server'],
     gradient: 'from-red-500 via-orange-600 to-yellow-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 27,
     title: 'Actualización 6.4',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La espada de votación solo tendrá 1 uso.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se actualizó el servidor y ahora podrás entrar desde 1.16 a 1.21.6 (Versión Nativa: 1.20.4)\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los baneos del servidor ahora serán públicos.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las estadísticas se sumarán al finalizar la partida, por más que te desconectes. (editado)',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La espada de votación solo tendrá 1 uso.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se actualizó el servidor y ahora podrás entrar desde 1.16 a 1.21.6 (Versión Nativa: 1.20.4)\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los baneos del servidor ahora serán públicos.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las estadísticas se sumarán al finalizar la partida, por más que te desconectes. (editado)`,
     version: '6.4',
     date: '23/06/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'maintenance'],
     gradient: 'from-blue-500 via-purple-600 to-indigo-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 26,
     title: 'Actualización 6.3',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el sistema de votacion, ya no contaran las muertes y las kills. También los items del lobby no lo tendrán, ni los de <span class="text-red-200 font-medium">/elytra</span>.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El orden de votos de votacion será de mayor a menor.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló la feed que no bajaba.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En Anonymous ya no se mostrarán los nombres y teams eliminados.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el mensaje de stats.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El mensaje de spleef ahora sale bien.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El kit de meetup ahora podrá salir en las 2 rondas.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Ya no podrán salir kits repetidos.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de capitan que aveces no lo daba.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Si se sale el capitan principal se le dará el capitan al usuario con mas elo del equipo.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el sistema de votacion, ya no contaran las muertes y las kills. También los items del lobby no lo tendrán, ni los de <span class="text-red-200 font-medium">/elytra</span>.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El orden de votos de votacion será de mayor a menor.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló la feed que no bajaba.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En Anonymous ya no se mostrarán los nombres y teams eliminados.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el mensaje de stats.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El mensaje de spleef ahora sale bien.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> El kit de meetup ahora podrá salir en las 2 rondas.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Ya no podrán salir kits repetidos.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de capitan que aveces no lo daba.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Si se sale el capitan principal se le dará el capitan al usuario con mas elo del equipo.`,
     version: '6.3',
     date: '22/06/2025',
     author: 'zjjeree',
     categories: ['game', 'server', 'maintenance', 'random-kits'],
     gradient: 'from-green-500 via-teal-600 to-blue-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 25,
     title: 'Actualización 6.2',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevo sistema de votación.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de la muerte en beeptest.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El anonymous fue arreglado.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se eliminó un kit mal hecho.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se arreglaron los spawnpoints.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se quito la velocidad.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se coloco el mapa viejo de 3era ronda.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se aumento el tiempo de inicio de sesion a 90 segundos.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevo sistema de votación.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de la muerte en beeptest.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El anonymous fue arreglado.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se eliminó un kit mal hecho.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se arreglaron los spawnpoints.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se quito la velocidad.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se coloco el mapa viejo de 3era ronda.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se aumento el tiempo de inicio de sesion a 90 segundos.`,
     version: '6.2',
     date: '21/06/2025',
     author: 'zjjeree',
     categories: ['game', 'beeptest', 'random-kits', 'server'],
     gradient: 'from-purple-500 via-pink-600 to-red-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 24,
     title: 'Actualización 6.1',
-    content: '<img src="/emojils/Market.png" alt="market" class="inline-block w-5 h-5 mx-1" /> Se agregaron nuevos paquetes de las categorías "Mensajes de Muerte" y "Mensajes de Entrada" por tan solo 1.49 USD\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregaron nuevas ventajas.',
+    content: `<img src="${getEmojiPath('Market.png')}" alt="market" class="inline-block w-5 h-5 mx-1" /> Se agregaron nuevos paquetes de las categorías "Mensajes de Muerte" y "Mensajes de Entrada" por tan solo 1.49 USD\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregaron nuevas ventajas.`,
     version: '6.1',
     date: '20/06/2025',
     author: 'zjjeree',
     categories: ['server', 'information'],
     gradient: 'from-yellow-500 via-orange-600 to-red-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 23,
     title: 'Actualización 6.0',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nueva versión mayor con mejoras significativas.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Sistema de emojis completamente renovado.\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Mejoras en el sistema de equipos.\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Nuevo sistema de puntuación balanceado.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nueva versión mayor con mejoras significativas.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Sistema de emojis completamente renovado.\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Mejoras en el sistema de equipos.\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Nuevo sistema de puntuación balanceado.`,
     version: '6.0',
     date: '19/06/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'maintenance'],
     gradient: 'from-pink-500 via-rose-600 to-red-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 22,
     title: 'Actualización 5.9',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevas ventajas: Podrás cambiar tu mensaje de entrada.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En el último juego se activará el scenario "Anonymous" que básicamente no mostrará tu nombre, tu skin, tu color de armadura ni tu color de bloque. Tampoco mostrará los puntos y quien ganó la ronda. FOCUS OFF\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En el TAB saldrá el fill actual.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El mensaje de borde de altura ya no mostrará los decimales.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se cambiaron los colores de los modos.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se actualizaron ciertos mensajes de death.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevas ventajas: Podrás cambiar tu mensaje de entrada.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En el último juego se activará el scenario "Anonymous" que básicamente no mostrará tu nombre, tu skin, tu color de armadura ni tu color de bloque. Tampoco mostrará los puntos y quien ganó la ronda. FOCUS OFF\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En el TAB saldrá el fill actual.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El mensaje de borde de altura ya no mostrará los decimales.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se cambiaron los colores de los modos.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se actualizaron ciertos mensajes de death.`,
     version: '5.9',
     date: '18/06/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'maintenance'],
     gradient: 'from-purple-500 via-violet-600 to-indigo-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 21,
     title: 'Actualización 5.8',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Todos los mensajes del <span class="text-red-200 font-medium">"/lang br"</span> fueron actualizados',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Todos los mensajes del <span class="text-red-200 font-medium">"/lang br"</span> fueron actualizados`,
     version: '5.8',
     date: '17/06/2025',
     author: 'zjjeree',
     categories: ['server', 'maintenance'],
     gradient: 'from-emerald-500 via-teal-600 to-cyan-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 20,
     title: 'Actualización 5.7',
-    content: '<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> Mensajes de muerte arreglados.\n<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> Vote Kick arreglado.\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> En los mensajes de leaderboard ahora aparecerá la posición.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevos paquetes creados: "Mensajes de Muerte" y "Comandos"\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevo comando <span class="text-red-200 font-medium">/hide</span> con el que podrás ocultar tu nombre, de momento solo <span class="font-bold text-orange-400">@Content Creator</span> tienen acceso.',
+    content: `<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> Mensajes de muerte arreglados.\n<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> Vote Kick arreglado.\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> En los mensajes de leaderboard ahora aparecerá la posición.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevos paquetes creados: "Mensajes de Muerte" y "Comandos"\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevo comando <span class="text-red-200 font-medium">/hide</span> con el que podrás ocultar tu nombre, de momento solo <span class="font-bold text-orange-400">@Content Creator</span> tienen acceso.`,
     version: '5.7',
     date: '16/06/2025',
     author: 'zjjeree',
@@ -744,24 +853,25 @@ export const mockUpdates: UpdatePost[] = [
     gradient: 'from-amber-500 via-orange-600 to-red-600',
     size: 'medium',
     featured: false,
-    imageUrl: 'https://media.discordapp.net/attachments/1313721533562355732/1385003423497453628/image.png?ex=687b60b4&is=687a0f34&hm=0bf9ea58dfceaf7a0bf292eb729e3050f530f943c3fe2dbd5655904e1ba268bd&=&format=webp&quality=lossless'
+    imageUrl:
+      'https://media.discordapp.net/attachments/1313721533562355732/1385003423497453628/image.png?ex=687b60b4&is=687a0f34&hm=0bf9ea58dfceaf7a0bf292eb729e3050f530f943c3fe2dbd5655904e1ba268bd&=&format=webp&quality=lossless',
   },
   {
     id: 19,
     title: 'Actualización 5.6',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mensajes de leaderboard al finalizar la partida fueron arreglados.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevos mensajes al finalizar un juego.\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Comando <span class="text-red-200 font-medium">"/teamconfig"</span> para abrir el menú del equipo.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevas ventajas en la sección de "Objetos y Ventajas"',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mensajes de leaderboard al finalizar la partida fueron arreglados.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevos mensajes al finalizar un juego.\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Comando <span class="text-red-200 font-medium">"/teamconfig"</span> para abrir el menú del equipo.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevas ventajas en la sección de "Objetos y Ventajas"`,
     version: '5.6',
     date: '15/06/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'maintenance'],
     gradient: 'from-violet-500 via-purple-600 to-indigo-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 18,
     title: 'Actualización 5.5',
-    content: '<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Beep Test se encuentra activo nuevamente con mapas nuevos.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Mensajes de leaderboard al finalizar partida actualizados + mensaje de stats actualizado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Borde de Altura arreglado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En preparación de 2 mapas nuevos.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En preparación de 3 mapas nuevos.',
+    content: `<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Beep Test se encuentra activo nuevamente con mapas nuevos.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Mensajes de leaderboard al finalizar partida actualizados + mensaje de stats actualizado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Borde de Altura arreglado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En preparación de 2 mapas nuevos.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En preparación de 3 mapas nuevos.`,
     version: '5.5',
     date: '14/06/2025',
     author: 'zjjeree',
@@ -769,188 +879,189 @@ export const mockUpdates: UpdatePost[] = [
     gradient: 'from-green-500 via-emerald-600 to-teal-600',
     size: 'medium',
     featured: false,
-    imageUrl: 'https://media.discordapp.net/attachments/1313721533562355732/1383884587213525162/image.png?ex=687b4334&is=6879f1b4&hm=e26fe88b78894f1238a4a897244b727137648390f35133d989d01edb9a80653e&=&format=webp&quality=lossless'
+    imageUrl:
+      'https://media.discordapp.net/attachments/1313721533562355732/1383884587213525162/image.png?ex=687b4334&is=6879f1b4&hm=e26fe88b78894f1238a4a897244b727137648390f35133d989d01edb9a80653e&=&format=webp&quality=lossless',
   },
   {
     id: 13,
     title: 'Actualización 5.4',
-    content: '<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Se subieron los puntos por empate.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El borde de altura fue actualizado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Al lado de tus stats en <span class="text-red-200 font-medium">/stats</span> saldrá cuando sumaste de cada estadística luego de una partida.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arreglaron algunos mensajes con decimales infinitos.',
+    content: `<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Se subieron los puntos por empate.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El borde de altura fue actualizado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Al lado de tus stats en <span class="text-red-200 font-medium">/stats</span> saldrá cuando sumaste de cada estadística luego de una partida.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arreglaron algunos mensajes con decimales infinitos.`,
     version: '5.4',
     date: '13/06/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'maintenance'],
     gradient: 'from-orange-500 via-red-600 to-pink-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 14,
     title: 'Actualización 5.3',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se colocó un nuevo borde creado con partículas. BETA\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de los puntos.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se colocó un nuevo borde creado con partículas. BETA\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de los puntos.`,
     version: '5.3',
     date: '12/06/2025',
     author: 'zjjeree',
     categories: ['server', 'maintenance', 'game'],
     gradient: 'from-cyan-500 via-blue-600 to-indigo-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 15,
     title: 'Actualización 5.2',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las sanciones por salirte en el 1er juego fueron arregladas.\n<img src="/emojils/Time.png" alt="time" class="inline-block w-5 h-5 mx-1" /> Los timers fueron arreglados.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Canal # desconocido actualizado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevo ping en # 🇫🇷 | autorol.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las sanciones por salirte en el 1er juego fueron arregladas.\n<img src="${getEmojiPath('Time.png')}" alt="time" class="inline-block w-5 h-5 mx-1" /> Los timers fueron arreglados.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Canal # desconocido actualizado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Nuevo ping en # 🇫🇷 | autorol.`,
     version: '5.2',
     date: '10/06/2025',
     author: 'zjjeree',
     categories: ['server', 'maintenance', 'bot'],
     gradient: 'from-blue-500 via-purple-600 to-indigo-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 16,
     title: 'Actualización 5.1',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de las jaulas.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Se arreglaron los bugs de dodge ball.\n<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> Se arreglaron bugs.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de las jaulas.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Se arreglaron los bugs de dodge ball.\n<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> Se arreglaron bugs.`,
     version: '5.1',
     date: '09/06/2025',
     author: 'zjjeree',
     categories: ['maintenance', 'game', 'server'],
     gradient: 'from-red-500 via-orange-600 to-yellow-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 12,
     title: 'Actualización 5.0',
-    content: '<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Los <span class="font-bold text-lime-400">@Host</span> ya no deberán meter suplentes, los harán los mismos capitanes desde su menú de equipo.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El Orden Propio fue arreglado y se encuentra activo nuevamente.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Si un jugador se desconecta durante los modos de PvP, lo reemplazará un zombie y podrá reconectarse. (También lo podrán matar estando de zombie)\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> El modo Beep Test se encontrará inactivo hasta colocar nuevos niveles originales.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El nivel morado fue eliminado.\n<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> Cuando el borde se mueva por el deathmatch se achicará 5 bloques.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Cuando el borde se mueva por el deathmatch se achicará 5 bloques. (También se moverá el block-animation)\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> En varios mensajes, se mostrará el color del equipo en los nombres.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los escudos ya no podrán usarlos.\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Ahora se contarán los decimales en los puntos.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ya no se podrá buguear con bloques.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El canal # 🔨 | reglas fue actualizado.',
+    content: `<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Los <span class="font-bold text-lime-400">@Host</span> ya no deberán meter suplentes, los harán los mismos capitanes desde su menú de equipo.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El Orden Propio fue arreglado y se encuentra activo nuevamente.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Si un jugador se desconecta durante los modos de PvP, lo reemplazará un zombie y podrá reconectarse. (También lo podrán matar estando de zombie)\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> El modo Beep Test se encontrará inactivo hasta colocar nuevos niveles originales.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El nivel morado fue eliminado.\n<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> Cuando el borde se mueva por el deathmatch se achicará 5 bloques.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Cuando el borde se mueva por el deathmatch se achicará 5 bloques. (También se moverá el block-animation)\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> En varios mensajes, se mostrará el color del equipo en los nombres.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los escudos ya no podrán usarlos.\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Ahora se contarán los decimales en los puntos.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Ya no se podrá buguear con bloques.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El canal # 🔨 | reglas fue actualizado.`,
     version: '5.0',
     date: '07/06/2025',
     author: 'zjjeree',
     categories: ['game', 'server', 'maintenance', 'beeptest'],
     gradient: 'from-purple-500 via-pink-600 to-red-600',
     size: 'large',
-    featured: true
+    featured: true,
   },
   {
     id: 11,
     title: 'Actualización 4.9',
-    content: '<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Los puntos de victoria y empate se les dará solo a los jugadores vivos.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> La regeneración natural solo se desactivará si toca el kit "meetup".\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Bug de los espectadores en dodgeball fue arreglado.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Al bajar el sonido en la sección "Bloques Musicales" bajarás la música de dodge ball.\n<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> Bugs de las rondas en el scoreboard fue arreglado.',
+    content: `<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Los puntos de victoria y empate se les dará solo a los jugadores vivos.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> La regeneración natural solo se desactivará si toca el kit "meetup".\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Bug de los espectadores en dodgeball fue arreglado.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> Al bajar el sonido en la sección "Bloques Musicales" bajarás la música de dodge ball.\n<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> Bugs de las rondas en el scoreboard fue arreglado.`,
     version: '4.9',
     date: '06/06/2025',
     author: 'zjjeree',
     categories: ['game', 'maintenance', 'server'],
     gradient: 'from-cyan-500 via-blue-600 to-purple-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 10,
     title: 'Actualización 4.8',
-    content: '<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El title de los modos randoms ahora solo mostrará los modos activos.\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Si un capitán pasa 1 minuto desconectado se le asignará el capitán a otro jugador del equipo.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El kit troll ahora tendrá 1 solo arco.\n<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> Se arregló el placeholder del scoreboard que no mostraba las rondas ganadas, empatadas y perdidas.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> En DodgeBall las rondas ganadas se mostrarán con el color verde para evitar confusiones con el equipo blanco.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> En DodgeBall ahora solo reproducirá una música.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La whitelist se activará cuando salga el 1er mensaje de información de jolly games.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El title de "Bienvenidos a Jolly Games" fue anulado.\n<img src="/emojils/Market.png" alt="market" class="inline-block w-5 h-5 mx-1" /> En Double Market saldrá el elo al lado de los nombres de los jugadores.\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> En Captains cuando algún jugador se desconecte se podrá elegir igual.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El comando "/lang pt" fue cambiado a "/lang br"\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El comando /stats ahora se podrá usar por más de que el jugador este desconectado.\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> En la 2da ronda ahora podrán salir kits randoms, no solo saldrá el kit de "meetup".\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregó el scenario "SuperHero".\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> En el bossbar se mostrará el color verde para evitar confusiones con el equipo negro.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregó un mensaje por si te expulsa la purga.',
+    content: `<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> El title de los modos randoms ahora solo mostrará los modos activos.\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Si un capitán pasa 1 minuto desconectado se le asignará el capitán a otro jugador del equipo.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> El kit troll ahora tendrá 1 solo arco.\n<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> Se arregló el placeholder del scoreboard que no mostraba las rondas ganadas, empatadas y perdidas.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> En DodgeBall las rondas ganadas se mostrarán con el color verde para evitar confusiones con el equipo blanco.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> En DodgeBall ahora solo reproducirá una música.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La whitelist se activará cuando salga el 1er mensaje de información de jolly games.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El title de "Bienvenidos a Jolly Games" fue anulado.\n<img src="${getEmojiPath('Market.png')}" alt="market" class="inline-block w-5 h-5 mx-1" /> En Double Market saldrá el elo al lado de los nombres de los jugadores.\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> En Captains cuando algún jugador se desconecte se podrá elegir igual.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El comando "/lang pt" fue cambiado a "/lang br"\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El comando /stats ahora se podrá usar por más de que el jugador este desconectado.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> En la 2da ronda ahora podrán salir kits randoms, no solo saldrá el kit de "meetup".\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregó el scenario "SuperHero".\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> En el bossbar se mostrará el color verde para evitar confusiones con el equipo negro.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregó un mensaje por si te expulsa la purga.`,
     version: '4.8',
     date: '05/06/2025',
     author: 'zjjeree',
     categories: ['game', 'server', 'maintenance', 'random-kits'],
     gradient: 'from-green-500 via-teal-600 to-blue-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 9,
     title: 'Actualización 4.7',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el mapa bugueado.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Vuelven las 2 rondas.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se arregló el mapa bugueado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Vuelven las 2 rondas.`,
     version: '4.7',
     date: '04/06/2025',
     author: 'zjjeree',
     categories: ['maintenance', 'server'],
     gradient: 'from-emerald-500 via-green-600 to-teal-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 8,
     title: 'Actualización 4.6',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se va el mapa de temática navidad luego de ser el 1er mapa creado de Jolly Games.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregó un nuevo mapa.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La textura del cofre se actualizó.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se va el mapa de temática navidad luego de ser el 1er mapa creado de Jolly Games.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se agregó un nuevo mapa.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La textura del cofre se actualizó.`,
     version: '4.6',
     date: '03/06/2025',
     author: 'zjjeree',
     categories: ['server', 'game'],
     gradient: 'from-red-500 via-green-600 to-red-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 7,
     title: 'Actualización 4.5',
-    content: '<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> En caso de necesitar capitanes, el <span class="text-red-200 font-medium">/randomcaps</span> aplicará a los ranks jolly.\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Si un capitán se sale tendrá 3 minutos para reconectarse, en caso de no reconectar se le dará capitán automáticamente a otro jugador del equipo.\n<img src="/emojils/Puntuacion.png" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Si entra un suplente recibirá los puntos del último jugador.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En el comando <span class="text-red-200 font-medium">/top</span> ahora saldrá al lado si está conectado, desconectado o fuera de un equipo.\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Si colocas <span class="text-red-200 font-medium">/teamchat</span> en el chat de espectador, te cambiará al chat del equipo.\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Te saldrá un mensaje si es que te expulsan de tu equipo.',
+    content: `<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> En caso de necesitar capitanes, el <span class="text-red-200 font-medium">/randomcaps</span> aplicará a los ranks jolly.\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Si un capitán se sale tendrá 3 minutos para reconectarse, en caso de no reconectar se le dará capitán automáticamente a otro jugador del equipo.\n<img src="${getEmojiPath('Puntuacion.png')}" alt="puntos" class="inline-block w-5 h-5 mx-1" /> Si entra un suplente recibirá los puntos del último jugador.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En el comando <span class="text-red-200 font-medium">/top</span> ahora saldrá al lado si está conectado, desconectado o fuera de un equipo.\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Si colocas <span class="text-red-200 font-medium">/teamchat</span> en el chat de espectador, te cambiará al chat del equipo.\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Te saldrá un mensaje si es que te expulsan de tu equipo.`,
     version: '4.5',
     date: '02/06/2025',
     author: 'zjjeree',
     categories: ['server', 'game', 'maintenance'],
     gradient: 'from-blue-500 via-indigo-600 to-purple-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 6,
     title: 'Actualización 4.4',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las máquinas de juego del lobby fueron arregladas.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El anticheat vuelve luego de ser remasterizado.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las máquinas de juego del lobby fueron arregladas.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El anticheat vuelve luego de ser remasterizado.`,
     version: '4.4',
     date: '02/06/2025',
     author: 'zjjeree',
     categories: ['maintenance', 'game'],
     gradient: 'from-cyan-500 via-blue-600 to-indigo-600',
     size: 'small',
-    featured: false
+    featured: false,
   },
   {
     id: 5,
     title: 'Actualización 4.3',
-    content: '<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> Los kits de randomkits fueron obstruidos, por lo cual todos los kits serán nuevos.\n<img src="/emojils/Caol.png" alt="caol" class="inline-block w-5 h-5 mx-1" /> Vuelve a estar C.A.O.L. activo.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El KB de los huevos/bolas de nieve fue arreglado.\n<img src="/emojils/BattleBox.png" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> DodgeBall se encuentra activo en fase BETA',
+    content: `<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Los kits de randomkits fueron obstruidos, por lo cual todos los kits serán nuevos.\n<img src="${getEmojiPath('Caol.png')}" alt="caol" class="inline-block w-5 h-5 mx-1" /> Vuelve a estar C.A.O.L. activo.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El KB de los huevos/bolas de nieve fue arreglado.\n<img src="${getEmojiPath('BattleBox.png')}" alt="battlebox" class="inline-block w-5 h-5 mx-1" /> DodgeBall se encuentra activo en fase BETA`,
     version: '4.3',
     date: '30/05/2025',
     author: 'zjjeree',
     categories: ['random-kits', 'game', 'caol'],
     gradient: 'from-purple-500 via-pink-600 to-red-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 4,
     title: 'Actualización 4.2',
-    content: '<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Los capitanes ya no podrán expulsar jugadores durante un team-election.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Beep Test fue modificado y ahora será de un lado hacia el otro.\n<img src="/emojils/Alerta.png" alt="bug" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de los world records que daban los mismos puntos que fastest.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Mensajes de # | sub-queue y # | link fueron actualizados.',
+    content: `<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Los capitanes ya no podrán expulsar jugadores durante un team-election.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Beep Test fue modificado y ahora será de un lado hacia el otro.\n<img src="${getEmojiPath('Alerta.png')}" alt="bug" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug de los world records que daban los mismos puntos que fastest.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Mensajes de # | sub-queue y # | link fueron actualizados.`,
     version: '4.2',
     date: '26/05/2025',
     author: 'zjjeree',
     categories: ['game', 'beeptest'],
     gradient: 'from-blue-500 via-cyan-600 to-teal-600',
     size: 'medium',
-    featured: false
+    featured: false,
   },
   {
     id: 3,
     title: 'Actualización 4.1',
-    content: '<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Los capitanes tendrán un ítem de configuración de equipo, en el tendrán las siguientes funciones:\n• Dar bonus de capitán a otro usuario.\n• Iniciar una votación para expulsar jugadores. (Nueva regla sobre esto)\n• Ver los jugadores conectados y desconectados.\n• Ver los miembros del equipo con las estadísticas de la partida.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El server ya no te quitará de la whitelist si pasan 3 minutos, lo deberá hacer el capitán cuando quiera.\n<img src="/emojils/BeepTest.png" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Beep Test estará listo para mañana.',
+    content: `<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Los capitanes tendrán un ítem de configuración de equipo, en el tendrán las siguientes funciones:\n• Dar bonus de capitán a otro usuario.\n• Iniciar una votación para expulsar jugadores. (Nueva regla sobre esto)\n• Ver los jugadores conectados y desconectados.\n• Ver los miembros del equipo con las estadísticas de la partida.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El server ya no te quitará de la whitelist si pasan 3 minutos, lo deberá hacer el capitán cuando quiera.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Beep Test estará listo para mañana.`,
     version: '4.1',
     date: '24/05/2025',
     author: 'zjjeree',
     categories: ['game', 'server', 'maintenance'],
     gradient: 'from-orange-500 via-yellow-600 to-amber-600',
     size: 'large',
-    featured: false
+    featured: false,
   },
   {
     id: 2,
     title: 'Actualización 4.0',
-    content: '<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Se actualizaron los mensajes de team-election.\n<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se actualizaron los mensajes de los juegos del bar.\n<img src="/emojils/Equipos.png" alt="equipos" class="inline-block w-5 h-5 mx-1" /> El team-election "Draft" fue cambiado de nombre a "Chains"',
+    content: `<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> Se actualizaron los mensajes de team-election.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se actualizaron los mensajes de los juegos del bar.\n<img src="${getEmojiPath('Equipos.png')}" alt="equipos" class="inline-block w-5 h-5 mx-1" /> El team-election "Draft" fue cambiado de nombre a "Chains"`,
     version: '4.0',
     date: '23/05/2025',
     author: 'zjjeree',
     categories: ['game', 'server'],
     gradient: 'from-green-500 via-blue-600 to-purple-600',
     size: 'medium',
-    featured: false
-  }
+    featured: false,
+  },
 ];
 
 // Mock Leaderboard
