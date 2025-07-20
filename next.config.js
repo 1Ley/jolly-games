@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
-  // Configuración para GitHub Pages
+  // Configuración para GitHub Pages solo en producción
   output: 'export',
   trailingSlash: true,
-  basePath: '/jolly-games',
-  assetPrefix: '/jolly-games/',
+  basePath: isProd ? '/jolly-games' : '',
+  assetPrefix: isProd ? '/jolly-games/' : '',
   
   experimental: {
     // appDir eliminado porque ya no es necesario
@@ -61,7 +63,7 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   eslint: {
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true,
   },
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,

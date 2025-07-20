@@ -22,7 +22,34 @@ export const mockUser: User = {
   username: '1Ley',
   email: '1ley@jollygames.com',
   avatar: 'https://mc-heads.net/avatar/Notch/64',
-  role: 'admin',
+  role: {
+    id: 1,
+    name: 'admin',
+    displayName: 'Administrator',
+    description: 'Full access to all server functions',
+    color: '#DC2626',
+    permissions: {
+      manage_users: true,
+      manage_roles: true,
+      manage_tags: true,
+      manage_forum: true,
+      manage_content: true,
+      view_admin_panel: true,
+      ban_users: true,
+      moderate_forum: true,
+      delete_posts: true,
+      warn_users: true,
+      mute_users: true,
+      view_reports: true,
+      manage_topics: true,
+      create_posts: true,
+      create_topics: true,
+      react_posts: true,
+      view_forum: true,
+    },
+    hierarchyLevel: 100,
+  },
+  tags: [],
   joinedAt: new Date('2023-01-15'),
   lastSeen: new Date(),
   isOnline: true,
@@ -238,6 +265,15 @@ export const mockForumCategories: ForumCategory[] = [
   },
 ];
 
+// Mock Server Stats
+export const mockServerStats = {
+  onlinePlayers: 1247,
+  totalPlayers: 45892,
+  gamesThisWeek: 8934,
+  uptime: "99.8%",
+  averageLatency: "12ms"
+};
+
 export const mockForumTopics: ForumTopic[] = [
   {
     id: 'topic-1',
@@ -341,7 +377,7 @@ export const mockUpdates: UpdatePost[] = [
     version: '8.4',
     date: '21/07/2025',
     author: 'zjjeree',
-    categories: ['server', 'purga', 'survival-games', 'jolly', 'skywars', 'battlebox', 'random-kits'],
+    categories: ['server', 'game', 'survival-games', 'skywars', 'battlebox', 'random-kits'],
     gradient: 'from-purple-500 via-pink-600 to-red-600',
     size: 'large',
     featured: true
@@ -413,7 +449,7 @@ export const mockUpdates: UpdatePost[] = [
     version: '7.8',
     date: '12/07/2025',
     author: 'zjjeree',
-    categories: ['server', 'game', 'maintenance', 'anticheat'],
+    categories: ['server', 'game', 'maintenance'],
     gradient: 'from-blue-500 via-indigo-600 to-purple-600',
     size: 'large',
     featured: false
@@ -449,7 +485,7 @@ export const mockUpdates: UpdatePost[] = [
     version: '7.5',
     date: '11/07/2025',
     author: 'zjjeree',
-    categories: ['server', 'maintenance', 'cosmetics'],
+    categories: ['server', 'maintenance', 'game'],
     gradient: 'from-cyan-500 via-blue-600 to-indigo-600',
     size: 'medium',
     featured: false
@@ -461,7 +497,7 @@ export const mockUpdates: UpdatePost[] = [
     version: '7.4',
     date: '09/07/2025',
     author: 'zjjeree',
-    categories: ['skywars', 'survival-games', 'server', 'game', 'party'],
+    categories: ['skywars', 'survival-games', 'server', 'game', 'event'],
     gradient: 'from-orange-500 via-red-600 to-pink-600',
     size: 'large',
     featured: false
@@ -485,7 +521,7 @@ export const mockUpdates: UpdatePost[] = [
     version: '7.2',
     date: '08/07/2025',
     author: 'zjjeree',
-    categories: ['server', 'game', 'competitive'],
+    categories: ['server', 'game', 'event'],
     gradient: 'from-yellow-500 via-orange-600 to-red-600',
     size: 'large',
     featured: true
@@ -509,7 +545,7 @@ export const mockUpdates: UpdatePost[] = [
     version: '7.0',
     date: '07/07/2025',
     author: 'zjjeree',
-    categories: ['server', 'cosmetics', 'store'],
+    categories: ['server', 'game', 'information'],
     gradient: 'from-purple-500 via-pink-600 to-red-600',
     size: 'medium',
     featured: false
@@ -653,7 +689,7 @@ export const mockUpdates: UpdatePost[] = [
     version: '6.1',
     date: '20/06/2025',
     author: 'zjjeree',
-    categories: ['server', 'market'],
+    categories: ['server', 'information'],
     gradient: 'from-yellow-500 via-orange-600 to-red-600',
     size: 'small',
     featured: false

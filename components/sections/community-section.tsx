@@ -8,18 +8,19 @@ import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import { formatNumber } from '@/lib/utils';
 import { mockActivities as fetchMockCommunityActivities } from '@/data/mock-data';
+import type { Comment as ActivityComment } from '@/types';
 
 interface CommunityActivity {
   id: string;
   user: {
     username: string;
-    avatarUrl: string;
+    avatar?: string;
   };
   type: 'screenshot' | 'artwork' | 'build' | 'achievement';
   title: string;
   likes: number;
-  comments: number;
-  createdAt: string;
+  comments: ActivityComment[] | number;
+  createdAt: string | Date;
   imageUrl?: string;
 }
 
@@ -56,7 +57,7 @@ export function CommunitySection() {
       const calculatedStats = data.reduce(
         (acc, activity) => {
           acc.likes += activity.likes;
-          acc.comments += activity.comments;
+          acc.comments += Array.isArray(activity.comments) ? activity.comments.length : activity.comments;
           return acc;
         },
         { creations: data.length, likes: 0, comments: 0 }
@@ -102,7 +103,7 @@ export function CommunitySection() {
           >
             <div className="flex space-x-3">
               <Image
-                src={activity.user.avatarUrl}
+                src={activity.user.avatar || 'https://mc-heads.net/avatar/steve/64'}
                 alt={activity.user.username}
                 width={32}
                 height={32}
@@ -134,7 +135,7 @@ export function CommunitySection() {
                     </div>
                     <div className="flex items-center space-x-1">
                       <MessageCircle className="h-3 w-3" />
-                      <span>{formatNumber(activity.comments)}</span>
+                      <span>{formatNumber(Array.isArray(activity.comments) ? activity.comments.length : activity.comments)}</span>
                     </div>
                   </div>
                 </div>

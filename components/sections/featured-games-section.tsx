@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, Users, ArrowRight, ArrowLeft, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { mockGameModes as fetchMockGameModes } from '@/data/mock-data';
+import { mockFeatureSections } from '@/data/mock-data';
 import { formatNumber } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -38,7 +38,20 @@ export function FeaturedGamesSection() {
   useEffect(() => {
     // Simulate API call
     const timer = setTimeout(() => {
-      setGameModes(fetchMockGameModes);
+      // Transform mockFeatureSections to GameMode format
+      const transformedGameModes: GameMode[] = mockFeatureSections.map((section, index) => ({
+        id: section.title.toLowerCase().replace(/\s+/g, '-'),
+        displayName: section.title,
+        description: section.description,
+        playerCount: {
+          current: Math.floor(Math.random() * 100) + 20,
+          max: 200
+        },
+        averageGameTime: Math.floor(Math.random() * 10) + 5,
+        difficulty: ['easy', 'medium', 'hard', 'expert'][Math.floor(Math.random() * 4)] as 'easy' | 'medium' | 'hard' | 'expert',
+        thumbnail: section.imageUrl
+      }));
+      setGameModes(transformedGameModes);
       setIsLoading(false);
     }, 500);
     return () => clearTimeout(timer);

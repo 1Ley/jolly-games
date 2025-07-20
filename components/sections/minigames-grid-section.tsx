@@ -122,21 +122,21 @@ export function MinigamesGridSection() {
         const duration = 2000; // 2 segundos para un movimiento más lento
         let start: number | null = null;
 
-        function smoothScroll(currentTime: number) {
+        // Función de easing para un movimiento más suave
+        const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
+          t /= d / 2;
+          if (t < 1) return c / 2 * t * t + b;
+          t--;
+          return -c / 2 * (t * (t - 2) - 1) + b;
+        };
+
+        const smoothScroll = (currentTime: number) => {
           if (start === null) start = currentTime;
           const timeElapsed = currentTime - start;
           const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
           window.scrollTo(0, run);
           if (timeElapsed < duration) requestAnimationFrame(smoothScroll);
-        }
-
-        // Función de easing para un movimiento más suave
-        function easeInOutQuad(t: number, b: number, c: number, d: number) {
-          t /= d / 2;
-          if (t < 1) return c / 2 * t * t + b;
-          t--;
-          return -c / 2 * (t * (t - 2) - 1) + b;
-        }
+        };
 
         requestAnimationFrame(smoothScroll);
       }

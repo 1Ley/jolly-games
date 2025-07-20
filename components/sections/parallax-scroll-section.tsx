@@ -38,7 +38,6 @@ export function ParallaxScrollSection({
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
-    smooth: false, // Desactiva el suavizado del scroll
     layoutEffect: false, // Usa useEffect en lugar de useLayoutEffect para mejor rendimiento
   });
 
@@ -88,9 +87,8 @@ export function ParallaxScrollSection({
             style={{
               x: xPosition,
               willChange: 'transform', // Hinting the browser for GPU acceleration
-              transition: { duration: 0 }, // Elimina cualquier transición predeterminada
             }}
-            transition={{ type: false }} // Desactiva las transiciones de Framer Motion
+            transition={{ duration: 0 }} // Elimina cualquier transición predeterminada
           >
             {/* The image now fills the entire card including borders */}
             <div className="relative h-full w-full">
