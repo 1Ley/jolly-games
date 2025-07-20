@@ -6,7 +6,7 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   basePath: isProd ? '/jolly-games' : '',
-  assetPrefix: isProd ? '/jolly-games' : '',
+  assetPrefix: isProd ? '/jolly-games/' : '',
   
   experimental: {
     // appDir eliminado porque ya no es necesario
