@@ -7,7 +7,7 @@ Una web corporativa y de comunidad moderna para Jolly Games, empresa de videojue
 **¿Primera vez? Lee el archivo [INSTALACION.md](./INSTALACION.md) para una guía paso a paso.**
 
 ```bash
-git clone https://github.com/TU-USUARIO/jolly-games.git
+git clone https://github.com/1Ley/jolly-games.git
 cd jolly-games
 npm install
 npm run dev

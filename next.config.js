@@ -1,9 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Configuración para GitHub Pages
+  output: 'export',
+  trailingSlash: true,
+  basePath: '/jolly-games',
+  assetPrefix: '/jolly-games/',
+  
   experimental: {
     // appDir eliminado porque ya no es necesario
   },
   images: {
+    unoptimized: true, // Necesario para GitHub Pages
     remotePatterns: [
       {
         protocol: 'http',

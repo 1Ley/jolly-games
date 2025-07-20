@@ -2,6 +2,7 @@
   "name": "jolly-games-web",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://1ley.github.io/jolly-games",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,7 +15,10 @@
     "test:e2e": "playwright test",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "prune": "ts-prune"
+    "prune": "ts-prune",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out",
+    "export": "next build"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
@@ -65,6 +69,7 @@
     "eslint-config-next": "^14.2.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
+    "gh-pages": "^6.1.1",
     "husky": "^9.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
