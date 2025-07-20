@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { getImagePath, getEmojiPath } from '@/lib/assets';
 
 interface Minigame {
   id: string;
@@ -16,44 +17,44 @@ const minigames: Minigame[] = [
   {
     id: 'survival-games',
     name: 'Survival Games',
-    emoji: '/emojils/Survival games.png',
-    image: '/images/games/survival-games.png'
+    emoji: getEmojiPath('Survival games.png'),
+    image: getImagePath('games/survival-games.png')
   },
   {
     id: 'skywars',
     name: 'SkyWars',
-    emoji: '/emojils/Skywars.png',
-    image: '/images/games/skywars.png'
+    emoji: getEmojiPath('Skywars.png'),
+    image: getImagePath('games/skywars.png')
   },
   {
     id: 'spleef',
     name: 'Spleef',
-    emoji: '/emojils/Spleef.png',
-    image: '/images/games/spleef.png'
+    emoji: getEmojiPath('Spleef.png'),
+    image: getImagePath('games/spleef.png')
   },
   {
     id: 'battlebox',
     name: 'BattleBox',
-    emoji: '/emojils/BattleBox.png',
-    image: '/images/games/battle_box.png'
+    emoji: getEmojiPath('BattleBox.png'),
+    image: getImagePath('games/battle_box.png')
   },
   {
     id: 'random-kits',
     name: 'Random Kits',
-    emoji: '/emojils/Random Kits.png',
-    image: '/images/games/random-kits.png'
+    emoji: getEmojiPath('Random Kits.png'),
+    image: getImagePath('games/random-kits.png')
   },
   {
     id: 'beep-test',
     name: 'Beep Test',
-    emoji: '/emojils/BeepTest.png',
-    image: '/images/games/beeptest.png'
+    emoji: getEmojiPath('BeepTest.png'),
+    image: getImagePath('games/beeptest.png')
   },
   {
     id: 'party',
     name: 'Party',
-    emoji: '/emojils/Party.png',
-    image: '/images/games/party.png'
+    emoji: getEmojiPath('Party.png'),
+    image: getImagePath('games/party.png')
   }
 ];
 

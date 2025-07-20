@@ -15,7 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import MinecraftAvatar from '@/components/ui/minecraft-avatar';
 import { mockEvents } from '@/data/mock-data';
-import { getEmojiPath } from '@/lib/assets';
+import { getEmojiPath, getImagePath } from '@/lib/assets';
 
 interface Team {
   id: string;
@@ -85,7 +85,7 @@ export default function EventsPage() {
         transition={{ duration: 0.8 }}
         className="relative h-[450px] overflow-hidden"
         style={{
-          backgroundImage: 'url(/images/fondo_events.png)',
+          backgroundImage: `url(${getImagePath('fondo_events.png')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

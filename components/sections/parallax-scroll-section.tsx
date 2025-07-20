@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { getEmojiPath } from '@/lib/assets';
 
 interface ParallaxScrollSectionProps {
   title: string;
@@ -20,19 +21,19 @@ export function ParallaxScrollSection({
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Función para obtener el emoji correspondiente al juego
-  const getEmojiPath = (gameTitle: string): string => {
+  const getGameEmojiPath = (gameTitle: string): string => {
     const emojiMap: { [key: string]: string } = {
-      'SkyWars': '/emojils/Skywars.png',
-      'Party': '/emojils/Party.png',
-      'Race': '/emojils/Cohete.png',
-      'BattleBox': '/emojils/BattleBox.png',
-      'Random Kits': '/emojils/Random Kits.png',
-      'Survival Games': '/emojils/Survival games.png',
-      'Beep Test': '/emojils/BeepTest.png',
-      'Spleef': '/emojils/Spleef.png',
-      'Bow Spleef': '/emojils/Bow_Spleef.png',
+      'SkyWars': 'Skywars.png',
+      'Party': 'Party.png',
+      'Race': 'Cohete.png',
+      'BattleBox': 'BattleBox.png',
+      'Random Kits': 'Random Kits.png',
+      'Survival Games': 'Survival games.png',
+      'Beep Test': 'BeepTest.png',
+      'Spleef': 'Spleef.png',
+      'Bow Spleef': 'Bow_Spleef.png',
     };
-    return emojiMap[gameTitle] || '/emojils/JollyGames.png';
+    return getEmojiPath(emojiMap[gameTitle] || 'JollyGames.png');
   };
 
   const { scrollYProgress } = useScroll({
@@ -70,7 +71,7 @@ export function ParallaxScrollSection({
           <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl minecraft-font flex items-center justify-center md:justify-start gap-3">
             {title}
             <Image
-              src={getEmojiPath(title)}
+              src={getGameEmojiPath(title)}
               alt={`${title} emoji`}
               width={48}
               height={48}

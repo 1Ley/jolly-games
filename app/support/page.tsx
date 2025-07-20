@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getImagePath } from '@/lib/assets';
 import { motion } from 'framer-motion';
 import { HelpCircle, MessageSquare, Users, Mail, X, Heart, Code, Coffee } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
@@ -93,7 +94,7 @@ export default function SupportPage() {
         transition={{ duration: 0.8 }}
         className="relative h-[450px] overflow-hidden"
         style={{
-          backgroundImage: 'url(/images/banner_support.png)',
+          backgroundImage: `url(${getImagePath('banner_support.png')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

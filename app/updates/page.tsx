@@ -9,6 +9,7 @@ import { Search, Plus, Filter, Calendar, User, Eye, MessageSquare, X, Gamepad2, 
 import { mockUpdates, UpdatePost } from '@/data/mock-data'
 import Image from 'next/image'
 import MinecraftAvatar from '@/components/ui/minecraft-avatar'
+import { getImagePath } from '@/lib/assets'
 
 // Function to process content - simplified to avoid hydration issues
 function processContentWithEmojis(content: string): string {
@@ -86,7 +87,7 @@ export default function UpdatesPage() {
       <div 
         className="relative h-[450px] bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{
-          backgroundImage: 'url(/images/banner_updates.png)',
+          backgroundImage: `url(${getImagePath('banner_updates.png')})`,
           maskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)'
         }}

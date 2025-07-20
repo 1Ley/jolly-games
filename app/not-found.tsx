@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Home, ArrowLeft } from 'lucide-react';
-import { getImagePath } from '@/lib/assets';
+import { getImagePath, getAssetPath } from '@/lib/assets';
 
 export default function NotFound() {
   return (
@@ -14,7 +14,10 @@ export default function NotFound() {
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-950" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
+        <div 
+          className="absolute inset-0 opacity-20" 
+          style={{ backgroundImage: `url(${getAssetPath('/grid.svg')})` }}
+        />
       </div>
       <div className="text-center max-w-xl mx-auto">
         {/* Animated 404 Title */}
