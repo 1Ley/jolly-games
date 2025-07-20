@@ -4,7 +4,16 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getImagePath } from '@/lib/assets';
 import { motion } from 'framer-motion';
-import { HelpCircle, MessageSquare, Users, Mail, X, Heart, Code, Coffee } from 'lucide-react';
+import {
+  HelpCircle,
+  MessageSquare,
+  Users,
+  Mail,
+  X,
+  Heart,
+  Code,
+  Coffee,
+} from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -98,16 +107,22 @@ export default function SupportPage() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          maskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)'
+          maskImage:
+            'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
+          WebkitMaskImage:
+            'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
         }}
       >
         {/* Dark Vignette Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-black/20 to-black/40" style={{
-          background: 'radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)'
-        }} />
-        
+        <div
+          className="bg-gradient-radial absolute inset-0 from-transparent via-black/20 to-black/40"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)',
+          }}
+        />
+
         {/* Content */}
         <div className="relative z-10 flex h-full items-center justify-center">
           <div className="text-center">
@@ -133,14 +148,15 @@ export default function SupportPage() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="mx-auto max-w-2xl text-lg text-gray-200"
             >
-              ¿Necesitas ayuda? Has venido al lugar indicado. Encuentra aquí las respuestas y el contacto que necesitas.
+              ¿Necesitas ayuda? Este es el lugar perfecto para resolver tus
+              dudas y encontrar el soporte que buscas de forma rápida y
+              sencilla.
             </motion.p>
           </div>
         </div>
       </motion.div>
 
-      <div className="container mx-auto max-w-screen-lg px-4 -mt-8 relative z-20 pb-12 text-white">
-
+      <div className="container relative z-20 mx-auto -mt-8 max-w-screen-lg px-4 pb-12 text-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -148,13 +164,20 @@ export default function SupportPage() {
           className="bento-item mb-12 flex flex-col items-center justify-between gap-8 p-8 md:flex-row"
         >
           <div className="text-center md:text-left">
-            <h2 className="mb-2 text-3xl font-bold text-blue-400">Únete a nuestro Discord</h2>
+            <h2 className="mb-2 text-3xl font-bold text-blue-400">
+              Únete a nuestro Discord
+            </h2>
             <p className="mb-6 max-w-lg text-gray-300">
-              La forma más <span className="text-blue-300">rápida y efectiva</span> de obtener soporte es a través de
-              nuestro servidor de Discord. Únete a la comunidad, participa y
-              obtén ayuda al instante.
+              La forma más{' '}
+              <span className="text-blue-300">rápida y efectiva</span> de
+              obtener soporte es a través de nuestro servidor de Discord. Únete
+              a la comunidad, participa y obtén ayuda al instante.
             </p>
-            <Button size="lg" asChild className="group bg-blue-600 hover:bg-blue-700 text-white">
+            <Button
+              size="lg"
+              asChild
+              className="group bg-blue-600 text-white hover:bg-blue-700"
+            >
               <Link href="https://discord.gg/jolly" target="_blank">
                 <FaDiscord className="mr-2 h-5 w-5" />
                 Unirse ahora
@@ -178,7 +201,11 @@ export default function SupportPage() {
             {supportChannels.map((channel, index) => (
               <div key={index} className="bento-item p-6 text-center">
                 {channel.icon}
-                <h3 className={`mb-3 text-xl font-semibold ${channel.titleColor}`}>{channel.title}</h3>
+                <h3
+                  className={`mb-3 text-xl font-semibold ${channel.titleColor}`}
+                >
+                  {channel.title}
+                </h3>
                 <p className="mb-6 text-gray-400">{channel.description}</p>
                 <Button variant="outline" asChild>
                   <Link href={channel.link} target="_blank">
@@ -221,25 +248,26 @@ export default function SupportPage() {
             Administración
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-center text-gray-400">
-            Nuestro equipo de administración está disponible para resolver problemas críticos y
-            tomar decisiones importantes sobre el servidor. Contacta directamente solo para casos urgentes.
+            Nuestro equipo de administración está disponible para resolver
+            problemas críticos y tomar decisiones importantes sobre el servidor.
+            Contacta directamente solo para casos urgentes.
           </p>
-          
+
           <div className="mb-12">
-            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 px-4">
-              <div 
-                className="bento-item rounded-lg p-6 transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10 cursor-pointer hover:scale-105 min-h-[180px] w-full"
+            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-2 lg:grid-cols-3">
+              <div
+                className="bento-item min-h-[180px] w-full cursor-pointer rounded-lg p-6 transition-all duration-300 hover:scale-105 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10"
                 onClick={() => setShowJereEasterEgg(true)}
               >
                 <div className="mb-4">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="mb-2 flex items-center gap-3">
                     <img
                       src="https://mc-heads.net/avatar/zjjeree/64"
                       alt="zjjeree avatar"
-                      className="h-10 w-10 rounded-lg flex-shrink-0"
+                      className="h-10 w-10 flex-shrink-0 rounded-lg"
                     />
                     <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-bold text-white">zjjereee</h3>
+                      <h3 className="text-lg font-bold text-white">zjjeree</h3>
                       <span className="rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 px-3 py-1 text-xs font-semibold text-white">
                         Founder
                       </span>
@@ -249,29 +277,33 @@ export default function SupportPage() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <Mail className="h-4 w-4 flex-shrink-0 text-gray-400" />
-                    <span className="break-all text-gray-300 text-sm">
+                    <span className="break-all text-sm text-gray-300">
                       zjjeree@gmail.com
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4 flex-shrink-0" />
-                    <span className="text-gray-300 text-sm">zjjereee</span>
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4 flex-shrink-0"
+                    />
+                    <span className="text-sm text-gray-300">zjjereee</span>
                   </div>
                 </div>
               </div>
 
-              <div 
-                className="bento-item rounded-lg p-6 transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10 cursor-pointer hover:scale-105 min-h-[180px] w-full"
+              <div
+                className="bento-item min-h-[180px] w-full cursor-pointer rounded-lg p-6 transition-all duration-300 hover:scale-105 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10"
                 onClick={() => setShowEasterEgg(true)}
               >
                 <div className="mb-4">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="mb-2 flex items-center gap-3">
                     <img
                       src="https://mc-heads.net/avatar/1ley/64"
                       alt="1ley avatar"
-                      className="h-10 w-10 rounded-lg flex-shrink-0"
+                      className="h-10 w-10 flex-shrink-0 rounded-lg"
                     />
-                    <div className="flex items-center gap-2 flex-wrap">
+                    <div className="flex flex-wrap items-center gap-2">
                       <h3 className="text-lg font-bold text-white">1ley</h3>
                       <span className="rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-3 py-1 text-xs font-semibold text-white">
                         Web Dev
@@ -285,27 +317,31 @@ export default function SupportPage() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <Mail className="h-4 w-4 flex-shrink-0 text-gray-400" />
-                    <span className="break-all text-gray-300 text-sm">
+                    <span className="break-all text-sm text-gray-300">
                       imleidan@gmail.com
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4 flex-shrink-0" />
-                    <span className="text-gray-300 text-sm">1ley.</span>
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4 flex-shrink-0"
+                    />
+                    <span className="text-sm text-gray-300">1ley.</span>
                   </div>
                 </div>
               </div>
 
-              <div 
-                className="bento-item rounded-lg p-6 transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10 cursor-pointer hover:scale-105 min-h-[180px] w-full"
+              <div
+                className="bento-item min-h-[180px] w-full cursor-pointer rounded-lg p-6 transition-all duration-300 hover:scale-105 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10"
                 onClick={() => setShowShinyEasterEgg(true)}
               >
                 <div className="mb-4">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="mb-2 flex items-center gap-3">
                     <img
-                      src="https://mc-heads.net/avatar/Ferreirx/64"
-                      alt="Ferreirx avatar"
-                      className="h-10 w-10 rounded-lg flex-shrink-0"
+                      src="https://mc-heads.net/avatar/elchachobles/64"
+                      alt="elchachobles avatar"
+                      className="h-10 w-10 flex-shrink-0 rounded-lg"
                     />
                     <div className="flex items-center gap-2">
                       <h3 className="text-lg font-bold text-white">Shiny</h3>
@@ -318,20 +354,22 @@ export default function SupportPage() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <Mail className="h-4 w-4 flex-shrink-0 text-gray-400" />
-                    <span className="break-all text-gray-300 text-sm">
+                    <span className="break-all text-sm text-gray-300">
                       shinybless2019@gmail.com
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4 flex-shrink-0" />
-                    <span className="text-gray-300 text-sm">shinybless</span>
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4 flex-shrink-0"
+                    />
+                    <span className="text-sm text-gray-300">shinybless</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          
-
         </motion.div>
 
         {/* Título para el equipo de staff */}
@@ -339,14 +377,15 @@ export default function SupportPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="text-center mb-8"
+          className="mb-8 text-center"
         >
           <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
             Equipo de Staff
           </h2>
           <p className="mx-auto max-w-2xl text-gray-400">
-            Nuestro equipo de soporte está aquí para ayudarte con cualquier consulta o problema que puedas tener.
-            Por favor, usa esta opción solo para casos urgentes.
+            Nuestro equipo de soporte está aquí para ayudarte con cualquier
+            consulta o problema que puedas tener. Por favor, usa esta opción
+            solo para casos urgentes.
           </p>
         </motion.div>
 
@@ -360,54 +399,66 @@ export default function SupportPage() {
             >
               <button
                 onClick={() => setShowEasterEgg(false)}
-                className="absolute right-4 top-4 text-gray-400 hover:text-white transition-colors z-10"
+                className="absolute right-4 top-4 z-10 text-gray-400 transition-colors hover:text-white"
               >
                 <X className="h-6 w-6" />
               </button>
-              
+
               <div className="text-center">
                 <div className="mb-6">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 glow">
+                  <div className="glow mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
                     <Code className="h-8 w-8 text-white" />
                   </div>
 
-                  <p className="text-lg font-semibold gradient-text">Desarrollador de la web Jolly Games</p>
+                  <p className="gradient-text text-lg font-semibold">
+                    Desarrollador de la web Jolly Games
+                  </p>
                 </div>
-                
+
                 <div className="space-y-4 text-left">
                   <div className="bento-item p-4">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="mb-2 flex items-center gap-2">
                       <Heart className="h-5 w-5 text-red-400" />
-                      <span className="font-semibold text-white">Sobre este proyecto</span>
+                      <span className="font-semibold text-white">
+                        Sobre este proyecto
+                      </span>
                     </div>
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                      He desarrollado esta web completamente desde cero para la comunidad de Jolly Games. 
-                      Cada línea de código ha sido escrita con dedicación para brindar la mejor experiencia posible.
+                    <p className="text-sm leading-relaxed text-gray-300">
+                      He desarrollado esta web completamente desde cero para la
+                      comunidad de Jolly Games. Cada línea de código ha sido
+                      escrita con dedicación para brindar la mejor experiencia
+                      posible.
                     </p>
                   </div>
-                  
+
                   <div className="bento-item p-4">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="mb-2 flex items-center gap-2">
                       <Coffee className="h-5 w-5 text-yellow-400" />
-                      <span className="font-semibold text-white">¿Te gusta mi trabajo?</span>
+                      <span className="font-semibold text-white">
+                        ¿Te gusta mi trabajo?
+                      </span>
                     </div>
-                    <p className="text-gray-300 text-sm leading-relaxed mb-3">
-                      Si aprecias el esfuerzo y quieres apoyar el desarrollo continuo de la web, 
-                      puedes invitarme un café ☕
+                    <p className="mb-3 text-sm leading-relaxed text-gray-300">
+                      Si aprecias el esfuerzo y quieres apoyar el desarrollo
+                      continuo de la web, puedes invitarme un café ☕
                     </p>
-                    <Button 
-                      size="sm" 
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-colors"
+                    <Button
+                      size="sm"
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white transition-colors hover:from-blue-700 hover:to-purple-700"
                       asChild
                     >
-                      <Link href="https://paypal.me/1miley" target="_blank" className="inline-flex items-center gap-2 font-semibold">
-                         <Heart className="w-4 h-4 text-red-600" />
-                         Donar vía PayPal
-                       </Link>
+                      <Link
+                        href="https://paypal.me/1miley"
+                        target="_blank"
+                        className="inline-flex items-center gap-2 font-semibold"
+                      >
+                        <Heart className="h-4 w-4 text-red-600" />
+                        Donar vía PayPal
+                      </Link>
                     </Button>
                   </div>
                 </div>
-                
+
                 <div className="mt-6 text-center">
                   <p className="text-xs text-gray-500">
                     Hecho con ❤️ por 1ley para la comunidad
@@ -431,120 +482,145 @@ export default function SupportPage() {
               Supports Disponibles
             </h3>
             <div className="space-y-4">
-              <p className="text-center text-gray-400 mb-6">
-                Nuestro equipo de soporte está aquí para ayudarte con cualquier consulta o problema que puedas tener.
+              <p className="mb-6 text-center text-gray-400">
+                Nuestro equipo de soporte está aquí para ayudarte con cualquier
+                consulta o problema que puedas tener.
               </p>
-              
+
               {/* Lista de Supports */}
-               <div className="space-y-3">
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/slownnn_/32"
-                     alt="Slownnn avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">Slownnn</span>
-                     <span className="rounded-full bg-orange-500/20 border border-orange-500/30 px-2 py-1 text-xs font-semibold text-orange-300">
-                       Regulador
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>slownnn_</span>
-                   </div>
-                 </div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/slownnn_/32"
+                    alt="Slownnn avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">Slownnn</span>
+                    <span className="rounded-full border border-orange-500/30 bg-orange-500/20 px-2 py-1 text-xs font-semibold text-orange-300">
+                      Regulator
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>slownnn_</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/guillexer/32"
-                     alt="guillexer avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">guillexer</span>
-                     <span className="rounded-full bg-orange-500/20 border border-orange-500/30 px-2 py-1 text-xs font-semibold text-orange-300">
-                       Support
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>guillexer2.0</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/guillexer/32"
+                    alt="guillexer avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">guillexer</span>
+                    <span className="rounded-full border border-orange-500/30 bg-orange-500/20 px-2 py-1 text-xs font-semibold text-orange-300">
+                      Support
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>guillexer2.0</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/_cqritxs/32"
-                     alt="iCqritxs avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">iCqritxs</span>
-                     <span className="rounded-full bg-orange-500/20 border border-orange-500/30 px-2 py-1 text-xs font-semibold text-orange-300">
-                       Support
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>cqritxs</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/_cqritxs/32"
+                    alt="iCqritxs avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">iCqritxs</span>
+                    <span className="rounded-full border border-orange-500/30 bg-orange-500/20 px-2 py-1 text-xs font-semibold text-orange-300">
+                      Support
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>cqritxs</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/_shuts/32"
-                     alt="shuts avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">shuts</span>
-                     <span className="rounded-full bg-orange-500/20 border border-orange-500/30 px-2 py-1 text-xs font-semibold text-orange-300">
-                       Support
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>.shuts</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/_shuts/32"
+                    alt="shuts avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">shuts</span>
+                    <span className="rounded-full border border-orange-500/30 bg-orange-500/20 px-2 py-1 text-xs font-semibold text-orange-300">
+                      Support
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>.shuts</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/soylianx/32"
-                     alt="SoyLianx avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">SoyLianx</span>
-                     <span className="rounded-full bg-orange-500/20 border border-orange-500/30 px-2 py-1 text-xs font-semibold text-orange-300">
-                       Support
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>soylianx</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/soylianx/32"
+                    alt="SoyLianx avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">SoyLianx</span>
+                    <span className="rounded-full border border-orange-500/30 bg-orange-500/20 px-2 py-1 text-xs font-semibold text-orange-300">
+                      Support
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>soylianx</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/wjeff123/32"
-                     alt="wJeff123 avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">wJeff123</span>
-                     <span className="rounded-full bg-orange-500/20 border border-orange-500/30 px-2 py-1 text-xs font-semibold text-orange-300">
-                       Support
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>wjeff123</span>
-                   </div>
-                 </div>
-               </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/wjeff123/32"
+                    alt="wJeff123 avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">wJeff123</span>
+                    <span className="rounded-full border border-orange-500/30 bg-orange-500/20 px-2 py-1 text-xs font-semibold text-orange-300">
+                      Support
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>wjeff123</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -554,212 +630,257 @@ export default function SupportPage() {
               Hosters Activos
             </h3>
             <div className="space-y-4">
-              <p className="text-center text-gray-400 mb-6">
-                Nuestros hosters se encargan de organizar y gestionar los eventos y partidas especiales.
+              <p className="mb-6 text-center text-gray-400">
+                Nuestros hosters se encargan de organizar y gestionar los
+                eventos y partidas especiales.
               </p>
-              
+
               {/* Lista de Hosters */}
-               <div className="space-y-3">
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/crystaxol/32"
-                     alt="CrystAxol avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">CrystAxol</span>
-                     <span className="rounded-full bg-green-500/20 border border-green-500/30 px-2 py-1 text-xs font-semibold text-green-300">
-                       Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>crystaxol</span>
-                   </div>
-                 </div>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/crystaxol/32"
+                    alt="CrystAxol avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">CrystAxol</span>
+                    <span className="rounded-full border border-green-500/30 bg-green-500/20 px-2 py-1 text-xs font-semibold text-green-300">
+                      Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>crystaxol</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/dogmy/32"
-                     alt="Dogmy avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">Dogmy</span>
-                     <span className="rounded-full bg-green-500/20 border border-green-500/30 px-2 py-1 text-xs font-semibold text-green-300">
-                       Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>dogmy</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/dogmy/32"
+                    alt="Dogmy avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">Dogmy</span>
+                    <span className="rounded-full border border-green-500/30 bg-green-500/20 px-2 py-1 text-xs font-semibold text-green-300">
+                      Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>dogmy</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/santissh/32"
-                     alt="iSantiSsh avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">iSantiSsh</span>
-                     <span className="rounded-full bg-green-500/20 border border-green-500/30 px-2 py-1 text-xs font-semibold text-green-300">
-                       Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>santissh</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/montoyatr/32"
+                    alt="MontoyaTrr avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">MontoyaTrr</span>
+                    <span className="rounded-full border border-green-500/30 bg-green-500/20 px-2 py-1 text-xs font-semibold text-green-300">
+                      Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>montoyatr</span>
+                  </div>
+                </div>
 
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/vdiegoz/32"
+                    alt="FalseXo_ avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">FalseXo_</span>
+                    <span className="rounded-full border border-yellow-500/30 bg-yellow-500/20 px-2 py-1 text-xs font-semibold text-yellow-300">
+                      T.Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>vdiegoz</span>
+                  </div>
+                </div>
 
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/khali_tv/32"
+                    alt="Khali avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">Khali</span>
+                    <span className="rounded-full border border-yellow-500/30 bg-yellow-500/20 px-2 py-1 text-xs font-semibold text-yellow-300">
+                      T.Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>khali_tv</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/montoyatr/32"
-                     alt="MontoyaTrr avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">MontoyaTrr</span>
-                     <span className="rounded-full bg-green-500/20 border border-green-500/30 px-2 py-1 text-xs font-semibold text-green-300">
-                       Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>montoyatr</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/oscarramos/32"
+                    alt="Oscar avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">Oscar</span>
+                    <span className="rounded-full border border-yellow-500/30 bg-yellow-500/20 px-2 py-1 text-xs font-semibold text-yellow-300">
+                      T.Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>oscarramos</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/vdiegoz/32"
-                     alt="FalseXo_ avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">FalseXo_</span>
-                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
-                       T.Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>vdiegoz</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/wintersggez/32"
+                    alt="Previo avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">Previo</span>
+                    <span className="rounded-full border border-yellow-500/30 bg-yellow-500/20 px-2 py-1 text-xs font-semibold text-yellow-300">
+                      T.Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>wintersggez</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/khali_tv/32"
-                     alt="Khali avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">Khali</span>
-                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
-                       T.Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>khali_tv</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/sbloosh/32"
+                    alt="Sbloosh avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">Sbloosh</span>
+                    <span className="rounded-full border border-yellow-500/30 bg-yellow-500/20 px-2 py-1 text-xs font-semibold text-yellow-300">
+                      T.Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>sbloosh</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/oscarramos/32"
-                     alt="Oscar avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">Oscar</span>
-                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
-                       T.Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>oscarramos</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/xic_julius/32"
+                    alt="julianoviix avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">julianoviix</span>
+                    <span className="rounded-full border border-yellow-500/30 bg-yellow-500/20 px-2 py-1 text-xs font-semibold text-yellow-300">
+                      T.Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>xic_julius</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/wintersggez/32"
-                     alt="Previo avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">Previo</span>
-                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
-                       T.Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>wintersggez</span>
-                   </div>
-                 </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/sthefanw/32"
+                    alt="sthefanw avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">sthefanw</span>
+                    <span className="rounded-full border border-yellow-500/30 bg-yellow-500/20 px-2 py-1 text-xs font-semibold text-yellow-300">
+                      T.Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>sthefanw</span>
+                  </div>
+                </div>
 
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/sbloosh/32"
-                     alt="Sbloosh avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">Sbloosh</span>
-                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
-                       T.Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>sbloosh</span>
-                   </div>
-                 </div>
-
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/xic_julius/32"
-                     alt="julianoviix avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">julianoviix</span>
-                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
-                       T.Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>xic_julius</span>
-                   </div>
-                 </div>
-
-                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-700/50 transition-colors">
-                   <img
-                     src="https://mc-heads.net/head/sthefanw/32"
-                     alt="sthefanw avatar"
-                     className="h-8 w-8 rounded"
-                   />
-                   <div className="flex items-center gap-2">
-                     <span className="text-white font-medium">sthefanw</span>
-                     <span className="rounded-full bg-yellow-500/20 border border-yellow-500/30 px-2 py-1 text-xs font-semibold text-yellow-300">
-                       T.Host
-                     </span>
-                   </div>
-                   <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
-                     <span>sthefanw</span>
-                   </div>
-                 </div>
-               </div>
+                <div className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-gray-700/50">
+                  <img
+                    src="https://mc-heads.net/head/jollygamesevent/32"
+                    alt="jollygamesevent avatar"
+                    className="h-8 w-8 rounded"
+                  />
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-white">
+                      jollygamesevent
+                    </span>
+                    <span className="rounded-full border border-yellow-500/30 bg-yellow-500/20 px-2 py-1 text-xs font-semibold text-yellow-300">
+                      T.Host
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2 text-sm text-gray-400">
+                    <img
+                      src={getEmojiPath('Discord.svg')}
+                      alt="Discord"
+                      className="h-4 w-4"
+                    />
+                    <span>jollygamesevent</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -774,35 +895,64 @@ export default function SupportPage() {
             >
               <button
                 onClick={() => setShowJereEasterEgg(false)}
-                className="absolute right-4 top-4 text-gray-400 hover:text-white transition-colors z-10"
+                className="absolute right-4 top-4 z-10 text-gray-400 transition-colors hover:text-white"
               >
                 <X className="h-6 w-6" />
               </button>
-              
+
               <div className="text-center">
                 <div className="mb-6">
-                  <p className="text-lg font-semibold gradient-text">Fundador de Jolly Games</p>
-                  <p className="text-gray-300 text-sm mt-2">
+                  <div className="glow mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-yellow-500 to-orange-500">
+                    <Users className="h-8 w-8 text-white" />
+                  </div>
+                  <p className="gradient-text text-lg font-semibold">
+                    Fundador de Jolly Games
+                  </p>
+                  <p className="mt-2 text-sm text-gray-300">
                     Creador de todos los minijuegos para la comunidad latina
                   </p>
                 </div>
-                
-                <div className="space-y-4">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-400 mb-3">Enlace de contacto:</p>
-                    <Button 
-                      variant="outline"
-                      size="sm" 
-                      className="bg-transparent border-gray-600 text-gray-300 hover:bg-gray-800/50 hover:border-gray-500 transition-all duration-300"
-                      asChild
-                    >
-                      <Link href="https://paypal.me/Jerehhh" target="_blank" className="inline-flex items-center gap-2">
-                        PayPal: Jerehhh
-                      </Link>
-                    </Button>
+
+                <div className="space-y-4 text-left">
+                  <div className="bento-item p-4">
+                    <div className="mb-2 flex items-center gap-2">
+                      <Heart className="h-5 w-5 text-yellow-400" />
+                      <span className="font-semibold text-white">
+                        Historia del fundador
+                      </span>
+                    </div>
+                    <p className="text-sm leading-relaxed text-gray-300">
+                      Un día jugué un evento con mis seguidores, mis seguidores
+                      eran pobres ya que no tenían cuenta premium y cree mi
+                      propio evento no premium para que ellos jugarán.
+                    </p>
+                  </div>
+
+                  <div className="bento-item p-4">
+                    <div className="space-y-3">
+                      <Button
+                        size="sm"
+                        className="w-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white transition-colors hover:from-yellow-700 hover:to-orange-700"
+                        asChild
+                      >
+                        <Link
+                          href="https://paypal.me/Jerehhh"
+                          target="_blank"
+                          className="inline-flex items-center gap-2 font-semibold"
+                        >
+                          <Heart className="h-4 w-4 text-red-600" />
+                          PayPal
+                        </Link>
+                      </Button>
+
+                      <div className="text-center">
+                        <p className="mb-1 text-sm text-gray-400">ALIAS:</p>
+                        <p className="font-semibold text-white">tomasd.prex</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-6 text-center">
                   <p className="text-xs text-gray-500">
                     Fundador y creador de Jolly Games 🎮
@@ -823,53 +973,68 @@ export default function SupportPage() {
             >
               <button
                 onClick={() => setShowShinyEasterEgg(false)}
-                className="absolute right-4 top-4 text-gray-400 hover:text-white transition-colors z-10"
+                className="absolute right-4 top-4 z-10 text-gray-400 transition-colors hover:text-white"
               >
                 <X className="h-6 w-6" />
               </button>
-              
+
               <div className="text-center">
                 <div className="mb-6">
-                  <p className="text-lg font-semibold gradient-text">Desarrollador de Plugins MC</p>
-                  <p className="text-gray-400 text-sm mt-2">
-                    Especialista en mecánicas de juego y optimización
+                  <p className="gradient-text text-lg font-semibold">
+                    Desarrollador de Plugins MC
+                  </p>
+                  <p className="mt-2 text-sm text-gray-400">
+                    Creador del plugin principal de Jolly Games
                   </p>
                 </div>
-                
+
                 <div className="space-y-4 text-left">
                   <div className="bento-item p-4">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="mb-2 flex items-center gap-2">
                       <Heart className="h-5 w-5 text-green-400" />
-                      <span className="font-semibold text-white">Proyectos destacados</span>
+                      <span className="font-semibold text-white">
+                        Proyectos destacados
+                      </span>
                     </div>
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                      Creador de los plugins principales de Jolly Games: Lucky Pillars, Practice y sistemas de duelos. 
-                      Especializado en mecánicas de juego y optimización de rendimiento.
+                    <p className="text-sm leading-relaxed text-gray-300">
+                      Creador del plugin principal de Jolly Games, con
+                      experiencia en el diseño de mecánicas únicas, optimización
+                      avanzada de rendimiento y desarrollo de sistemas
+                      personalizados para garantizar una experiencia de juego
+                      fluida y dinámica.
                     </p>
                   </div>
-                  
+
                   <div className="bento-item p-4">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="mb-2 flex items-center gap-2">
                       <Code className="h-5 w-5 text-blue-400" />
-                      <span className="font-semibold text-white">Experiencia</span>
+                      <span className="font-semibold text-white">
+                        Experiencia
+                      </span>
                     </div>
-                    <p className="text-gray-300 text-sm leading-relaxed mb-3">
-                      +3 años desarrollando plugins personalizados, APIs y sistemas backend para servidores de Minecraft. 
-                      Experto en Spigot/Paper y bases de datos.
+                    <p className="mb-3 text-sm leading-relaxed text-gray-300">
+                      Más de 3 años de experiencia desarrollando plugins a
+                      medida, APIs y sistemas backend para servidores de
+                      Minecraft. Especialista en Spigot/Paper, optimización de
+                      rendimiento y gestión avanzada de bases de datos.
                     </p>
-                    <Button 
-                      size="sm" 
-                      className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 glow shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    <Button
+                      size="sm"
+                      className="glow w-full transform bg-gradient-to-r from-green-600 to-emerald-600 shadow-lg transition-all duration-300 hover:scale-105 hover:from-green-700 hover:to-emerald-700 hover:shadow-xl"
                       asChild
                     >
-                      <Link href="https://tinyurl.com/shiny-portfolio" target="_blank" className="inline-flex items-center gap-2 font-semibold">
-                        <Code className="w-4 h-4" />
+                      <Link
+                        href="https://tinyurl.com/shiny-portfolio"
+                        target="_blank"
+                        className="inline-flex items-center gap-2 font-semibold"
+                      >
+                        <Code className="h-4 w-4" />
                         Ver Portafolio
                       </Link>
                     </Button>
                   </div>
                 </div>
-                
+
                 <div className="mt-6 text-center">
                   <p className="text-xs text-gray-500">
                     Desarrollador especializado en plugins de Minecraft 🎮

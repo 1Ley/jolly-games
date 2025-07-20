@@ -62,8 +62,9 @@ export const mockUser: User = {
 export const mockEvents = {
   currentEvent: {
     id: 'event-1',
-    name: 'JollyCup',
-    description: 'El evento más grande del año con los mejores equipos',
+    name: 'Jolly Cup',
+    description:
+      'El torneo más competitivo, donde los mejores equipos lucharán por ganar.',
     date: 'Próximamente',
     status: 'upcoming',
     teams: [

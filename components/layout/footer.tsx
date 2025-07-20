@@ -2,15 +2,9 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import {
-  Github,
-  Twitter,
-  Youtube,
-  Instagram,
-  Mail,
-  MapPin,
-  Heart,
-} from 'lucide-react';
+import { Github, Youtube, Instagram, Mail, MapPin, Heart } from 'lucide-react';
+import { FaDiscord, FaTiktok } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { getImagePath } from '@/lib/assets';
@@ -56,10 +50,22 @@ const footerLinks = {
 
 const socialLinks = [
   {
-    name: 'Twitter',
-    href: 'https://twitter.com/jollygames',
-    icon: Twitter,
-    color: 'hover:text-[#1DA1F2]',
+    name: 'X (Twitter)',
+    href: 'https://twitter.com/jollygamesevent',
+    icon: FaXTwitter,
+    color: 'hover:text-white',
+  },
+  {
+    name: 'TikTok',
+    href: 'https://tiktok.com/@jollygamesevent',
+    icon: FaTiktok,
+    color: 'hover:text-[#ff0050]',
+  },
+  {
+    name: 'Discord',
+    href: 'https://discord.gg/jolly',
+    icon: FaDiscord,
+    color: 'hover:text-[#5865F2]',
   },
   {
     name: 'YouTube',

@@ -17,24 +17,25 @@ export function HeroSection() {
         alt="Jolly Games background"
         layout="fill"
         objectFit="cover"
-        style={{ objectFit: 'cover', transform: 'scale(1.4)', transformOrigin: 'center center' }}
+        style={{
+          objectFit: 'cover',
+          transform: 'scale(1.4)',
+          transformOrigin: 'center center',
+        }}
         quality={100}
         unoptimized
-        className="absolute inset-0 z-0 opacity-40 object-center"
+        className="absolute inset-0 z-0 object-center opacity-40"
       />
       {/* Overlay */}
       <div className="absolute inset-0 z-0 bg-black/30" />
 
       {/* Main Content */}
       <div className="container relative z-10 mx-auto px-4 py-32">
-        <div className="flex flex-col md:flex-row min-h-[80vh] md:items-end md:justify-start">
+        <div className="flex min-h-[80vh] flex-col md:flex-row md:items-end md:justify-start">
           {/* Left side content - Main content on mobile, left on desktop */}
-          <div className="max-w-2xl order-1 md:order-1">
+          <div className="order-1 max-w-2xl md:order-1">
             {/* Badge */}
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              className="mb-4"
-            >
+            <motion.div initial={{ opacity: 1, y: 0 }} className="mb-4">
               <Badge
                 variant="secondary"
                 className="glass border-primary-500/30 bg-primary-500/10 px-3 py-1 text-xs font-medium text-primary-300"
@@ -46,20 +47,16 @@ export function HeroSection() {
             {/* Main Heading */}
             <motion.h1
               initial={{ opacity: 1, y: 0 }}
-              className="mb-4 text-5xl font-bold leading-tight md:text-6xl lg:text-7xl minecraft-font tracking-wider mt-8"
+              className="minecraft-font mb-4 mt-8 text-5xl font-bold leading-tight tracking-wider md:text-6xl lg:text-7xl"
             >
-              <span className="text-red-600 drop-shadow-lg">
-                JOLLY
-              </span>
-              <span className="text-blue-600 drop-shadow-lg ml-4">
-                GAMES
-              </span>
+              <span className="text-red-600 drop-shadow-lg">JOLLY</span>
+              <span className="ml-4 text-blue-600 drop-shadow-lg">GAMES</span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
               initial={{ opacity: 1, y: 0 }}
-              className="mb-4 text-lg text-gray-300 minecraft-font md:text-xl"
+              className="minecraft-font mb-4 text-lg text-gray-300 md:text-xl"
             >
               Minecraft event
             </motion.p>
@@ -69,7 +66,8 @@ export function HeroSection() {
               initial={{ opacity: 1, y: 0 }}
               className="mb-6 max-w-xl text-sm leading-relaxed text-gray-300 md:text-base"
             >
-              Únete a la mejor experiencia de minijuegos de Minecraft. Compite, diviértete y forma parte de nuestra increíble comunidad.
+              Únete a la mejor experiencia de minijuegos de Minecraft. Compite,
+              diviértete y forma parte de nuestra increíble comunidad.
             </motion.p>
 
             {/* Action Buttons */}
@@ -80,7 +78,7 @@ export function HeroSection() {
               <Link href="/community">
                 <Button
                   size="lg"
-                  className="group bg-black/60 backdrop-blur-sm border border-white/20 px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-black/80 transition-all duration-300"
+                  className="group border border-white/20 bg-black/60 px-6 py-3 text-base font-semibold text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-black/80"
                 >
                   <Calendar className="mr-2 h-4 w-4" />
                   Events
@@ -90,7 +88,7 @@ export function HeroSection() {
               <Link href="/updates">
                 <Button
                   size="lg"
-                  className="bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/20 transition-all duration-300"
+                  className="border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
                 >
                   <RotateCcw className="mr-2 h-4 w-4" />
                   Updates
@@ -100,34 +98,31 @@ export function HeroSection() {
           </div>
 
           {/* Right side content - Bottom on mobile, right on desktop */}
-          <div className="md:ml-auto order-2 md:order-2 mt-8 md:mt-0">
+          <div className="order-2 mt-8 md:order-2 md:ml-auto md:mt-0">
             {/* Server Info */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               className="mb-6 text-center md:text-right"
             >
-              <div className="text-2xl font-bold text-white md:text-3xl lg:text-4xl minecraft-font">
+              <div className="minecraft-font text-2xl font-bold text-white md:text-3xl lg:text-4xl">
                 IP: jollygames.live
-              </div>
-              <div className="text-base font-bold text-gray-300 md:text-lg lg:text-xl minecraft-font mt-1">
-                Puerto: 25565
               </div>
             </motion.div>
 
             {/* Quick Stats */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
-              className="grid grid-cols-3 gap-3 max-w-md mx-auto md:mx-0"
+              className="mx-auto grid max-w-md grid-cols-3 gap-3 md:mx-0"
             >
-              <div className="glass-card text-center p-2">
+              <div className="glass-card p-2 text-center">
                 <div className="mb-1 text-lg font-bold text-white">2,000+</div>
                 <div className="text-xs text-gray-400">Jugadores</div>
               </div>
-              <div className="glass-card text-center p-2">
+              <div className="glass-card p-2 text-center">
                 <div className="mb-1 text-lg font-bold text-white">9+</div>
                 <div className="text-xs text-gray-400">Minijuegos</div>
               </div>
-              <div className="glass-card text-center p-2">
+              <div className="glass-card p-2 text-center">
                 <div className="mb-1 text-lg font-bold text-white">24/7</div>
                 <div className="text-xs text-gray-400">Online</div>
               </div>
