@@ -15,6 +15,7 @@ import {
   Image as ImageIcon,
   Award,
 } from 'lucide-react';
+import { getImagePath } from '@/lib/assets';
 
 // Mock User Base
 export const mockUser: User = {
@@ -81,7 +82,7 @@ export const mockEvents = {
         id: 'team-red',
         name: 'Team Red',
         color: '#DC2626',
-        emoji: '/images/color_teams/team_red.png',
+        emoji: getImagePath('color_teams/team_red.png'),
         players: ['Player1', 'Player2', 'Player3', 'Player4', 'Player5', 'Player6'],
         placement: 1
       },
@@ -89,7 +90,7 @@ export const mockEvents = {
         id: 'team-blue',
         name: 'Team Blue',
         color: '#2563EB',
-        emoji: '/images/color_teams/team_blue.png',
+        emoji: getImagePath('color_teams/team_blue.png'),
         players: ['Player7', 'Player8', 'Player9', 'Player10', 'Player11', 'Player12'],
         placement: null
       },
@@ -97,7 +98,7 @@ export const mockEvents = {
         id: 'team-green',
         name: 'Team Green',
         color: '#16A34A',
-        emoji: '/images/color_teams/team_green.png',
+        emoji: getImagePath('color_teams/team_green.png'),
         players: ['Player13', 'Player14', 'Player15', 'Player16', 'Player17', 'Player18'],
         placement: null
       },
@@ -105,7 +106,7 @@ export const mockEvents = {
         id: 'team-orange',
         name: 'Team Orange',
         color: '#EA580C',
-        emoji: '/images/color_teams/team_orange.png',
+        emoji: getImagePath('color_teams/team_orange.png'),
         players: ['Player19', 'Player20', 'Player21', 'Player22', 'Player23', 'Player24'],
         placement: null
       },
@@ -113,7 +114,7 @@ export const mockEvents = {
         id: 'team-purple',
         name: 'Team Purple',
         color: '#7C3AED',
-        emoji: '/images/color_teams/team_purple.png',
+        emoji: getImagePath('color_teams/team_purple.png'),
         players: ['Player25', 'Player26', 'Player27', 'Player28', 'Player29', 'Player30'],
         placement: null
       },
@@ -121,7 +122,7 @@ export const mockEvents = {
         id: 'team-cyan',
         name: 'Team Cyan',
         color: '#0891B2',
-        emoji: '/images/color_teams/team_cyan.png',
+        emoji: getImagePath('color_teams/team_cyan.png'),
         players: ['Player31', 'Player32', 'Player33', 'Player34', 'Player35', 'Player36'],
         placement: null
       },
@@ -129,7 +130,7 @@ export const mockEvents = {
         id: 'team-gray',
         name: 'Team Gray',
         color: '#6B7280',
-        emoji: '/images/color_teams/team_gray.png',
+        emoji: getImagePath('color_teams/team_gray.png'),
         players: ['Player37', 'Player38', 'Player39', 'Player40', 'Player41', 'Player42'],
         placement: null
       },
@@ -137,7 +138,7 @@ export const mockEvents = {
         id: 'team-yellow',
         name: 'Team Yellow',
         color: '#F59E0B',
-        emoji: '/images/color_teams/team_yellow.png',
+        emoji: getImagePath('color_teams/team_yellow.png'),
         players: ['Player43', 'Player44', 'Player45', 'Player46', 'Player47', 'Player48'],
         placement: null
       },
@@ -145,7 +146,7 @@ export const mockEvents = {
         id: 'team-pink',
         name: 'Team Pink',
         color: '#EC4899',
-        emoji: '/images/color_teams/team_pink.png',
+        emoji: getImagePath('color_teams/team_pink.png'),
         players: ['Player49', 'Player50', 'Player51', 'Player52', 'Player53', 'Player54'],
         placement: null
       },
@@ -153,7 +154,7 @@ export const mockEvents = {
         id: 'team-black',
         name: 'Team Black',
         color: '#1F2937',
-        emoji: '/images/color_teams/team_black.png',
+        emoji: getImagePath('color_teams/team_black.png'),
         players: ['Player55', 'Player56', 'Player57', 'Player58', 'Player59', 'Player60'],
         placement: null
       },
@@ -161,7 +162,7 @@ export const mockEvents = {
         id: 'team-white',
         name: 'Team White',
         color: '#F3F4F6',
-        emoji: '/images/color_teams/team_white.png',
+        emoji: getImagePath('color_teams/team_white.png'),
         players: ['Player61', 'Player62', 'Player63', 'Player64', 'Player65', 'Player66'],
         placement: null
       },
@@ -169,7 +170,7 @@ export const mockEvents = {
         id: 'team-aqua',
         name: 'Team Aqua',
         color: '#14B8A6',
-        emoji: '/images/color_teams/team_aqua.png',
+        emoji: getImagePath('color_teams/team_aqua.png'),
         players: ['Player67', 'Player68', 'Player69', 'Player70', 'Player71', 'Player72'],
         placement: null
       }
@@ -185,43 +186,43 @@ export const mockFeatureSections = [
     title: 'SkyWars',
     description:
       'La experiencia PvP definitiva en islas flotantes. Saquea cofres, equípate y lucha por ser el último jugador en pie en una arena que se desmorona bajo tus pies.',
-    imageUrl: '/images/games/skywars.png',
+    imageUrl: getImagePath('games/skywars.png'),
   },
   {
     title: 'Party',
     description:
       'Sumérgete en una caótica rotación de minijuegos. Sobrevive a la patata caliente en TNT Tag o mantén la bandera para evitar la eliminación en una variante única de Captura la Bandera.',
-    imageUrl: '/images/games/party.png',
+    imageUrl: getImagePath('games/party.png'),
   },
   {
     title: 'BattleBox',
     description:
       'Dos equipos se enfrentan en rondas de combate rápido. El objetivo: ser el primero en rellenar el área central con los bloques de tu color. Estrategia y trabajo en equipo son la clave.',
-    imageUrl: '/images/games/battle_box.png',
+    imageUrl: getImagePath('games/battle_box.png'),
   },
   {
     title: 'Random Kits',
     description:
       'La igualdad de condiciones llevada al extremo. Todos los jugadores reciben el mismo kit de combate aleatorio al empezar. Adapta tu estrategia y que gane el mejor equipo.',
-    imageUrl: '/images/games/random-kits.png',
+    imageUrl: getImagePath('games/random-kits.png'),
   },
   {
     title: 'Survival Games',
     description:
       'El clásico modo de supervivencia y saqueo. Explora el mapa en busca de cofres con equipamiento y recursos. Forja alianzas o lucha en solitario para ser el último equipo en pie.',
-    imageUrl: '/images/games/survival-games.png',
+    imageUrl: getImagePath('games/survival-games.png'),
   },
   {
     title: 'Beep Test',
     description:
       'Un desafío de parkour progresivo que pondrá a prueba tus límites. Supera secciones cada vez más difíciles mientras la velocidad aumenta, demostrando tu precisión y resistencia.',
-    imageUrl: '/images/games/beeptest.png',
+    imageUrl: getImagePath('games/beeptest.png'),
   },
   {
     title: 'Spleef',
     description:
       'Un juego de pura destrucción y supervivencia. Usa tu pala para romper el suelo bajo los pies de tus oponentes y hacerlos caer. ¡El último jugador en la plataforma más alta gana!',
-    imageUrl: '/images/games/spleef.png',
+    imageUrl: getImagePath('games/spleef.png'),
   }
 ];
 
@@ -387,7 +388,7 @@ export const mockUpdates: UpdatePost[] = [
   {
     id: 47,
     title: 'Jolly Games',
-    content: '<img src="/emojils/JollyGames.png" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mensajes de los 3 lenguajes actuales fueron traducidos, si encuentras alguno con algún color mal puesto o con algún mensaje mal puesto puedes reportar en 🐛 | bug-report. (Los menú todavía no aplican)\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="/emojils/Random Kits.png" alt="kits" class="inline-block w-5 h-5 mx-1" /> El kit que no daba items fue arreglado.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <strong>SkyWars</strong>\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se agregaron patos en los cofres normales ya que no salían.\n<img src="/emojils/Skywars.png" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <span class="font-bold text-red-400">SkyWars Trío</span> ya se encuentra disponible. <span class="font-bold text-red-400">BETA</span>\n<img src="/emojils/Market.png" alt="tienda" class="inline-block w-5 h-5 mx-1" /> <strong>Tienda</strong>\n<img src="/emojils/Market.png" alt="tienda" class="inline-block w-5 h-5 mx-1" /> Las descripciones fueron mejoradas y mejor aclaradas de los paquetes.',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mensajes de los 3 lenguajes actuales fueron traducidos, si encuentras alguno con algún color mal puesto o con algún mensaje mal puesto puedes reportar en 🐛 | bug-report. (Los menú todavía no aplican)\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> El kit que no daba items fue arreglado.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <strong>SkyWars</strong>\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se agregaron patos en los cofres normales ya que no salían.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <span class="font-bold text-red-400">SkyWars Trío</span> ya se encuentra disponible. <span class="font-bold text-red-400">BETA</span>\n<img src="${getEmojiPath('Market.png')}" alt="tienda" class="inline-block w-5 h-5 mx-1" /> <strong>Tienda</strong>\n<img src="${getEmojiPath('Market.png')}" alt="tienda" class="inline-block w-5 h-5 mx-1" /> Las descripciones fueron mejoradas y mejor aclaradas de los paquetes.`,
     version: '8.3',
     date: '20/07/2025',
     author: 'zjjeree',
