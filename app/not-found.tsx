@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Home, ArrowLeft } from 'lucide-react';
+import { getImagePath } from '@/lib/assets';
 
 export default function NotFound() {
   return (
@@ -52,7 +53,7 @@ export default function NotFound() {
         >
           <div className="relative w-32 h-32 md:w-40 md:h-40">
             <Image
-              src="/images/error404.png"
+              src={getImagePath('error404.png')}
               alt="Error 404 - Página no encontrada"
               fill
               className="object-contain"

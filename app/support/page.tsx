@@ -8,6 +8,7 @@ import { FaDiscord } from 'react-icons/fa';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { getEmojiPath } from '@/lib/assets';
 
 const supportChannels = [
   {
@@ -252,7 +253,7 @@ export default function SupportPage() {
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4 flex-shrink-0" />
+                    <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4 flex-shrink-0" />
                     <span className="text-gray-300 text-sm">zjjereee</span>
                   </div>
                 </div>
@@ -288,7 +289,7 @@ export default function SupportPage() {
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4 flex-shrink-0" />
+                    <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4 flex-shrink-0" />
                     <span className="text-gray-300 text-sm">1ley.</span>
                   </div>
                 </div>
@@ -321,7 +322,7 @@ export default function SupportPage() {
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4 flex-shrink-0" />
+                    <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4 flex-shrink-0" />
                     <span className="text-gray-300 text-sm">shinybless</span>
                   </div>
                 </div>
@@ -448,7 +449,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>slownnn_</span>
                    </div>
                  </div>
@@ -466,7 +467,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>guillexer2.0</span>
                    </div>
                  </div>
@@ -484,7 +485,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>cqritxs</span>
                    </div>
                  </div>
@@ -502,7 +503,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>.shuts</span>
                    </div>
                  </div>
@@ -520,7 +521,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>soylianx</span>
                    </div>
                  </div>
@@ -538,7 +539,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>wjeff123</span>
                    </div>
                  </div>
@@ -571,7 +572,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>crystaxol</span>
                    </div>
                  </div>
@@ -589,7 +590,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>dogmy</span>
                    </div>
                  </div>
@@ -607,7 +608,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>santissh</span>
                    </div>
                  </div>
@@ -627,7 +628,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>montoyatr</span>
                    </div>
                  </div>
@@ -645,7 +646,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>vdiegoz</span>
                    </div>
                  </div>
@@ -663,7 +664,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>khali_tv</span>
                    </div>
                  </div>
@@ -681,7 +682,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>oscarramos</span>
                    </div>
                  </div>
@@ -699,7 +700,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>wintersggez</span>
                    </div>
                  </div>
@@ -717,7 +718,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>sbloosh</span>
                    </div>
                  </div>
@@ -735,7 +736,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>xic_julius</span>
                    </div>
                  </div>
@@ -753,7 +754,7 @@ export default function SupportPage() {
                      </span>
                    </div>
                    <div className="ml-auto flex items-center gap-2 text-gray-400 text-sm">
-                     <img src="/emojils/Discord.svg" alt="Discord" className="h-4 w-4" />
+                     <img src={getEmojiPath('Discord.svg')} alt="Discord" className="h-4 w-4" />
                      <span>sthefanw</span>
                    </div>
                  </div>

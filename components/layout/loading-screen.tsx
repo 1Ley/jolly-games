@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import styles from './loading-screen.module.css';
+import { getImagePath } from '@/lib/assets';
 
 const LoadingScreen = () => {
   return (
@@ -16,7 +17,7 @@ const LoadingScreen = () => {
         transition={{ duration: 1.5, ease: 'easeOut' }}
       >
         <Image
-          src="/images/jollygames.png"
+          src={getImagePath('jollygames.png')}
           alt="JollyGames Logo"
           width={256}
           height={256}

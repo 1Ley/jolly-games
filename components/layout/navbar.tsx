@@ -20,6 +20,7 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
+import { getImagePath } from '@/lib/assets';
 
 const navigation = [
   { name: 'Inicio', href: '/', icon: Home },
@@ -70,7 +71,7 @@ export function Navbar() {
               transition={{ type: 'spring', stiffness: 300 }}
             >
               <Image
-                src="/images/logo.png"
+                src={getImagePath('logo.png')}
                 alt="Jolly Games Logo"
                 width={40}
                 height={40}
@@ -78,7 +79,7 @@ export function Navbar() {
               />
             </motion.div>
             <Image
-              src="/images/jollygames.png"
+              src={getImagePath('jollygames.png')}
               alt="Jolly Games"
               width={120}
               height={40}

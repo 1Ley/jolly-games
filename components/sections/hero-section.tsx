@@ -6,13 +6,14 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getImagePath } from '@/lib/assets';
 
 export function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background GIF */}
       <Image
-        src="/images/fondo_home.gif"
+        src={getImagePath('fondo_home.gif')}
         alt="Jolly Games background"
         layout="fill"
         objectFit="cover"

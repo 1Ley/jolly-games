@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import { getImagePath } from '@/lib/assets';
 
 const footerLinks = {
   game: {
@@ -96,14 +97,14 @@ export function Footer() {
             <div className="lg:col-span-2">
               <Link href="/" className="group mb-4 flex items-center space-x-2">
                 <Image
-                  src="/images/logo.png"
+                  src={getImagePath('logo.png')}
                   alt="Jolly Games Logo"
                   width={40}
                   height={40}
                   className="h-10 w-auto"
                 />
                 <Image
-                  src="/images/jollygames.png"
+                  src={getImagePath('jollygames.png')}
                   alt="Jolly Games"
                   width={140}
                   height={40}

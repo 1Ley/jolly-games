@@ -15,6 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import MinecraftAvatar from '@/components/ui/minecraft-avatar';
 import { mockEvents } from '@/data/mock-data';
+import { getEmojiPath } from '@/lib/assets';
 
 interface Team {
   id: string;
@@ -134,7 +135,7 @@ export default function EventsPage() {
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-white mb-2 flex items-center space-x-3">
                 <Image
-                  src="/emojils/Copa.png"
+                  src={getEmojiPath('Copa.png')}
                   alt="Copa"
                   width={32}
                   height={32}

@@ -221,7 +221,7 @@ body {
 /* Minecraft Font */
 @font-face {
   font-family: 'MinecraftSeven';
-  src: url('/fonts/MinecraftSeven_v2.woff2') format('woff2');
+  src: url('/jolly-games/fonts/MinecraftSeven_v2.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
