@@ -2,14 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Trophy,
-  Calendar,
-  Users,
-  Clock,
-  Star,
-  X,
-} from 'lucide-react';
+import { Trophy, Calendar, Users, Clock, Star, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
@@ -52,22 +45,22 @@ export default function EventsPage() {
     switch (status) {
       case 'upcoming':
         return (
-          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
-            <Clock className="w-3 h-3 mr-1" />
+          <Badge className="border-blue-500/30 bg-blue-500/20 text-blue-400">
+            <Clock className="mr-1 h-3 w-3" />
             Próximamente
           </Badge>
         );
       case 'live':
         return (
-          <Badge className="bg-red-500/20 text-red-400 border-red-500/30">
-            <Star className="w-3 h-3 mr-1" />
+          <Badge className="border-red-500/30 bg-red-500/20 text-red-400">
+            <Star className="mr-1 h-3 w-3" />
             En Vivo
           </Badge>
         );
       case 'completed':
         return (
-          <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-            <Trophy className="w-3 h-3 mr-1" />
+          <Badge className="border-green-500/30 bg-green-500/20 text-green-400">
+            <Trophy className="mr-1 h-3 w-3" />
             Completado
           </Badge>
         );
@@ -89,16 +82,22 @@ export default function EventsPage() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          maskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)'
+          maskImage:
+            'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
+          WebkitMaskImage:
+            'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
         }}
       >
         {/* Dark Vignette Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-black/20 to-black/40" style={{
-          background: 'radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)'
-        }} />
-        
+        <div
+          className="bg-gradient-radial absolute inset-0 from-transparent via-black/20 to-black/40"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)',
+          }}
+        />
+
         {/* Content */}
         <div className="relative z-10 flex h-full items-center justify-center">
           <div className="text-center">
@@ -116,14 +115,14 @@ export default function EventsPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mx-auto max-w-2xl text-lg text-gray-200"
             >
-              Descubre los próximos eventos y equipos que competirán por la gloria
+              Descubre los próximos eventos y equipos que competirán por la
+              gloria
             </motion.p>
           </div>
         </div>
       </motion.div>
 
-      <div className="container mx-auto px-4 -mt-8 relative z-20">
-
+      <div className="container relative z-20 mx-auto -mt-8 px-4">
         {/* Event Info */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -133,7 +132,7 @@ export default function EventsPage() {
         >
           <div className="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
             <div className="flex-1">
-              <h2 className="text-2xl font-bold text-white mb-2 flex items-center space-x-3">
+              <h2 className="mb-2 flex items-center space-x-3 text-2xl font-bold text-white">
                 <Image
                   src={getEmojiPath('Copa.png')}
                   alt="Copa"
@@ -143,18 +142,16 @@ export default function EventsPage() {
                 />
                 <span>{currentEvent.name}</span>
               </h2>
-              <p className="text-gray-400 mb-3">
-                {currentEvent.description}
-              </p>
+              <p className="mb-3 text-gray-400">{currentEvent.description}</p>
               <div className="flex items-center space-x-4 text-sm">
                 <div className="flex items-center space-x-2">
-                  <Calendar className="w-4 h-4 text-blue-400" />
+                  <Calendar className="h-4 w-4 text-blue-400" />
                   <span className="text-gray-300">
                     {formatDate(currentEvent.date)}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Users className="w-4 h-4 text-green-400" />
+                  <Users className="h-4 w-4 text-green-400" />
                   <span className="text-gray-300">
                     {currentEvent.teams.length} equipos
                   </span>
@@ -180,26 +177,28 @@ export default function EventsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                className="group cursor-pointer overflow-hidden rounded-xl border border-white/10 transition-all duration-300 hover:border-white/20 hover:scale-105"
+                className="group cursor-pointer overflow-hidden rounded-xl border border-white/10 transition-all duration-300 hover:scale-105 hover:border-white/20"
                 style={{
                   background: `linear-gradient(135deg, ${team.color}20 0%, ${team.color}10 100%)`,
-                  borderColor: `${team.color}40`
+                  borderColor: `${team.color}40`,
                 }}
-                onClick={() => setSelectedTeam(selectedTeam?.id === team.id ? null : team)}
+                onClick={() =>
+                  setSelectedTeam(selectedTeam?.id === team.id ? null : team)
+                }
               >
                 {/* Team Header */}
-                <div 
+                <div
                   className="p-6 text-center"
                   style={{
-                    background: `linear-gradient(135deg, ${team.color}30 0%, ${team.color}20 100%)`
+                    background: `linear-gradient(135deg, ${team.color}30 0%, ${team.color}20 100%)`,
                   }}
                 >
                   <div className="mb-4 flex justify-center">
-                    <div 
+                    <div
                       className="flex h-16 w-16 items-center justify-center rounded-full border-2 transition-transform group-hover:scale-110"
                       style={{
                         borderColor: team.color,
-                        background: `${team.color}20`
+                        background: `${team.color}20`,
                       }}
                     >
                       <Image
@@ -211,14 +210,14 @@ export default function EventsPage() {
                       />
                     </div>
                   </div>
-                  <h3 
-                    className="text-xl font-bold mb-2 transition-colors"
+                  <h3
+                    className="mb-2 text-xl font-bold transition-colors"
                     style={{ color: team.color }}
                   >
                     {team.name}
                   </h3>
                   <div className="flex items-center justify-center space-x-2 text-sm text-gray-400">
-                    <Users className="w-4 h-4" />
+                    <Users className="h-4 w-4" />
                     <span>{team.players.length} jugadores</span>
                   </div>
                 </div>
@@ -231,23 +230,11 @@ export default function EventsPage() {
                         key={playerIndex}
                         className="flex items-center space-x-3 rounded-lg bg-white/5 p-2 transition-colors hover:bg-white/10"
                       >
-                        <MinecraftAvatar
-                          size="sm"
-                          className="flex-shrink-0"
-                        />
+                        <MinecraftAvatar size="sm" className="flex-shrink-0" />
                         <span className="text-sm text-gray-300">{player}</span>
                       </div>
                     ))}
                   </div>
-                  
-                  {team.placement && (
-                    <div className="mt-4 flex items-center justify-center space-x-2">
-                      <Trophy className="w-4 h-4 text-yellow-400" />
-                      <span className="text-sm font-semibold text-yellow-400">
-                        Puesto #{team.placement}
-                      </span>
-                    </div>
-                  )}
                 </div>
               </motion.div>
             ))}
@@ -269,9 +256,9 @@ export default function EventsPage() {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 className="relative max-h-[90vh] max-w-2xl overflow-hidden rounded-xl bg-gray-900 shadow-2xl"
-                onClick={(e) => e.stopPropagation()}
+                onClick={e => e.stopPropagation()}
                 style={{
-                  background: `linear-gradient(135deg, ${selectedTeam.color}10 0%, rgba(17, 24, 39, 0.95) 100%)`
+                  background: `linear-gradient(135deg, ${selectedTeam.color}10 0%, rgba(17, 24, 39, 0.95) 100%)`,
                 }}
               >
                 {/* Close Button */}
@@ -286,11 +273,11 @@ export default function EventsPage() {
                   {/* Team Header */}
                   <div className="mb-6 text-center">
                     <div className="mb-4 flex justify-center">
-                      <div 
+                      <div
                         className="flex h-20 w-20 items-center justify-center rounded-full border-4"
                         style={{
                           borderColor: selectedTeam.color,
-                          background: `${selectedTeam.color}20`
+                          background: `${selectedTeam.color}20`,
                         }}
                       >
                         <Image
@@ -302,21 +289,23 @@ export default function EventsPage() {
                         />
                       </div>
                     </div>
-                    <h2 
-                      className="text-3xl font-bold mb-2"
+                    <h2
+                      className="mb-2 text-3xl font-bold"
                       style={{ color: selectedTeam.color }}
                     >
                       {selectedTeam.name}
                     </h2>
                     <div className="flex items-center justify-center space-x-2 text-gray-400">
-                      <Users className="w-5 h-5" />
+                      <Users className="h-5 w-5" />
                       <span>{selectedTeam.players.length} jugadores</span>
                     </div>
                   </div>
 
                   {/* Players List */}
                   <div className="mb-6">
-                    <h3 className="mb-4 text-xl font-semibold text-white">Jugadores</h3>
+                    <h3 className="mb-4 text-xl font-semibold text-white">
+                      Jugadores
+                    </h3>
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                       {selectedTeam.players.map((player, index) => (
                         <div
@@ -333,23 +322,12 @@ export default function EventsPage() {
                     </div>
                   </div>
 
-                  {/* Team Stats */}
-                  {selectedTeam.placement && (
-                    <div className="text-center">
-                      <div className="inline-flex items-center space-x-2 rounded-lg bg-yellow-400/20 px-4 py-2">
-                        <Trophy className="w-5 h-5 text-yellow-400" />
-                        <span className="font-semibold text-yellow-400">
-                          Puesto #{selectedTeam.placement} en el evento anterior
-                        </span>
-                      </div>
-                    </div>
-                  )}
+                  {/* Team Stats - Removed previous event placement */}
                 </div>
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
-
       </div>
     </main>
   );
