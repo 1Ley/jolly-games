@@ -925,30 +925,6 @@ export default function SupportPage() {
                       propio evento no premium para que ellos jugarán.
                     </p>
                   </div>
-
-                  <div className="bento-item p-4">
-                    <div className="space-y-3">
-                      <Button
-                        size="sm"
-                        className="w-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white transition-colors hover:from-yellow-700 hover:to-orange-700"
-                        asChild
-                      >
-                        <Link
-                          href="https://paypal.me/Jerehhh"
-                          target="_blank"
-                          className="inline-flex items-center gap-2 font-semibold"
-                        >
-                          <Heart className="h-4 w-4 text-red-600" />
-                          PayPal
-                        </Link>
-                      </Button>
-
-                      <div className="text-center">
-                        <p className="mb-1 text-sm text-gray-400">ALIAS:</p>
-                        <p className="font-semibold text-white">tomasd.prex</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="mt-6 text-center">
