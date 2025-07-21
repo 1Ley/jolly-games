@@ -902,9 +902,6 @@ export default function SupportPage() {
 
               <div className="text-center">
                 <div className="mb-6">
-                  <div className="glow mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-yellow-500 to-orange-500">
-                    <Users className="h-8 w-8 text-white" />
-                  </div>
                   <p className="gradient-text text-lg font-semibold">
                     Fundador de Jolly Games
                   </p>
