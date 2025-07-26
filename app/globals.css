@@ -11,30 +11,30 @@
   --color-primary-500: 14 165 233;
   --color-primary-600: 2 132 199;
   --color-primary-700: 3 105 161;
-  
+
   /* Secondary Colors */
   --color-secondary-800: 39 39 42;
   --color-secondary-900: 24 24 27;
   --color-secondary-950: 9 9 11;
-  
+
   /* Accent Colors */
   --color-accent-500: 217 70 239;
   --color-accent-600: 192 38 211;
-  
+
   /* Glass Effects */
   --glass-bg: rgba(255, 255, 255, 0.1);
   --glass-border: rgba(255, 255, 255, 0.2);
   --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  
+
   /* Dark Theme */
   --bg-primary: 9 9 11;
   --bg-secondary: 24 24 27;
   --bg-tertiary: 39 39 42;
-  
+
   --text-primary: 250 250 250;
   --text-secondary: 161 161 170;
   --text-muted: 113 113 122;
-  
+
   /* Shadcn/ui Variables */
   --background: 222.2 84% 4.9%;
   --foreground: 210 40% 98%;
@@ -83,32 +83,32 @@ body {
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
   }
-  
+
   .glass-card {
     @apply glass rounded-2xl p-6;
   }
-  
+
   .image-card {
-    @apply glass rounded-2xl overflow-hidden p-0;
+    @apply glass overflow-hidden rounded-2xl p-0;
   }
-  
+
   .glass-nav {
     @apply glass rounded-xl;
     background: rgba(0, 0, 0, 0.3);
     border: none;
   }
-  
+
   .bento-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     padding: 1.5rem;
   }
-  
+
   .bento-item {
     @apply glass-card;
   }
-  
+
   .gradient-text {
     background: linear-gradient(
       135deg,
@@ -119,16 +119,16 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .glow {
-    box-shadow: 
+    box-shadow:
       0 0 20px rgba(14, 165, 233, 0.3),
       0 0 40px rgba(14, 165, 233, 0.2),
       0 0 80px rgba(14, 165, 233, 0.1);
   }
-  
+
   .text-glow {
-    text-shadow: 
+    text-shadow:
       0 0 10px rgba(14, 165, 233, 0.5),
       0 0 20px rgba(14, 165, 233, 0.3),
       0 0 40px rgba(14, 165, 233, 0.1);
@@ -173,18 +173,33 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Responsive Typography */
@@ -207,8 +222,12 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Print Styles */
@@ -218,17 +237,9 @@ body {
   }
 }
 
-/* Minecraft Font */
-@font-face {
-  font-family: 'MinecraftSeven';
-  src: url('/jolly-games/fonts/MinecraftSeven_v2.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* Minecraft Font Utility Class */
 .minecraft-font {
-  font-family: 'MinecraftSeven', 'Courier New', 'Consolas', monospace;
+  font-family: var(--font-minecraft), 'Courier New', 'Consolas', monospace;
   font-weight: normal;
   letter-spacing: 0.05em;
   text-rendering: optimizeLegibility;
@@ -240,15 +251,19 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .bento-card:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .bento-card::before {
@@ -258,7 +273,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1));
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -284,7 +299,7 @@ body {
 .gradient-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
   opacity: 0;
   transition: opacity 0.3s ease;
 }

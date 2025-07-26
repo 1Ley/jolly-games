@@ -10,7 +10,6 @@ import { Toaster as HotToaster } from 'react-hot-toast';
 import { ClientSideProvider } from '@/components/providers/client-side-provider';
 import { getImagePath, getAssetPath } from '@/lib/assets';
 
-
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -18,7 +17,7 @@ const inter = Inter({
 });
 
 const minecraftFont = localFont({
-  src: './fonts/MinecraftSeven_v2.woff2',
+  src: '../public/fonts/MinecraftSeven_v2.woff2',
   variable: '--font-minecraft',
   display: 'swap',
 });
@@ -118,9 +117,11 @@ export default function RootLayout({
               <div className="fixed inset-0 -z-10">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-950" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(14,165,233,0.1),transparent_50%)]" />
-                <div 
+                <div
                   className="absolute inset-0 opacity-20"
-                  style={{ backgroundImage: `url(${getAssetPath('/grid.svg')})` }}
+                  style={{
+                    backgroundImage: `url(${getAssetPath('/grid.svg')})`,
+                  }}
                 />
               </div>
               <Navbar />
