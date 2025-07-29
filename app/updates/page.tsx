@@ -105,6 +105,8 @@ export default function UpdatesPage() {
         return <Users className="h-4 w-4" />;
       case 'market':
         return <Gamepad2 className="h-4 w-4" />;
+      case 'discord':
+        return <MessageSquare className="h-4 w-4" />;
       default:
         return <Calendar className="h-4 w-4" />;
     }
@@ -148,6 +150,8 @@ export default function UpdatesPage() {
         return 'bg-rose-500/20 text-rose-400 border-rose-500/30';
       case 'market':
         return 'bg-teal-500/20 text-teal-400 border-teal-500/30';
+      case 'discord':
+        return 'bg-indigo-600/20 text-indigo-400 border-indigo-600/30';
       default:
         return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
     }

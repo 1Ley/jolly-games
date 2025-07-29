@@ -458,6 +458,7 @@ export interface UpdatePost {
     | 'jolly'
     | 'party'
     | 'market'
+    | 'discord'
   )[];
   gradient: string;
   size: 'small' | 'medium' | 'large';
