@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Shield, MessageSquare, AlertTriangle, Info, Eye } from 'lucide-react';
+import { Info } from 'lucide-react';
 
 const rules = [
   {
@@ -118,30 +118,6 @@ const rules = [
   },
 ];
 
-const sanctions = [
-  {
-    type: 'Kick',
-    description:
-      'Expulsión inmediata del servidor por comportamiento disruptivo.',
-    color: 'text-yellow-400',
-  },
-  {
-    type: 'Mute Prolongado',
-    description: 'Silenciamiento del chat por infracciones de comunicación.',
-    color: 'text-orange-400',
-  },
-  {
-    type: 'Ban Temporal',
-    description: 'Prohibición temporal de acceso al servidor.',
-    color: 'text-red-400',
-  },
-  {
-    type: 'Blacklist',
-    description: 'Prohibición permanente de acceso al servidor.',
-    color: 'text-red-600',
-  },
-];
-
 export default function RulesPage() {
   return (
     <main className="min-h-screen pt-20">
@@ -228,77 +204,6 @@ export default function RulesPage() {
             </motion.div>
           ))}
         </div>
-
-        {/* Sanctions Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="bento-item mt-12"
-        >
-          <div className="mb-6 flex items-center space-x-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/20">
-              <AlertTriangle className="h-6 w-6 text-red-400" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-white">
-                Sistema de Sanciones
-              </h2>
-              <p className="text-sm text-gray-400">
-                Tipos de sanciones aplicables según la infracción
-              </p>
-            </div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {sanctions.map((sanction, index) => (
-              <div
-                key={index}
-                className="rounded-lg border border-white/10 bg-white/5 p-4"
-              >
-                <h4 className={`mb-2 font-semibold ${sanction.color}`}>
-                  {sanction.type}
-                </h4>
-                <p className="text-sm text-gray-300">{sanction.description}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Contact Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
-          className="bento-item mt-8 text-center"
-        >
-          <div className="mb-4 flex items-center justify-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-accent-500">
-              <Eye className="h-6 w-6 text-white" />
-            </div>
-          </div>
-
-          <h3 className="mb-2 text-lg font-semibold text-white">
-            ¿Tienes dudas sobre las reglas?
-          </h3>
-
-          <p className="mb-4 text-gray-400">
-            Si tienes preguntas sobre alguna regla o necesitas aclaraciones, no
-            dudes en contactarnos
-          </p>
-
-          <div className="flex flex-col items-center justify-center space-y-2 text-sm text-gray-400 sm:flex-row sm:space-x-4 sm:space-y-0">
-            <div className="flex items-center space-x-2">
-              <MessageSquare className="h-4 w-4" />
-              <span>Discord: discord.gg/jolly</span>
-            </div>
-            <div className="hidden text-gray-600 sm:block">•</div>
-            <div className="flex items-center space-x-2">
-              <Shield className="h-4 w-4" />
-              <span>Tickets de soporte en la web</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </main>
   );

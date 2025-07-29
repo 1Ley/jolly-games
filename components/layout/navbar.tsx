@@ -14,6 +14,7 @@ import {
   Menu,
   X,
   Shield,
+  Gamepad2,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
@@ -24,6 +25,7 @@ import { getImagePath } from '@/lib/assets';
 
 const navigation = [
   { name: 'Inicio', href: '/', icon: Home },
+  { name: 'Games', href: '/games', icon: Gamepad2 },
   { name: 'Updates', href: '/updates', icon: FileText },
   { name: 'Soporte', href: '/support', icon: HelpCircle },
   { name: 'Events', href: '/community', icon: Users },
@@ -48,14 +50,12 @@ export function Navbar() {
     };
   }, []);
 
-
-
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={cn(
-        'fixed left-0 right-0 top-0 z-50 minecraft-font transition-all duration-300',
+        'minecraft-font fixed left-0 right-0 top-0 z-50 transition-all duration-300',
         scrolled ? 'glass-nav backdrop-blur-xl' : 'bg-transparent'
       )}
     >
@@ -128,11 +128,15 @@ export function Navbar() {
             <ThemeToggle />
 
             {/* Tienda Link */}
-            <Link href="https://jollygames.store/" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://jollygames.store/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="ghost"
                 size="sm"
-                className="hidden items-center space-x-2 text-gray-300 hover:text-white sm:flex hover:bg-green-500/10 hover:text-green-400 transition-all duration-200"
+                className="hidden items-center space-x-2 text-gray-300 transition-all duration-200 hover:bg-green-500/10 hover:text-green-400 hover:text-white sm:flex"
               >
                 <ShoppingCart className="h-4 w-4" />
                 <span>Tienda del Servidor</span>
@@ -194,7 +198,7 @@ export function Navbar() {
                     href="https://jollygames.store/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-3 rounded-lg px-3 py-2 text-base font-medium text-gray-300 hover:bg-green-500/10 hover:text-green-400 transition-all duration-200"
+                    className="flex items-center space-x-3 rounded-lg px-3 py-2 text-base font-medium text-gray-300 transition-all duration-200 hover:bg-green-500/10 hover:text-green-400"
                     onClick={() => setIsOpen(false)}
                   >
                     <ShoppingCart className="h-5 w-5" />

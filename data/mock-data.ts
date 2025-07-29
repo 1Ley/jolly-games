@@ -455,6 +455,9 @@ export interface UpdatePost {
     | 'bow-spleef'
     | 'tag-games'
     | 'information'
+    | 'jolly'
+    | 'party'
+    | 'market'
   )[];
   gradient: string;
   size: 'small' | 'medium' | 'large';
@@ -463,6 +466,64 @@ export interface UpdatePost {
 }
 
 export const mockUpdates: UpdatePost[] = [
+  {
+    id: 51,
+    title: 'Servidor',
+    content: `<img src="${getEmojiPath('Discord.svg')}" alt="discord" class="inline-block w-5 h-5 mx-1" /> Se arregló el canal de voz "Sala de Espera", ahora ya podés unirte sin problemas.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> <strong>Tienda</strong>\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se cambió la plantilla de la tienda, ahora con un diseño más claro, moderno y fácil de navegar.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> <strong>Jolly</strong>\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El período de gracia ahora también protege a los zombies de jugadores desconectados.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los mobs ya no seguirán a espectadores.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los <span class="font-bold text-green-400">@Host</span> ahora tienen acceso al comando /removehost.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se eliminó el mensaje de +5 de ELO por capitán.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se corrigió el bug de espectadores en Dodge Ball.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <strong>SkyWars</strong>\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> Se solucionó el bug que causaba daño por caída al iniciar la partida.\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> <strong>Random Kits</strong>\n<img src="${getEmojiPath('Random Kits.png')}" alt="kits" class="inline-block w-5 h-5 mx-1" /> Se arregló el bug que permitía seguir sumando puntos mientras estabas en modo espectador.\n<img src="${getEmojiPath('Party.png')}" alt="party" class="inline-block w-5 h-5 mx-1" /> <strong>Party</strong>\n<img src="${getEmojiPath('Party.png')}" alt="party" class="inline-block w-5 h-5 mx-1" /> El modo "Tnt Tag" fue eliminado.`,
+    version: '8.7',
+    date: 'ayer a las 22:48',
+    author: 'zjjeree',
+    categories: [
+      'server',
+      'game',
+      'skywars',
+      'random-kits',
+      'party',
+      'maintenance',
+    ],
+    gradient: 'from-emerald-500 via-green-600 to-teal-600',
+    size: 'large',
+    featured: true,
+  },
+  {
+    id: 50,
+    title: 'Jolly',
+    content: `<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se solucionó el problema del empate en las partidas.\n<img src="${getEmojiPath('Market.png')}" alt="market" class="inline-block w-5 h-5 mx-1" /> Corregido el bug del Market que mostraba 0 de ELO en algunos jugadores.\n<img src="${getEmojiPath('Market.png')}" alt="market" class="inline-block w-5 h-5 mx-1" /> Arreglado el error en el Market donde al bidear todo, aún conservabas los diamantes.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los hosts ahora solo pueden crear partidas con 8, 10, 12, 20 o 30 team size.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Corregido el bug en Captains que mostraba /choose aunque fueras el último.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La mejora de armadura en la arena se cambió a 2 kills.\n<img src="${getEmojiPath('Elo.png')}" alt="elo" class="inline-block w-5 h-5 mx-1" /> Se eliminó el +5 de ELO para el capitán.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El mejor jugador del equipo recibirá +10 de ELO extra.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La música de Dodge Ball fue actualizada.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Algunos saltos que te tiraba hacia atrás fueron arreglados.\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> <strong>Beep Test</strong>\n<img src="${getEmojiPath('BeepTest.png')}" alt="beeptest" class="inline-block w-5 h-5 mx-1" /> Se solucionó el bug por el cual a veces podías caerte a través de la barrera. <span class="text-gray-400">(editado)</span>`,
+    version: '8.6',
+    date: '23/07/2025',
+    author: 'zjjeree',
+    categories: [
+      'server',
+      'game',
+      'maintenance',
+      'jolly',
+      'market',
+      'beeptest',
+    ],
+    gradient: 'from-blue-500 via-cyan-600 to-teal-600',
+    size: 'large',
+    featured: false,
+  },
+  {
+    id: 49,
+    title: 'Servidor',
+    content: `Actualización 8.5 <span class="font-bold text-yellow-400">@Updates Ping</span>\n\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> <strong>Jolly</strong>\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Al morir durante la votación, ahora aparecerás en modo espectador.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se corrigió el bug de la arena que a veces no mejoraba la armadura.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> La arena ahora es exclusiva para los <span class="font-bold text-yellow-400">@Jolly Rank</span>.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> En el Top Team de rondas y partidas solo se mostrarán los primeros 5 equipos.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Se eliminó el cooldown del join message.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El bonus de capitán bajó del 15% a 5%.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El KB de la votación fue arreglado.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El reach fue corregido.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> El anonymous se quitó y ahora solo está disponible en el scoreboard.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Las partidas de 1,2,3,5,7 juegos quedan desactivadas.\n<img src="${getEmojiPath('JollyGames.png')}" alt="jolly" class="inline-block w-5 h-5 mx-1" /> Los requisitos para <span class="font-bold text-red-400">@Content Creator</span> ahora son menos exigentes.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> <strong>SkyWars</strong>\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> El borde de la 2da ronda de tríos fue arreglado.\n<img src="${getEmojiPath('Skywars.png')}" alt="skywars" class="inline-block w-5 h-5 mx-1" /> El spawnpoint de la 1era ronda de tríos fue arreglado.\n<img src="${getEmojiPath('Discord.svg')}" alt="discord" class="inline-block w-5 h-5 mx-1" /> <strong>Discord</strong>\n<img src="${getEmojiPath('Discord.svg')}" alt="discord" class="inline-block w-5 h-5 mx-1" /> El sistema de verificación se cambió y ahora es más fácil verificarse.\n<img src="${getEmojiPath('Discord.svg')}" alt="discord" class="inline-block w-5 h-5 mx-1" /> Cuando un equipo no está activo, el canal de voz no será visible.\n<img src="${getEmojiPath('Discord.svg')}" alt="discord" class="inline-block w-5 h-5 mx-1" /> La <span class="font-bold text-purple-400"># 🎵 | sub-queue</span> se reiniciará automáticamente.\n<img src="${getEmojiPath('Party.png')}" alt="party" class="inline-block w-5 h-5 mx-1" /> <strong>Party</strong>\n<img src="${getEmojiPath('Party.png')}" alt="party" class="inline-block w-5 h-5 mx-1" /> Se encuentra en modificación y se verá pronto activado.`,
+    version: '8.5',
+    date: '21/07/2025 20:52',
+    author: 'zjjeree',
+    categories: [
+      'server',
+      'game',
+      'skywars',
+      'discord',
+      'jolly',
+      'party',
+      'maintenance',
+    ],
+    gradient: 'from-indigo-500 via-purple-600 to-pink-600',
+    size: 'large',
+    featured: false,
+  },
   {
     id: 48,
     title: 'Servidor',
