@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Calendar, Users, Clock, Star, X } from 'lucide-react';
+import { Trophy, Calendar, Users, Clock, Star, X, ChevronRight, Medal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
@@ -30,7 +30,10 @@ interface EventData {
 
 export default function EventsPage() {
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
-  const currentEvent = mockEvents.currentEvent;
+  const [selectedEvent, setSelectedEvent] = useState<EventData>(mockEvents.currentEvent);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  
+  const currentEvent = selectedEvent;
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -76,7 +79,7 @@ export default function EventsPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative h-[450px] overflow-hidden"
+        className="relative h-[350px] overflow-hidden"
         style={{
           backgroundImage: `url(${getImagePath('fondo_events.png')})`,
           backgroundSize: 'cover',
@@ -105,9 +108,9 @@ export default function EventsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-glow mb-4 font-minecraft text-5xl font-bold text-white md:text-6xl"
+              className="text-glow mb-4 font-minecraft text-4xl font-bold text-white md:text-5xl"
             >
-              Eventos
+              Historial de Eventos
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -115,14 +118,101 @@ export default function EventsPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mx-auto max-w-2xl text-lg text-gray-200"
             >
-              Descubre los próximos eventos y equipos que competirán por la
-              gloria
+              Explora todos los eventos pasados y actuales de Jolly Games
             </motion.p>
           </div>
         </div>
       </motion.div>
 
-      <div className="container relative z-20 mx-auto -mt-8 px-4">
+      {/* Main Content with Sidebar */}
+      <div className="relative z-20 flex min-h-screen">
+        {/* Sidebar */}
+        <motion.div
+          initial={{ x: -300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="w-80"
+        >
+          <div className="bento-item m-4 h-[calc(100vh-2rem)]">
+            <div className="p-6">
+            <h2 className="mb-6 flex items-center space-x-2 text-xl font-bold text-white">
+              <Trophy className="h-6 w-6 text-yellow-400" />
+              <span>Eventos</span>
+            </h2>
+            
+            {/* Current Event */}
+            <div className="mb-6">
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-400">
+                Evento Actual
+              </h3>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className={`bento-item cursor-pointer p-4 transition-all duration-200 ${
+                  selectedEvent.id === mockEvents.currentEvent.id
+                    ? 'border-blue-500/50 bg-blue-500/10'
+                    : 'hover:border-white/20 hover:bg-white/10'
+                }`}
+                onClick={() => setSelectedEvent(mockEvents.currentEvent)}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="font-semibold text-white">{mockEvents.currentEvent.name}</h4>
+                    <p className="text-sm text-gray-400">{mockEvents.currentEvent.date}</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    {getStatusBadge(mockEvents.currentEvent.status)}
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Historical Events */}
+            <div>
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-400">
+                Eventos Pasados
+              </h3>
+              <div className="space-y-2">
+                {mockEvents.historicalEvents.map((event, index) => (
+                  <motion.div
+                    key={event.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 * index }}
+                    whileHover={{ scale: 1.02 }}
+                    className={`bento-item cursor-pointer p-4 transition-all duration-200 ${
+                      selectedEvent.id === event.id
+                        ? 'border-green-500/50 bg-green-500/10'
+                        : 'hover:border-white/20 hover:bg-white/10'
+                    }`}
+                    onClick={() => setSelectedEvent(event)}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-white">{event.name}</h4>
+                        <p className="text-sm text-gray-400">
+                          {formatDate(event.date)}
+                        </p>
+                        <div className="mt-2 flex items-center space-x-2">
+                          <Medal className="h-3 w-3 text-yellow-400" />
+                          <span className="text-xs text-yellow-400">
+                            Ganador: {event.winner}
+                          </span>
+                        </div>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-gray-400" />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+             </div>
+            </div>
+           </div>
+         </motion.div>
+
+        {/* Main Content Area */}
+        <div className="flex-1">
+          <div className="container mx-auto p-6">
         {/* Event Info */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -328,6 +418,8 @@ export default function EventsPage() {
             </motion.div>
           )}
         </AnimatePresence>
+          </div>
+        </div>
       </div>
     </main>
   );

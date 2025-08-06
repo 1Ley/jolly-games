@@ -60,6 +60,111 @@ export const mockUser: User = {
 
 // Mock Events Data
 export const mockEvents = {
+  // Historical events
+  historicalEvents: [
+    {
+      id: 'event-history-1',
+      name: 'Jolly Cup - Temporada 1',
+      description: 'El primer torneo oficial de Jolly Games',
+      date: '2024-01-15',
+      status: 'completed',
+      winner: 'Team Red',
+      teams: [
+        {
+          id: 'team-red-s1',
+          name: 'Team Red',
+          color: '#DC2626',
+          emoji: getImagePath('color_teams/team_red.png'),
+          players: ['RedPlayer1', 'RedPlayer2', 'RedPlayer3', 'RedPlayer4'],
+          placement: 1,
+        },
+        {
+          id: 'team-blue-s1',
+          name: 'Team Blue',
+          color: '#2563EB',
+          emoji: getImagePath('color_teams/team_blue.png'),
+          players: ['BluePlayer1', 'BluePlayer2', 'BluePlayer3', 'BluePlayer4'],
+          placement: 2,
+        },
+        {
+          id: 'team-green-s1',
+          name: 'Team Green',
+          color: '#16A34A',
+          emoji: getImagePath('color_teams/team_green.png'),
+          players: ['GreenPlayer1', 'GreenPlayer2', 'GreenPlayer3', 'GreenPlayer4'],
+          placement: 3,
+        },
+      ],
+    },
+    {
+      id: 'event-history-2',
+      name: 'Jolly Cup - Temporada 2',
+      description: 'La segunda edición del torneo con nuevos desafíos',
+      date: '2024-02-20',
+      status: 'completed',
+      winner: 'Team Purple',
+      teams: [
+        {
+          id: 'team-purple-s2',
+          name: 'Team Purple',
+          color: '#7C3AED',
+          emoji: getImagePath('color_teams/team_purple.png'),
+          players: ['PurplePlayer1', 'PurplePlayer2', 'PurplePlayer3', 'PurplePlayer4'],
+          placement: 1,
+        },
+        {
+          id: 'team-orange-s2',
+          name: 'Team Orange',
+          color: '#EA580C',
+          emoji: getImagePath('color_teams/team_orange.png'),
+          players: ['OrangePlayer1', 'OrangePlayer2', 'OrangePlayer3', 'OrangePlayer4'],
+          placement: 2,
+        },
+        {
+          id: 'team-cyan-s2',
+          name: 'Team Cyan',
+          color: '#0891B2',
+          emoji: getImagePath('color_teams/team_cyan.png'),
+          players: ['CyanPlayer1', 'CyanPlayer2', 'CyanPlayer3', 'CyanPlayer4'],
+          placement: 3,
+        },
+      ],
+    },
+    {
+      id: 'event-history-3',
+      name: 'Jolly Cup - Temporada 3',
+      description: 'El torneo más competitivo hasta la fecha',
+      date: '2024-03-25',
+      status: 'completed',
+      winner: 'Team Yellow',
+      teams: [
+        {
+          id: 'team-yellow-s3',
+          name: 'Team Yellow',
+          color: '#F59E0B',
+          emoji: getImagePath('color_teams/team_yellow.png'),
+          players: ['YellowPlayer1', 'YellowPlayer2', 'YellowPlayer3', 'YellowPlayer4'],
+          placement: 1,
+        },
+        {
+          id: 'team-pink-s3',
+          name: 'Team Pink',
+          color: '#EC4899',
+          emoji: getImagePath('color_teams/team_pink.png'),
+          players: ['PinkPlayer1', 'PinkPlayer2', 'PinkPlayer3', 'PinkPlayer4'],
+          placement: 2,
+        },
+        {
+          id: 'team-aqua-s3',
+          name: 'Team Aqua',
+          color: '#14B8A6',
+          emoji: getImagePath('color_teams/team_aqua.png'),
+          players: ['AquaPlayer1', 'AquaPlayer2', 'AquaPlayer3', 'AquaPlayer4'],
+          placement: 3,
+        },
+      ],
+    },
+  ],
   currentEvent: {
     id: 'event-1',
     name: 'Jolly Cup',
