@@ -253,7 +253,7 @@ git config core.autocrlf false  # En Windows
 - Información de contacto
 - Tiempos de respuesta
 
-### 🎨 Comunidad (`/community`)
+### 🎨 Comunidad (`/events`)
 
 - Galería de creaciones de usuarios
 - Filtros por tipo de contenido

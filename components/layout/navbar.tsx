@@ -27,7 +27,7 @@ import { getImagePath } from '@/lib/assets';
 
 const navigation = [
   { name: 'Updates', href: '/updates', icon: FileText },
-  { name: 'Events', href: '/community', icon: Users },
+  { name: 'Events', href: '/events', icon: Users },
 ];
 
 const extrasItems = [

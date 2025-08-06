@@ -27,7 +27,7 @@ test.describe('Home Page', () => {
 
     // Test navigation to community
     await page.click('text=Comunidad');
-    await expect(page).toHaveURL('/community');
+    await expect(page).toHaveURL('/events');
   });
 
   test('should be responsive', async ({ page }) => {

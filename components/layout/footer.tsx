@@ -24,7 +24,7 @@ const footerLinks = {
     links: [
       { name: 'Foro', href: '/forum' },
       { name: 'Discord', href: 'https://discord.gg/jollygames' },
-      { name: 'Galería', href: '/community' },
+      { name: 'Galería', href: '/events' },
       { name: 'Eventos', href: '/events' },
     ],
   },

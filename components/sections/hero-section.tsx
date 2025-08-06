@@ -75,7 +75,7 @@ export function HeroSection() {
               initial={{ opacity: 1, y: 0 }}
               className="mb-6 flex flex-col gap-3 sm:flex-row"
             >
-              <Link href="/community">
+              <Link href="/events">
                 <Button
                   size="lg"
                   className="group border border-white/20 bg-black/60 px-6 py-3 text-base font-semibold text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-black/80"

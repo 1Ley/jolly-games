@@ -131,23 +131,23 @@ export default function EventsPage() {
           initial={{ x: -300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="w-80"
+          className="w-96 xl:w-[420px] ml-6 xl:ml-8"
         >
-          <div className="bento-item m-4 h-[calc(100vh-2rem)]">
+          <div className="bento-item mt-4 mb-4 mr-4 h-[calc(100vh-2rem)]">
             <div className="p-6">
-            <h2 className="mb-6 flex items-center space-x-2 text-xl font-bold text-white">
-              <Trophy className="h-6 w-6 text-yellow-400" />
-              <span>Eventos</span>
-            </h2>
+            <h2 className="mb-8 flex items-center space-x-2 text-xl font-bold text-white">
+                <Trophy className="h-6 w-6 text-yellow-400" />
+                <span>Eventos</span>
+              </h2>
             
             {/* Current Event */}
-            <div className="mb-6">
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-400">
+            <div className="mb-8">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-400">
                 Evento Actual
               </h3>
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className={`bento-item cursor-pointer p-4 transition-all duration-200 ${
+                className={`bento-item cursor-pointer p-5 min-h-[80px] transition-all duration-200 ${
                   selectedEvent.id === mockEvents.currentEvent.id
                     ? 'border-blue-500/50 bg-blue-500/10'
                     : 'hover:border-white/20 hover:bg-white/10'
@@ -155,11 +155,11 @@ export default function EventsPage() {
                 onClick={() => setSelectedEvent(mockEvents.currentEvent)}
               >
                 <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-semibold text-white">{mockEvents.currentEvent.name}</h4>
-                    <p className="text-sm text-gray-400">{mockEvents.currentEvent.date}</p>
+                  <div className="flex-1 pr-4">
+                    <h4 className="font-semibold text-white text-base leading-tight">{mockEvents.currentEvent.name}</h4>
+                    <p className="text-sm text-gray-400 mt-2">{mockEvents.currentEvent.date}</p>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-3">
                     {getStatusBadge(mockEvents.currentEvent.status)}
                     <ChevronRight className="h-4 w-4 text-gray-400" />
                   </div>
@@ -169,40 +169,42 @@ export default function EventsPage() {
 
             {/* Historical Events */}
             <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-400">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-400">
                 Eventos Pasados
               </h3>
-              <div className="space-y-2">
+              <div className="space-y-4">
                 {mockEvents.historicalEvents.map((event, index) => (
                   <motion.div
-                    key={event.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 * index }}
-                    whileHover={{ scale: 1.02 }}
-                    className={`bento-item cursor-pointer p-4 transition-all duration-200 ${
-                      selectedEvent.id === event.id
-                        ? 'border-green-500/50 bg-green-500/10'
-                        : 'hover:border-white/20 hover:bg-white/10'
-                    }`}
-                    onClick={() => setSelectedEvent(event)}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-white">{event.name}</h4>
-                        <p className="text-sm text-gray-400">
-                          {formatDate(event.date)}
-                        </p>
-                        <div className="mt-2 flex items-center space-x-2">
-                          <Medal className="h-3 w-3 text-yellow-400" />
-                          <span className="text-xs text-yellow-400">
-                            Ganador: {event.winner}
-                          </span>
+                     key={event.id}
+                     initial={{ opacity: 0, y: 20 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.4, delay: 0.1 * index }}
+                     whileHover={{ scale: 1.02 }}
+                     className={`bento-item cursor-pointer p-5 min-h-[90px] transition-all duration-200 ${
+                        selectedEvent.id === event.id
+                          ? 'border-green-500/50 bg-green-500/10'
+                          : 'hover:border-white/20 hover:bg-white/10'
+                      }`}
+                      onClick={() => setSelectedEvent(event)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1 pr-4">
+                          <h4 className="font-semibold text-white text-base leading-tight">{event.name}</h4>
+                          <p className="text-sm text-gray-400 mt-2">
+                            {formatDate(event.date)}
+                          </p>
+                          <div className="mt-3 flex items-center space-x-2">
+                            <Medal className="h-3 w-3 text-yellow-400" />
+                            <span className="text-xs text-yellow-400">
+                              Ganador: {event.winner}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <ChevronRight className="h-4 w-4 text-gray-400" />
                         </div>
                       </div>
-                      <ChevronRight className="h-4 w-4 text-gray-400" />
-                    </div>
-                  </motion.div>
+                   </motion.div>
                 ))}
               </div>
              </div>
