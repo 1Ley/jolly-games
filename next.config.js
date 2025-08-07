@@ -3,7 +3,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
   // Configuración para GitHub Pages solo en producción
-  output: 'export',
+  ...(isProd && { output: 'export' }),
   trailingSlash: true,
   basePath: isProd ? '/jolly-games' : '',
   assetPrefix: isProd ? '/jolly-games' : '',
