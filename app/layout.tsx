@@ -9,6 +9,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Toaster as HotToaster } from 'react-hot-toast';
 import { ClientSideProvider } from '@/components/providers/client-side-provider';
 import { getImagePath, getAssetPath } from '@/lib/assets';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -154,6 +155,7 @@ export default function RootLayout({
             </div>
           </ThemeProvider>
         </ClientSideProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
