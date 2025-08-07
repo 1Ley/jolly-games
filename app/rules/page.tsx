@@ -116,6 +116,34 @@ const rules = [
       'No está permitido mencionar, promover o debatir temas relacionados con política, ideologías extremas, movimientos radicales o cualquier símbolo asociado a ellos dentro del servidor.',
     severity: 'alta',
   },
+  {
+    number: '17',
+    name: 'Incentivo al Abandono',
+    description:
+      'No está permitido incentivar, presionar o convencer a un compañero de equipo para que abandone la partida con el fin de conseguir un reemplazo (sub).',
+    severity: 'alta',
+  },
+  {
+    number: '18',
+    name: 'Restricción de Salida',
+    description:
+      'No podrás salirte durante el 1er, 2do y 3er juego.',
+    severity: 'alta',
+  },
+  {
+    number: '19',
+    name: 'Alting',
+    description:
+      'Está prohibido el uso de cuentas alternativas (alts) para evadir restricciones o sanciones.',
+    severity: 'alta',
+  },
+  {
+    number: '20',
+    name: 'Desactivación de ELO',
+    description:
+      'El elo estará desactivado si el fill es menor a 50.',
+    severity: 'media',
+  },
 ];
 
 export default function RulesPage() {

@@ -34,7 +34,7 @@ const extrasItems = [
   { name: 'Soporte', href: '/support', icon: HelpCircle },
   { name: 'Reglas', href: '/rules', icon: Shield },
   { name: 'Games', href: '/games', icon: Gamepad2 },
-  { name: 'Leaderboard', href: '/leaderboard', icon: Trophy },
+  { name: 'Leaderboard', href: '#', icon: Trophy, maintenance: true },
 ];
 
 export function Navbar() {
@@ -203,8 +203,14 @@ export function Navbar() {
                             transition={{ delay: index * 0.05 }}
                           >
                             <Link
-                              href={item.href}
-                              onClick={() => setIsExtrasOpen(false)}
+                              href={item.maintenance ? '#' : item.href}
+                              onClick={(e) => {
+                                if (item.maintenance) {
+                                  e.preventDefault();
+                                  alert('🚧 Página en mantenimiento. Volveremos pronto!');
+                                }
+                                setIsExtrasOpen(false);
+                              }}
                               className={cn(
                                 'group flex items-center space-x-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-300 relative overflow-hidden',
                                 isActive
@@ -319,14 +325,20 @@ export function Navbar() {
                     return (
                       <Link
                         key={item.name}
-                        href={item.href}
+                        href={item.maintenance ? '#' : item.href}
                         className={cn(
                           'flex items-center space-x-3 rounded-lg px-3 py-2 text-base font-medium transition-colors duration-200',
                           isActive
                             ? 'bg-primary-500/10 text-primary-400'
                             : 'text-gray-300 hover:bg-white/5 hover:text-white'
                         )}
-                        onClick={() => setIsOpen(false)}
+                        onClick={(e) => {
+                          if (item.maintenance) {
+                            e.preventDefault();
+                            alert('🚧 Página en mantenimiento. Volveremos pronto!');
+                          }
+                          setIsOpen(false);
+                        }}
                       >
                         <Icon className="h-5 w-5" />
                         <span>{item.name}</span>
