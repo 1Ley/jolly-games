@@ -2,7 +2,9 @@
  * Helper function to get asset paths with basePath for GitHub Pages
  */
 export function getAssetPath(path: string): string {
-  const basePath = process.env.NODE_ENV === 'production' ? '/jolly-games' : '';
+  const isProd = process.env.NODE_ENV === 'production';
+  const isGitHubPages = process.env.GITHUB_ACTIONS === 'true' || process.env.DEPLOY_TARGET === 'github';
+  const basePath = (isProd && isGitHubPages) ? '/jolly-games' : '';
   return `${basePath}${path}`;
 }
 
