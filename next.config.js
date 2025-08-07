@@ -1,18 +1,20 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production';
+const isGitHubPages = process.env.GITHUB_ACTIONS === 'true' || process.env.DEPLOY_TARGET === 'github';
+const isVercel = process.env.VERCEL === '1';
 
 const nextConfig = {
-  // Configuración para GitHub Pages solo en producción
-  ...(isProd && { output: 'export' }),
+  // Configuración para GitHub Pages solo cuando se despliega en GitHub
+  ...(isProd && isGitHubPages && { output: 'export' }),
   trailingSlash: true,
-  basePath: isProd ? '/jolly-games' : '',
-  assetPrefix: isProd ? '/jolly-games' : '',
+  basePath: (isProd && isGitHubPages) ? '/jolly-games' : '',
+  assetPrefix: (isProd && isGitHubPages) ? '/jolly-games' : '',
   
   experimental: {
     // appDir eliminado porque ya no es necesario
   },
   images: {
-    unoptimized: true, // Necesario para GitHub Pages
+    unoptimized: isProd && isGitHubPages, // Necesario solo para GitHub Pages
     remotePatterns: [
       {
         protocol: 'http',
