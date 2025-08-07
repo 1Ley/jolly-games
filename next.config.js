@@ -14,7 +14,7 @@ const nextConfig = {
     // appDir eliminado porque ya no es necesario
   },
   images: {
-    unoptimized: isProd && isGitHubPages, // Necesario solo para GitHub Pages
+    unoptimized: true, // Necesario para imágenes estáticas en public/
     remotePatterns: [
       {
         protocol: 'http',
